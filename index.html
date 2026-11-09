@@ -129,16 +129,16 @@ footer{border-top:1px solid var(--hair);padding-block:18px 8px;color:var(--soft)
 @media (prefers-reduced-motion:reduce){.acc .pc::after{transition:none}}
 /* Live weather: one quiet row beside the status pill; hidden until real data arrives */
 .hrow{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px}
-.wx{display:flex;align-items:center;gap:11px;color:var(--soft);font-size:14px;line-height:1.25;animation:wxIn .6s ease both}
+.wx{display:flex;align-items:center;gap:14px;margin:2px 0 14px;padding:9px 16px;background:var(--skybg);border:1px solid color-mix(in srgb,var(--sky) 14%,transparent);border-radius:12px;color:var(--soft);font-size:14px;line-height:1.25;animation:wxIn .6s ease both}
 @keyframes wxIn{from{opacity:0}to{opacity:1}}
 .wx-now{display:flex;align-items:center;gap:7px;position:relative}
-.wx-ic{display:flex}.wx-ic svg{width:26px;height:26px;flex:none}
+.wx-ic{display:flex}.wx-ic svg{width:28px;height:28px;flex:none}
 .wx-dot{position:absolute;left:-2px;top:-2px;width:7px;height:7px;border-radius:50%;background:var(--g);animation:wxPulse 2.4s ease-out infinite}
 @keyframes wxPulse{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--g) 55%,transparent)}70%,100%{box-shadow:0 0 0 6px transparent}}
 .wx-t{font:700 21px/1 var(--display);color:var(--ink);font-variant-numeric:tabular-nums}
 .wx-now>span:last-child{display:flex;flex-direction:column;align-items:flex-start;gap:3px}
 .wx-f{display:block;font-size:12px;white-space:nowrap}
-.wx-days{list-style:none;margin:0;padding:0 0 0 11px;border-left:1px solid var(--hair);display:flex;gap:10px}
+.wx-days{flex:1;list-style:none;margin:0;padding:0 0 0 14px;border-left:1px solid color-mix(in srgb,var(--sky) 22%,transparent);display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px}
 .wx-days li{display:flex;flex-direction:column;align-items:center;gap:1px;font-size:12px;line-height:1.2;min-width:0}
 .wx-days .ic{display:flex;align-items:center;gap:2px;height:16px}
 .wx-days svg{width:16px;height:16px}
@@ -148,7 +148,7 @@ footer{border-top:1px solid var(--hair);padding-block:18px 8px;color:var(--soft)
 .wx svg .sun{fill:var(--y)} .wx svg .cl{fill:var(--land);stroke:var(--soft);stroke-width:1.8}
 .wx svg .rn{stroke:var(--sky);stroke-width:2.4;stroke-linecap:round} .wx svg .sn{fill:var(--sky)}
 .wx svg .bolt{fill:var(--y)} .wx svg .fg{stroke:var(--soft);stroke-width:2.4;stroke-linecap:round} .wx svg .moon{fill:var(--soft)}
-@media (max-width:400px){.wx,.hrow{column-gap:8px}.wx-days{gap:7px;padding-left:8px}}
+@media (max-width:400px){.wx{gap:9px;padding:8px 10px}.wx-days{gap:2px;padding-left:9px}}
 @media (prefers-reduced-motion:reduce){.wx,.wx-dot{animation:none}}
 /* Fill-in animation: JS zeroes the bars, a faint tick marks where each will land */
 .trk{position:relative}
@@ -168,12 +168,12 @@ footer{border-top:1px solid var(--hair);padding-block:18px 8px;color:var(--soft)
   <header class="lead">
     <p class="kicker">News from the Cyclone · November 2026</p>
     <h1>Still rolling. Still grateful.</h1>
+    <div class="wx" id="wx" role="group" hidden>
+      <span class="wx-now"><i class="wx-dot" aria-hidden="true"></i><span class="wx-ic"></span><span><b class="wx-t"></b><span class="wx-f"></span></span></span>
+      <ol class="wx-days"></ol>
+    </div>
     <div class="hrow">
       <span class="status"><i></i>All good at home base</span>
-      <div class="wx" id="wx" role="group" hidden>
-        <span class="wx-now"><i class="wx-dot" aria-hidden="true"></i><span class="wx-ic"></span><span><b class="wx-t"></b><span class="wx-f"></span></span></span>
-        <ol class="wx-days"></ol>
-      </div>
     </div>
     <p class="intro">We're parked for the season in the North Georgia mountains, and the rig is in good shape.</p>
   </header>
