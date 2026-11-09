@@ -127,6 +127,29 @@ p{margin:0}
 .map text{font:600 30px var(--body);fill:var(--ink);paint-order:stroke;stroke:var(--card);stroke-width:7px;stroke-linejoin:round}
 footer{border-top:1px solid var(--hair);padding-block:18px 8px;color:var(--soft);font-size:16px}
 @media (prefers-reduced-motion:reduce){.acc .pc::after{transition:none}}
+/* Live weather strip: hidden until real data arrives, so a failed fetch leaves no empty box */
+.wx{margin-top:14px;background:var(--card);border:1px solid var(--hair);border-radius:14px;padding:12px 14px 10px;display:grid;gap:10px;animation:wxIn .6s ease both}
+@keyframes wxIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.wx-top{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px;font-size:13px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--soft)}
+.wx-live{display:inline-flex;align-items:center;gap:7px}
+.wx-live i{width:8px;height:8px;border-radius:50%;background:var(--g);box-shadow:0 0 0 0 var(--g);animation:wxPulse 2.4s ease-out infinite}
+@keyframes wxPulse{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--g) 55%,transparent)}70%,100%{box-shadow:0 0 0 7px transparent}}
+.wx-upd{font-weight:500;letter-spacing:0;text-transform:none;white-space:nowrap}
+.wx-now{display:flex;align-items:center;gap:12px;min-width:0}
+.wx-now svg{width:44px;height:44px;flex:none}
+.wx-t{font:700 38px/1 var(--display);font-variant-numeric:tabular-nums}
+.wx-d{display:block;font-weight:600;font-size:17px;line-height:1.3}
+.wx-f{display:block;font-size:15px;color:var(--soft)}
+.wx-days{list-style:none;margin:0;padding:9px 0 0;border-top:1px solid var(--hair);display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:4px;text-align:center}
+.wx-days li{min-width:0;display:flex;flex-direction:column;align-items:center;gap:1px;font-size:14px;color:var(--soft);line-height:1.3}
+.wx-days svg{width:28px;height:28px;margin:2px 0}
+.wx-days b{color:var(--ink);font-size:15px;font-variant-numeric:tabular-nums}
+.wx-days .wx-lo{font-weight:400;color:var(--soft)}
+.wx-rain{color:var(--sky);font-weight:600;font-size:13px}
+.wx svg .sun{fill:var(--y)} .wx svg .cl{fill:var(--land);stroke:var(--soft);stroke-width:1.6}
+.wx svg .rn{stroke:var(--sky);stroke-width:2.2;stroke-linecap:round} .wx svg .sn{fill:var(--sky)}
+.wx svg .bolt{fill:var(--y)} .wx svg .fg{stroke:var(--soft);stroke-width:2.2;stroke-linecap:round} .wx svg .moon{fill:var(--soft)}
+@media (prefers-reduced-motion:reduce){.wx,.wx-live i{animation:none}}
 /* Fill-in animation: JS zeroes the bars, a faint tick marks where each will land */
 .trk{position:relative}
 .trk>i,.trk>em{transition:width 1.3s cubic-bezier(.22,1,.36,1)}
@@ -146,6 +169,11 @@ footer{border-top:1px solid var(--hair);padding-block:18px 8px;color:var(--soft)
     <p class="kicker">News from the Cyclone · November 2026</p>
     <h1>Still rolling. Still grateful.</h1>
     <span class="status"><i></i>All good at home base</span>
+    <section class="wx" id="wx" aria-label="Weather near us right now" hidden>
+      <div class="wx-top"><span class="wx-live"><i></i>Live · Northeast Georgia</span><span class="wx-upd"></span></div>
+      <div class="wx-now"><span class="wx-ic"></span><b class="wx-t"></b><span><span class="wx-d"></span><span class="wx-f"></span></span></div>
+      <ol class="wx-days" aria-label="Next four days"></ol>
+    </section>
     <p class="intro">We're parked for the season in the North Georgia mountains, and the rig is in good shape.</p>
   </header>
 
@@ -288,6 +316,66 @@ try{
       const f=e.target.querySelector('i'); fill(f, f===main?150:150+90*n++);});
   },{threshold:.6,rootMargin:'0px 0px -8% 0px'});
   [main,...minis].forEach(f=>io.observe(f.parentElement));
+})();
+</script>
+<script>
+(()=>{
+  const box=document.getElementById('wx'); if(!box||!window.fetch) return;
+  const URL='https://api.open-meteo.com/v1/forecast?latitude=34.70&longitude=-83.73'+
+    '&current=temperature_2m,apparent_temperature,weather_code,is_day'+
+    '&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max'+
+    '&temperature_unit=fahrenheit&timezone=America%2FNew_York&forecast_days=4';
+  const KEY='wx-ne-ga', STALE=30*60e3;
+  const cloud='<path class="cl" d="M14 34h21a7 7 0 0 0 0-14 10 10 0 0 0-19-2 8 8 0 0 0-2 16z"/>';
+  const IC={
+    sun:'<circle class="sun" cx="24" cy="24" r="9"/><g class="rn" style="stroke:var(--y)"><path d="M24 6v5M24 37v5M6 24h5M37 24h5M11 11l3.5 3.5M33.5 33.5 37 37M11 37l3.5-3.5M33.5 14.5 37 11"/></g>',
+    moon:'<path class="moon" d="M30 8a15 15 0 1 0 10 25A13 13 0 0 1 30 8z"/>',
+    part:'<circle class="sun" cx="17" cy="17" r="8"/><g transform="translate(4 4)">'+cloud+'</g>',
+    partn:'<path class="moon" d="M20 6a11 11 0 1 0 8 18A9 9 0 0 1 20 6z"/><g transform="translate(4 4)">'+cloud+'</g>',
+    cloud:'<g transform="translate(0 2)">'+cloud+'</g>',
+    rain:cloud+'<path class="rn" d="M17 39l-2 5M25 39l-2 5M33 39l-2 5"/>',
+    snow:cloud+'<circle class="sn" cx="16" cy="41" r="2"/><circle class="sn" cx="24" cy="43" r="2"/><circle class="sn" cx="32" cy="41" r="2"/>',
+    storm:cloud+'<path class="bolt" d="M25 33l-6 8h5l-2 6 7-9h-5l2-5z"/>',
+    fog:'<path class="fg" d="M8 18h32M12 25h28M8 32h28M14 39h22"/>'
+  };
+  const svg=k=>'<svg viewBox="0 0 48 48" aria-hidden="true">'+IC[k]+'</svg>';
+  const kind=(c,day)=>c===0?(day?'sun':'moon'):c<=2?(day?'part':'partn'):c===3?'cloud':c<=48?'fog':
+    (c>=71&&c<=77)||c===85||c===86?'snow':c>=95?'storm':'rain';
+  const say=(c,day)=>({0:day?'Sunny':'Clear',1:day?'Mostly sunny':'Mostly clear',2:'Partly cloudy',3:'Cloudy',45:'Foggy',48:'Foggy',
+    51:'Light drizzle',53:'Drizzle',55:'Drizzle',56:'Freezing drizzle',57:'Freezing drizzle',61:'Light rain',63:'Rain',65:'Heavy rain',
+    66:'Freezing rain',67:'Freezing rain',71:'Light snow',73:'Snow',75:'Heavy snow',77:'Snow',80:'Showers',81:'Showers',82:'Heavy showers',
+    85:'Snow showers',86:'Snow showers',95:'Thunderstorms',96:'Storms with hail',99:'Storms with hail'})[c]||'';
+  const r=v=>Math.round(v)+'°';
+  const clock=t=>{const [h,m]=t.slice(11,16).split(':').map(Number);return ((h+11)%12+1)+':'+String(m).padStart(2,'0')+(h<12?' AM':' PM');};
+  const dayName=(t,i)=>i===0?'Today':new Date(t+'T12:00:00').toLocaleDateString('en-US',{weekday:'short'});
+  function draw(d){
+    const c=d.current, y=d.daily; if(!c||!y||!y.time) return;
+    const day=!!c.is_day;
+    box.querySelector('.wx-ic').innerHTML=svg(kind(c.weather_code,day));
+    box.querySelector('.wx-t').textContent=r(c.temperature_2m);
+    box.querySelector('.wx-d').textContent=say(c.weather_code,day);
+    box.querySelector('.wx-f').textContent='Feels like '+r(c.apparent_temperature);
+    box.querySelector('.wx-upd').textContent=clock(c.time)+' ET';
+    box.querySelector('.wx-days').innerHTML=y.time.map((t,i)=>{
+      const p=y.precipitation_probability_max&&y.precipitation_probability_max[i];
+      return '<li><span>'+dayName(t,i)+'</span>'+svg(kind(y.weather_code[i],true))+
+        '<b>'+r(y.temperature_2m_max[i])+' <span class="wx-lo">'+r(y.temperature_2m_min[i])+'</span></b>'+
+        '<span class="wx-rain">'+(p>=20?p+'% rain':'&nbsp;')+'</span></li>';}).join('');
+    box.querySelector('.wx-days').setAttribute('aria-label','Next four days: '+y.time.map((t,i)=>dayName(t,i)+' high '+r(y.temperature_2m_max[i])+', low '+r(y.temperature_2m_min[i])+', '+say(y.weather_code[i],true)).join('; '));
+    box.hidden=false;
+  }
+  let last=0;
+  try{const s=JSON.parse(localStorage.getItem(KEY)||'null'); if(s&&Date.now()-s.at<3*3600e3){draw(s.d); last=s.at;}}catch(e){}
+  async function load(){
+    try{
+      const res=await fetch(URL,{cache:'no-store'}); if(!res.ok) return;
+      const d=await res.json(); draw(d); last=Date.now();
+      try{localStorage.setItem(KEY,JSON.stringify({at:last,d}));}catch(e){}
+    }catch(e){}
+  }
+  if(Date.now()-last>STALE) load();
+  setInterval(()=>{if(!document.hidden) load();},STALE);
+  document.addEventListener('visibilitychange',()=>{if(!document.hidden&&Date.now()-last>STALE) load();});
 })();
 </script>
 </body>
