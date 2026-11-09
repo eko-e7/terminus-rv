@@ -127,29 +127,29 @@ p{margin:0}
 .map text{font:600 30px var(--body);fill:var(--ink);paint-order:stroke;stroke:var(--card);stroke-width:7px;stroke-linejoin:round}
 footer{border-top:1px solid var(--hair);padding-block:18px 8px;color:var(--soft);font-size:16px}
 @media (prefers-reduced-motion:reduce){.acc .pc::after{transition:none}}
-/* Live weather strip: hidden until real data arrives, so a failed fetch leaves no empty box */
-.wx{margin-top:14px;background:var(--card);border:1px solid var(--hair);border-radius:14px;padding:12px 14px 10px;display:grid;gap:10px;animation:wxIn .6s ease both}
-@keyframes wxIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
-.wx-top{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px;font-size:13px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--soft)}
-.wx-live{display:inline-flex;align-items:center;gap:7px}
-.wx-live i{width:8px;height:8px;border-radius:50%;background:var(--g);box-shadow:0 0 0 0 var(--g);animation:wxPulse 2.4s ease-out infinite}
-@keyframes wxPulse{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--g) 55%,transparent)}70%,100%{box-shadow:0 0 0 7px transparent}}
-.wx-upd{font-weight:500;letter-spacing:0;text-transform:none;white-space:nowrap}
-.wx-now{display:flex;align-items:center;gap:12px;min-width:0}
-.wx-now svg{width:44px;height:44px;flex:none}
-.wx-t{font:700 38px/1 var(--display);font-variant-numeric:tabular-nums}
-.wx-d{display:block;font-weight:600;font-size:17px;line-height:1.3}
-.wx-f{display:block;font-size:15px;color:var(--soft)}
-.wx-days{list-style:none;margin:0;padding:9px 0 0;border-top:1px solid var(--hair);display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:4px;text-align:center}
-.wx-days li{min-width:0;display:flex;flex-direction:column;align-items:center;gap:1px;font-size:14px;color:var(--soft);line-height:1.3}
-.wx-days svg{width:28px;height:28px;margin:2px 0}
-.wx-days b{color:var(--ink);font-size:15px;font-variant-numeric:tabular-nums}
-.wx-days .wx-lo{font-weight:400;color:var(--soft)}
-.wx-rain{color:var(--sky);font-weight:600;font-size:13px}
-.wx svg .sun{fill:var(--y)} .wx svg .cl{fill:var(--land);stroke:var(--soft);stroke-width:1.6}
-.wx svg .rn{stroke:var(--sky);stroke-width:2.2;stroke-linecap:round} .wx svg .sn{fill:var(--sky)}
-.wx svg .bolt{fill:var(--y)} .wx svg .fg{stroke:var(--soft);stroke-width:2.2;stroke-linecap:round} .wx svg .moon{fill:var(--soft)}
-@media (prefers-reduced-motion:reduce){.wx,.wx-live i{animation:none}}
+/* Live weather: one quiet row beside the status pill; hidden until real data arrives */
+.hrow{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px}
+.wx{display:flex;align-items:center;gap:11px;color:var(--soft);font-size:14px;line-height:1.25;animation:wxIn .6s ease both}
+@keyframes wxIn{from{opacity:0}to{opacity:1}}
+.wx-now{display:flex;align-items:center;gap:7px;position:relative}
+.wx-ic{display:flex}.wx-ic svg{width:26px;height:26px;flex:none}
+.wx-dot{position:absolute;left:-2px;top:-2px;width:7px;height:7px;border-radius:50%;background:var(--g);animation:wxPulse 2.4s ease-out infinite}
+@keyframes wxPulse{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--g) 55%,transparent)}70%,100%{box-shadow:0 0 0 6px transparent}}
+.wx-t{font:700 21px/1 var(--display);color:var(--ink);font-variant-numeric:tabular-nums}
+.wx-now>span:last-child{display:flex;flex-direction:column;align-items:flex-start;gap:3px}
+.wx-f{display:block;font-size:12px;white-space:nowrap}
+.wx-days{list-style:none;margin:0;padding:0 0 0 11px;border-left:1px solid var(--hair);display:flex;gap:10px}
+.wx-days li{display:flex;flex-direction:column;align-items:center;gap:1px;font-size:12px;line-height:1.2;min-width:0}
+.wx-days .ic{display:flex;align-items:center;gap:2px;height:16px}
+.wx-days svg{width:16px;height:16px}
+.wx-days b{color:var(--ink);font-weight:600;font-variant-numeric:tabular-nums;white-space:nowrap}
+.wx-days .lo{font-weight:400;color:var(--soft)}
+.wx-rain{color:var(--sky);font-weight:600;font-size:11px}
+.wx svg .sun{fill:var(--y)} .wx svg .cl{fill:var(--land);stroke:var(--soft);stroke-width:1.8}
+.wx svg .rn{stroke:var(--sky);stroke-width:2.4;stroke-linecap:round} .wx svg .sn{fill:var(--sky)}
+.wx svg .bolt{fill:var(--y)} .wx svg .fg{stroke:var(--soft);stroke-width:2.4;stroke-linecap:round} .wx svg .moon{fill:var(--soft)}
+@media (max-width:400px){.wx,.hrow{column-gap:8px}.wx-days{gap:7px;padding-left:8px}}
+@media (prefers-reduced-motion:reduce){.wx,.wx-dot{animation:none}}
 /* Fill-in animation: JS zeroes the bars, a faint tick marks where each will land */
 .trk{position:relative}
 .trk>i,.trk>em{transition:width 1.3s cubic-bezier(.22,1,.36,1)}
@@ -168,12 +168,13 @@ footer{border-top:1px solid var(--hair);padding-block:18px 8px;color:var(--soft)
   <header class="lead">
     <p class="kicker">News from the Cyclone · November 2026</p>
     <h1>Still rolling. Still grateful.</h1>
-    <span class="status"><i></i>All good at home base</span>
-    <section class="wx" id="wx" aria-label="Weather near us right now" hidden>
-      <div class="wx-top"><span class="wx-live"><i></i>Live · Northeast Georgia</span><span class="wx-upd"></span></div>
-      <div class="wx-now"><span class="wx-ic"></span><b class="wx-t"></b><span><span class="wx-d"></span><span class="wx-f"></span></span></div>
-      <ol class="wx-days" aria-label="Next four days"></ol>
-    </section>
+    <div class="hrow">
+      <span class="status"><i></i>All good at home base</span>
+      <div class="wx" id="wx" role="group" hidden>
+        <span class="wx-now"><i class="wx-dot" aria-hidden="true"></i><span class="wx-ic"></span><span><b class="wx-t"></b><span class="wx-f"></span></span></span>
+        <ol class="wx-days"></ol>
+      </div>
+    </div>
     <p class="intro">We're parked for the season in the North Georgia mountains, and the rig is in good shape.</p>
   </header>
 
@@ -350,18 +351,18 @@ try{
   const dayName=(t,i)=>i===0?'Today':new Date(t+'T12:00:00').toLocaleDateString('en-US',{weekday:'short'});
   function draw(d){
     const c=d.current, y=d.daily; if(!c||!y||!y.time) return;
-    const day=!!c.is_day;
+    const day=!!c.is_day, rain=i=>(y.precipitation_probability_max||[])[i];
     box.querySelector('.wx-ic').innerHTML=svg(kind(c.weather_code,day));
     box.querySelector('.wx-t').textContent=r(c.temperature_2m);
-    box.querySelector('.wx-d').textContent=say(c.weather_code,day);
-    box.querySelector('.wx-f').textContent='Feels like '+r(c.apparent_temperature);
-    box.querySelector('.wx-upd').textContent=clock(c.time)+' ET';
-    box.querySelector('.wx-days').innerHTML=y.time.map((t,i)=>{
-      const p=y.precipitation_probability_max&&y.precipitation_probability_max[i];
-      return '<li><span>'+dayName(t,i)+'</span>'+svg(kind(y.weather_code[i],true))+
-        '<b>'+r(y.temperature_2m_max[i])+' <span class="wx-lo">'+r(y.temperature_2m_min[i])+'</span></b>'+
-        '<span class="wx-rain">'+(p>=20?p+'% rain':'&nbsp;')+'</span></li>';}).join('');
-    box.querySelector('.wx-days').setAttribute('aria-label','Next four days: '+y.time.map((t,i)=>dayName(t,i)+' high '+r(y.temperature_2m_max[i])+', low '+r(y.temperature_2m_min[i])+', '+say(y.weather_code[i],true)).join('; '));
+    box.querySelector('.wx-f').textContent='feels '+r(c.apparent_temperature);
+    box.querySelector('.wx-days').innerHTML=y.time.map((t,i)=>{const p=rain(i);
+      return '<li><span>'+dayName(t,i)+'</span><span class="ic">'+svg(kind(y.weather_code[i],true))+
+        (p>=20?'<span class="wx-rain">'+p+'%</span>':'')+'</span><b>'+r(y.temperature_2m_max[i])+' <span class="lo">'+r(y.temperature_2m_min[i])+'</span></b></li>';}).join('');
+    const tip='Live weather in Northeast Georgia: '+say(c.weather_code,day)+', updated '+clock(c.time)+' ET';
+    box.title=tip;
+    box.setAttribute('aria-label',tip+'. Now '+r(c.temperature_2m)+', '+say(c.weather_code,day)+', feels like '+r(c.apparent_temperature)+'. '+
+      y.time.map((t,i)=>dayName(t,i)+': high '+r(y.temperature_2m_max[i])+', low '+r(y.temperature_2m_min[i])+', '+say(y.weather_code[i],true)+(rain(i)>=20?', '+rain(i)+'% chance of rain':'')).join('. '));
+    box.querySelector('.wx-now').setAttribute('aria-hidden','true'); box.querySelector('.wx-days').setAttribute('aria-hidden','true');
     box.hidden=false;
   }
   let last=0;
