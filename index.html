@@ -63,6 +63,8 @@ p{margin:0}
 .todo li:first-child{border-top:0}
 .todo li::before{content:"";flex:none;width:16px;height:16px;border:2px solid var(--soft);border-radius:4px;transform:translateY(2px)}
 .todo span{color:var(--soft)}
+.todo.done{margin-top:10px;background:var(--goodbg);border-color:transparent}
+.todo.done li::before{content:"\2713";border-color:var(--good);background:var(--good);color:var(--card);font:700 12px/12px var(--body);text-align:center}
 .overall{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:8px}
 .overall b{font:700 30px/1 var(--display);font-variant-numeric:tabular-nums}
 .bar{height:14px;border-radius:7px;background:var(--track);overflow:hidden}
@@ -236,10 +238,12 @@ footer{border-top:1px solid var(--hair);padding-block:18px 8px;color:var(--soft)
       <h2>On the to-do list</h2>
       <ul class="todo">
         <li>Generator tune-up before winter</li>
-        <li>New carbon monoxide and propane alarm <span>(it's reached its replacement date)</span></li>
         <li>Clean up the propane gauges, or replace them</li>
         <li>New trailer tires before our next trip <span>(they're five years old)</span></li>
         <li>Garage air conditioner part before summer</li>
+      </ul>
+      <ul class="todo done" aria-label="Recently done">
+        <li>New carbon monoxide and propane alarm <span>(installed and tested November 9, good until 2031)</span></li>
       </ul>
     </section>
 
