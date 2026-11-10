@@ -180,6 +180,37 @@ footer{border-top:1px solid var(--hair);padding-block:18px 8px;color:var(--soft)
 .rg-pin-dot{fill:var(--card)}
 .rg-here{font:700 18px var(--body);fill:var(--rock);paint-order:stroke;stroke:var(--card);stroke-width:5px;stroke-linejoin:round}
 @media (max-width:560px){.stage{grid-template-columns:1fr}}
+/* Desktop: same content, spread across a wider grid; phones and tablets keep the single column */
+@media (min-width:1080px){
+  body{font-size:18px}
+  .col{max-width:1200px;padding-left:32px;padding-right:32px}
+  .hero img{aspect-ratio:auto;height:min(46vh,440px);object-position:center 52%}
+  .lead{display:grid;grid-template-columns:minmax(0,1fr) 460px;column-gap:40px;align-items:start;padding-top:30px}
+  .lead>*{grid-column:1}
+  .stage{display:contents}
+  .region{grid-column:2;grid-row:1/span 5;margin-top:4px}
+  h1{font-size:56px}
+  .rig{justify-content:flex-start;margin-top:4px}
+  main{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:48px 40px;padding-block:34px 56px}
+  main>section{grid-column:1/-1;min-width:0}
+  .thanks{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:40px;align-items:center;padding-block:26px}
+  .thanks p + p{margin-top:0}
+  .route{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:4px 40px;align-items:center}
+  .route h2{grid-column:1/-1}
+  .route .map{margin:0}
+  .route .road{align-self:center}
+  .todo-sec{grid-column:1/span 5}
+  .org{grid-column:6/-1}
+  .how{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px 28px;padding:34px 34px 30px}
+  .how>*{grid-column:1/-1}
+  .how>div:first-child p{max-width:46em}
+  .steps{grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+  .big-nums{grid-template-columns:repeat(6,minmax(0,1fr))}
+  .how>.trust{grid-column:auto}
+  .trust + .trust{margin-top:0}
+  .how>.office{grid-column:1;align-self:start}
+  .how>.closing{grid-column:2;border-top:0;padding-top:0;padding-left:28px;border-left:1px solid var(--hair)}
+}
 </style>
 </head>
 <body>
@@ -221,7 +252,7 @@ footer{border-top:1px solid var(--hair);padding-block:18px 8px;color:var(--soft)
       <p>You lent a hand, an ear, good advice, and help when we needed it most. You're a big part of why this life works.</p>
     </section>
 
-    <section>
+    <section class="route">
       <h2>Where the road has taken us</h2>
       <figure class="map">
         <svg id="usmap" viewBox="0 0 900 560" role="img" aria-label="Map of our route across the United States since 2022, from Oklahoma to the West Coast, through Utah, and back to North Georgia"><g id="states"></g><g id="route"></g></svg>
@@ -236,7 +267,7 @@ footer{border-top:1px solid var(--hair);padding-block:18px 8px;color:var(--soft)
       </ol>
     </section>
 
-    <section>
+    <section class="todo-sec">
       <h2>On the to-do list</h2>
       <ul class="todo">
         <li>Generator tune-up before winter</li>
@@ -249,7 +280,7 @@ footer{border-top:1px solid var(--hair);padding-block:18px 8px;color:var(--soft)
       </ul>
     </section>
 
-    <section>
+    <section class="org">
       <h2>Getting organized</h2>
       <div class="overall"><span>The RV's records, all in one place</span><b>67%</b></div>
       <div class="bar" role="img" aria-label="About 67 percent organized"><i style="width:67%;background:var(--y)"></i></div>
