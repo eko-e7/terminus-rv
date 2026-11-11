@@ -198,6 +198,27 @@ dialog.lb .nav{position:fixed;background:rgba(255,255,255,.16)}
 .shield li b{display:block;color:var(--ink);font-size:17px}
 .shield a{color:var(--sky);font-weight:600;text-underline-offset:3px;white-space:nowrap}
 .office>p{color:var(--soft)}
+/* Forward Deployed SOC: Mobile Response Unit */
+.mru{background:#0f1820;color:#e6eef3;border-radius:16px;padding:18px;border:1px solid #24323d;box-shadow:inset 0 0 0 1px rgba(92,196,121,.08)}
+.mru-tag{display:inline-flex;align-items:center;gap:8px;font:600 12.5px/1 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;letter-spacing:.1em;text-transform:uppercase;color:#7fd494;background:rgba(92,196,121,.12);border:1px solid rgba(92,196,121,.35);border-radius:999px;padding:6px 11px}
+.mru .live{width:8px;height:8px;border-radius:50%;background:#5cc479;box-shadow:0 0 0 0 rgba(92,196,121,.6);animation:mruPulse 2s infinite}
+@keyframes mruPulse{70%{box-shadow:0 0 0 8px rgba(92,196,121,0)}100%{box-shadow:0 0 0 0 rgba(92,196,121,0)}}
+.mru h3{margin:12px 0 0;font:700 25px/1.2 var(--display);color:#fff}
+.mru h3 span{display:block;font:600 14px/1.3 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;letter-spacing:.14em;text-transform:uppercase;color:#8cbbe0;margin-top:6px}
+.mru-sub{color:#b0bcc5;font-size:16px;line-height:1.45;margin-top:10px;max-width:46em}
+.feeds{list-style:none;margin:16px 0 0;padding:0;display:grid;gap:10px}
+.feed{position:relative;display:block;width:100%;padding:0;border:1px solid #2c3a45;border-radius:10px;overflow:hidden;background:#000;cursor:zoom-in;color:inherit;font:inherit;text-align:left}
+.feed:focus-visible{outline:3px solid #8cbbe0;outline-offset:2px}
+.feed img{display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;filter:saturate(.9) contrast(1.05);transition:transform .3s ease}
+.feed:hover img{transform:scale(1.03)}
+.feed::after{content:"";position:absolute;inset:0;pointer-events:none;background:repeating-linear-gradient(0deg,rgba(0,0,0,.14) 0 1px,transparent 1px 3px),linear-gradient(180deg,rgba(0,0,0,.45),transparent 30%,transparent 62%,rgba(0,0,0,.75))}
+.feed .cam{position:absolute;z-index:1;top:9px;left:10px;display:flex;align-items:center;gap:7px;font:600 11.5px/1 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;letter-spacing:.08em;color:#fff;text-shadow:0 1px 2px #000}
+.feed .cam i{width:8px;height:8px;border-radius:50%;background:#f07a62;animation:mruRec 1.6s steps(1) infinite}
+@keyframes mruRec{50%{opacity:.2}}
+.feed .cap{position:absolute;z-index:1;left:10px;right:10px;bottom:9px;font-size:14px;line-height:1.35;color:#eef2f4;text-shadow:0 1px 3px #000}
+.mru-stat{list-style:none;margin:14px 0 0;padding:12px 0 0;border-top:1px solid #24323d;display:flex;flex-wrap:wrap;gap:8px 22px;font:500 14px/1.3 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;color:#d3dde3}
+.mru-stat b{color:#8cbbe0;font-weight:600;letter-spacing:.08em;text-transform:uppercase;font-size:12px;margin-right:8px}
+@media (prefers-reduced-motion:reduce){.mru .live,.feed .cam i{animation:none}.feed img{transition:none}.feed:hover img{transform:none}}
 .creds{list-style:none;margin:16px 0 0;padding:0;display:grid;gap:10px}
 .creds li{display:flex;gap:12px;align-items:center;background:var(--card);border:1px solid var(--hair);border-radius:12px;padding:10px 12px}
 .cred-ic{flex:none;width:44px;height:44px;border-radius:10px;display:grid;place-items:center;background:var(--skybg);color:var(--sky)}
@@ -334,6 +355,8 @@ footer .sep{opacity:.5}
   .big-nums{grid-template-columns:repeat(6,minmax(0,1fr))}
   .shield{padding:22px 26px 20px}
   .shield ul{grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+  .mru{padding:24px 26px 20px}
+  .feeds{grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
   .how>.office{display:contents}
   .how>.office>p{grid-column:1;align-self:start}
   .how .frameworks{grid-column:1/-1;order:2;margin-top:-10px;display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:8px 20px}
@@ -350,7 +373,7 @@ footer .sep{opacity:.5}
 
 <div class="col">
   <header class="lead">
-    <p class="kicker"><span>News from the Cyclone · November 2026</span><span class="ver" title="Release v1.25.1, built 2026-11-11"><i aria-hidden="true"></i>v1.25.1 <em>build 20261111</em></span></p>
+    <p class="kicker"><span>News from the Cyclone · November 2026</span><span class="ver" title="Release v1.26.0, built 2026-11-11"><i aria-hidden="true"></i>v1.26.0 <em>build 20261111</em></span></p>
     <h1>Still rolling. Still grateful.</h1>
     <div class="stage">
       <div class="rig">
@@ -458,6 +481,23 @@ footer .sep{opacity:.5}
           <li><span class="i"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20h16"/><path d="M7 16v-4"/><path d="M12 16V8"/><path d="M17 16v-6"/></svg></span><p><b>Just a visitor count</b>No cookies, no tracking, no names. <a href="https://eko.goatcounter.com" target="_blank" rel="noopener">See the counts</a></p></li>
         </ul>
       </div>
+      <div class="mru" aria-labelledby="mru-h">
+        <div class="mru-top">
+          <p class="mru-tag"><span class="live" aria-hidden="true"></span>Unit 1 · Standing by</p>
+          <h3 id="mru-h">Forward Deployed SOC <span>Mobile Response Unit</span></h3>
+          <p class="mru-sub">A SOC (security operations center) is the room where a security team watches for trouble and jumps in when something goes wrong. Ours has three axles, so it can set up wherever it's needed.</p>
+        </div>
+        <ul class="feeds">
+          <li><button type="button" class="feed" aria-label="Enlarge: Day shift on the ops deck, May 2022."><img src="assets/mru/mru-1.jpg" alt="A laptop on a desk inside the rig, with the back patio door open to a lake and fountain" width="640" height="480" loading="lazy" decoding="async"><span class="cam" aria-hidden="true"><i></i>CAM 01 · OPS DECK</span><span class="cap">Day shift on the ops deck, May 2022.</span></button></li>
+          <li><button type="button" class="feed" aria-label="Enlarge: Night shift. When the ON AIR light is on, a call is live. June 2022."><img style="object-position:50% 0" src="assets/mru/mru-2.jpg" alt="A wide monitor and a laptop glowing in a dark room under a lit ON AIR sign" width="640" height="480" loading="lazy" decoding="async"><span class="cam" aria-hidden="true"><i></i>CAM 02 · NIGHT WATCH</span><span class="cap">Night shift. When the ON AIR light is on, a call is live. June 2022.</span></button></li>
+          <li><button type="button" class="feed" aria-label="Enlarge: Set up in the field under the palms, June 2022."><img src="assets/mru/mru-3.jpg" alt="A monitor and laptop showing code on a desk by big windows, with palm trees outside" width="640" height="480" loading="lazy" decoding="async"><span class="cam" aria-hidden="true"><i></i>CAM 03 · FIELD SETUP</span><span class="cap">Set up in the field under the palms, June 2022.</span></button></li>
+        </ul>
+        <ul class="mru-stat" aria-label="Unit status">
+          <li><b>Status</b>Ready</li>
+          <li><b>Power</b>Shore or generator</li>
+          <li><b>Mobility</b>3 axles</li>
+        </ul>
+      </div>
       <div class="office">
         <p>This rig has been our office and classroom too. Life aboard has taken in a top information-security certification, FEMA incident-command training, consulting on a company going public, and a Ford Pro Master certification.</p>
         <ul class="creds" aria-label="Certifications and training">
@@ -483,7 +523,7 @@ footer .sep{opacity:.5}
     </section>
   </main>
 
-  <footer><span>The Terminus City RV Project</span><span class="sep" aria-hidden="true">·</span><span>Updated <span class="mo-l">November</span><span class="mo-s">Nov</span> 10, 2026</span><span class="sep sep-v" aria-hidden="true">·</span><span class="ver" title="Release v1.25.1, built 2026-11-11"><i aria-hidden="true"></i>v1.25.1 <em>build 20261111</em></span></footer>
+  <footer><span>The Terminus City RV Project</span><span class="sep" aria-hidden="true">·</span><span>Updated <span class="mo-l">November</span><span class="mo-s">Nov</span> 11, 2026</span><span class="sep sep-v" aria-hidden="true">·</span><span class="ver" title="Release v1.26.0, built 2026-11-11"><i aria-hidden="true"></i>v1.26.0 <em>build 20261111</em></span></footer>
 </div>
 <script type="module">
 const PTS = [[35.3, -97.5], [35.4, -97.5], [34.8, -92.5], [35.6, -87.0], [34.0, -84.4], [34.8, -84.8], [34.0, -84.4], [34.2, -84.1], [36.2, -86.7], [34.0, -84.4], [31.2, -83.5], [26.5, -81.8], [26.5, -82.1], [34.0, -84.4], [30.4, -88.8], [30.2, -92.0], [29.2, -94.9], [29.4, -98.4], [30.6, -103.9], [32.1, -111.0], [36.1, -115.2], [36.7, -119.8], [38.3, -122.7], [40.6, -124.2], [41.5, -124.0], [42.0, -124.3], [43.4, -124.2], [43.7, -124.2], [44.7, -123.8], [43.2, -122.1], [44.1, -121.3], [43.4, -116.7], [40.9, -111.9], [39.7, -110.8], [38.8, -109.8], [39.1, -108.5], [35.2, -101.7], [32.9, -96.6], [32.8, -96.6], [29.7, -98.1], [36.6, -93.2], [36.8, -90.4], [37.4, -88.9], [38.1, -86.9], [34.7, -83.7]];
@@ -665,6 +705,26 @@ try{
   stops.forEach(li=>{const d=li.querySelector('details.trip'); if(!d) return;
     d.querySelector('summary').addEventListener('click',e=>{if(!wide.matches) return; e.preventDefault(); cur===li?close():open(li);});});
   wide.addEventListener('change',()=>{if(wide.matches) road.querySelectorAll('details.trip[open]').forEach(d=>d.open=false); else close();});
+})();
+</script>
+<script>
+(()=>{ // Mobile Response Unit feeds: open in a full-screen viewer
+  const feeds=[...document.querySelectorAll('.mru .feed')]; if(!feeds.length||!window.HTMLDialogElement) return;
+  const set=feeds.map(b=>{const i=b.querySelector('img');return {src:i.getAttribute('src'),alt:i.alt,cap:b.querySelector('.cap').textContent};});
+  const lb=document.createElement('dialog'); lb.className='lb'; lb.setAttribute('aria-label','Photo viewer');
+  lb.innerHTML='<button type="button" class="close" aria-label="Close photo">×</button><button type="button" class="nav prev" aria-label="Previous photo">‹</button><button type="button" class="nav next" aria-label="Next photo">›</button><img alt=""><p></p>';
+  document.body.appendChild(lb);
+  const im=lb.querySelector('img'), cap=lb.querySelector('p'); let at=0;
+  const show=k=>{at=(k+set.length)%set.length; const s=set[at]; im.src=s.src; im.alt=s.alt; cap.textContent=s.cap;
+    const n=document.createElement('span'); n.textContent='Mobile Response Unit · '+(at+1)+' of '+set.length; cap.appendChild(n);};
+  lb.querySelector('.prev').addEventListener('click',e=>{e.stopPropagation();show(at-1);});
+  lb.querySelector('.next').addEventListener('click',e=>{e.stopPropagation();show(at+1);});
+  im.addEventListener('click',e=>{e.stopPropagation();show(at+1);});
+  lb.addEventListener('click',()=>lb.close());
+  lb.addEventListener('keydown',e=>{if(e.key==='ArrowLeft')show(at-1); if(e.key==='ArrowRight')show(at+1);});
+  let x0=null; lb.addEventListener('touchstart',e=>{x0=e.touches[0].clientX;},{passive:true});
+  lb.addEventListener('touchend',e=>{if(x0===null)return; const dx=e.changedTouches[0].clientX-x0; x0=null; if(Math.abs(dx)>40) show(at+(dx<0?1:-1));});
+  feeds.forEach((b,k)=>b.addEventListener('click',()=>{show(k); lb.showModal();}));
 })();
 </script>
 <script data-goatcounter="https://eko.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
