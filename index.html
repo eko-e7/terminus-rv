@@ -152,6 +152,7 @@ dialog.lb .nav{position:fixed;background:rgba(255,255,255,.16)}
 .todo li:first-child{border-top:0}
 .todo li::before{content:"";position:absolute;left:18px;top:17px;width:16px;height:16px;border:2px solid var(--soft);border-radius:4px}
 .todo span{color:var(--soft)}
+.todo span.t{color:inherit}.todo .t span{color:var(--soft)}
 .todo.done{margin-top:10px;background:var(--goodbg);border-color:transparent}
 .todo.done li::before{content:"\2713";border-color:var(--good);background:var(--good);color:var(--card);font:700 12px/12px var(--body);text-align:center}
 .overall{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:8px}
@@ -428,7 +429,11 @@ footer .sep{opacity:.5}
   .route .map{margin:0}
   .route .road{align-self:start;padding-top:6px}
   .route .map{position:sticky;top:16px}
-  .todo-sec{grid-column:1/span 5}
+  .todo-sec{grid-column:1/span 5;display:flex;flex-direction:column}
+  /* Stretch the to-do list so the left column ends level with the categories card on the right */
+  .todo-sec .todo:not(.done){flex:1;display:flex;flex-direction:column}
+  .todo-sec .todo:not(.done) li{flex:1;display:flex;align-items:center}
+  .todo-sec .todo:not(.done) li::before{top:50%;margin-top:-10px}
   .org .acc{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:start}
   .org .acc details{border-top:1px solid var(--hair)}
   .org .acc details:nth-child(-n+2){border-top:0}
@@ -463,7 +468,7 @@ footer .sep{opacity:.5}
 /* Getting organized: one progress road (filled to today, dashed road ahead, next stop, flag) replaces the flat bar; stats, note and "See the numbers" sit right under it */
 .org h2{margin-bottom:2px}
 .org>.sub-h{color:var(--soft);margin:0 0 4px}
-.climb{--now:69%;display:flex;flex-direction:column;gap:6px}
+.climb{--now:69%;display:flex;flex-direction:column;gap:2px;background:var(--card);border:1px solid var(--hair);border-radius:12px;padding:8px 14px 12px;margin-top:10px}
 .cl-road{position:relative;height:66px;margin:0 10px 0 16px}
 .cl-track,.cl-fill,.cl-ahead{position:absolute;top:30px;height:8px;border-radius:4px}
 .cl-track{left:0;right:0;background:var(--track)}
@@ -496,7 +501,9 @@ footer .sep{opacity:.5}
 .cl-nums table{border-collapse:collapse;font-size:14px;margin-top:6px;font-variant-numeric:tabular-nums}
 .cl-nums th,.cl-nums td{text-align:left;padding:3px 14px 3px 0;border-bottom:1px solid var(--hair)}
 .cl-nums p{color:var(--soft);margin:8px 0 0;font-size:14px}
-.org .key{margin-top:14px}
+.org .gp{margin-top:10px}
+.acc .key{grid-column:1/-1;margin:0;padding:12px 18px;border-top:1px solid var(--hair);font-size:14.5px}
+.acc .key span::before{width:11px;height:11px}
 /* Draw-in when scrolled into view (JS adds .prep, then .go; without JS everything is shown at today's mark) */
 .climb.prep:not(.go) .cl-fill{width:0}
 .climb.prep:not(.go) .cl-mk.now{left:0}
@@ -508,7 +515,8 @@ footer .sep{opacity:.5}
 .climb.go .cl-mk.ms{transition:opacity .5s 1.8s}
 .climb.go .cl-mk.fin{transition:opacity .5s 2.1s}
 @media (prefers-reduced-motion:reduce){.climb.go *{transition:none!important}}
-@media (max-width:559px){.cl-stats .wd,.cl-mk .wd{display:none}.gp{font-size:14px}}
+.cl-stats .wd{display:none}
+@media (max-width:559px){.cl-mk .wd{display:none}.gp{font-size:14px}.climb{padding:8px 10px 10px}.cl-stats{gap:5px}.cl-stats li{padding:4px 7px;font-size:12.5px;gap:4px}.cl-stats b{font-size:15px}.cl-spark{width:34px;height:12px}.acc .key{gap:4px 14px;font-size:13.5px;padding:10px 16px}}
 </style>
 </head>
 <body>
@@ -583,10 +591,10 @@ footer .sep{opacity:.5}
     <section class="todo-sec">
       <h2>On the to-do list</h2>
       <ul class="todo">
-        <li>Generator tune-up before winter</li>
-        <li>Clean up the propane gauges, or replace them</li>
-        <li>New trailer tires before our next trip <span>(they're five years old)</span></li>
-        <li>Garage air conditioner part before summer</li>
+        <li><span class="t">Generator tune-up before winter</span></li>
+        <li><span class="t">Clean up the propane gauges, or replace them</span></li>
+        <li><span class="t">New trailer tires before our next trip <span>(they're five years old)</span></span></li>
+        <li><span class="t">Garage air conditioner part before summer</span></li>
       </ul>
       <ul class="todo done" aria-label="Recently done">
         <li>New carbon monoxide and propane alarm <span>(installed and tested November 9, good until 2031)</span></li>
@@ -603,7 +611,6 @@ footer .sep{opacity:.5}
           <span class="cl-mk fin" style="left:100%"><span class="dot"></span><svg viewBox="0 0 18 26" width="18" height="26" aria-hidden="true"><line x1="1" x2="1" y1="1" y2="26" stroke="var(--ink)" stroke-width="2"/><path d="M1 1h16l-4 6 4 6H1z" fill="currentColor"/></svg><span class="lab"><b>100%</b><span class="wd"> finish</span></span></span>
           <span class="cl-mk now"><svg viewBox="0 0 34 24" width="30" height="22" fill="currentColor" aria-hidden="true"><path d="M2 6h22l4-5h6v14H2z"/><rect x="0" y="6" width="28" height="13" rx="2"/><path fill="var(--card)" d="M5 9h5v4H5zM13 9h5v4h-5z"/><circle cx="9" cy="21" r="3" stroke="var(--card)" stroke-width="1.5"/><circle cx="16" cy="21" r="3" stroke="var(--card)" stroke-width="1.5"/></svg><span class="lab"><b>69%</b> today</span></span>
         </div>
-        <p class="gp"><svg class="hrt" viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.4 3 4.5 6.7 4.5c2.2 0 3.7 1.2 5.3 3 1.6-1.8 3.1-3 5.3-3 3.7 0 5.8 3.9 4.3 7.3C19.5 16.4 12 21 12 21z"/></svg><span><b>Grandma and Grandpa:</b> each time you check in, the little RV should be closer to the flag.</span></p>
         <div class="cl-foot">
           <ul class="cl-stats">
           <li><b>+4</b><span>points<span class="wd"> since Nov 8</span></span></li>
@@ -623,7 +630,7 @@ footer .sep{opacity:.5}
         </details>
         </div>
       </div>
-      <div class="key"><span class="cg">Nearly done</span><span class="cy">In progress</span><span class="cr">Just started</span></div>
+      <p class="gp"><svg class="hrt" viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.4 3 4.5 6.7 4.5c2.2 0 3.7 1.2 5.3 3 1.6-1.8 3.1-3 5.3-3 3.7 0 5.8 3.9 4.3 7.3C19.5 16.4 12 21 12 21z"/></svg><span><b>Grandma and Grandpa:</b> each time you check in, the little RV should be closer to the flag.</span></p>
       <div class="acc">
         <details class="cg"><summary><span class="nm">Trips and nights</span><span class="pc">98%</span><span class="mini"><i style="width:98%"></i></span></summary><div class="body"><p>Every stop since 2022. <b>Why it matters:</b> when something breaks, we know where we'd been.</p><ul class="sub" aria-label="Trips and nights breakdown"><li class="cg"><span>Stops and dates</span><b>100%</b><i><em style="width:100%"></em></i></li><li class="cg"><span>Miles and drive times</span><b>100%</b><i><em style="width:100%"></em></i></li><li class="cg"><span>Loose ends</span><b>90%</b><i><em style="width:90%"></em></i></li></ul></div></details>
         <details class="cg"><summary><span class="nm">Purchase and warranties</span><span class="pc">95%</span><span class="mini"><i style="width:95%"></i></span></summary><div class="body"><p>Sale papers and protection plans. <b>Why it matters:</b> we can check if a repair is covered before we pay.</p><ul class="sub" aria-label="Purchase and warranties breakdown"><li class="cg"><span>Sale and title papers</span><b>100%</b><i><em style="width:100%"></em></i></li><li class="cg"><span>Protection plans</span><b>100%</b><i><em style="width:100%"></em></i></li><li class="cy"><span>Factory warranty papers</span><b>85%</b><i><em style="width:85%"></em></i></li></ul></div></details>
@@ -633,6 +640,7 @@ footer .sep{opacity:.5}
         <details class="cy"><summary><span class="nm">Campground and hotel stays</span><span class="pc">50%</span><span class="mini"><i style="width:50%"></i></span></summary><div class="body"><p>What each stay cost. <b>Why it matters:</b> it shows the true cost of life on the road.</p><ul class="sub" aria-label="Campground and hotel stays breakdown"><li class="cy"><span>Campgrounds</span><b>55%</b><i><em style="width:55%"></em></i></li><li class="cr"><span>Hotels and rentals</span><b>45%</b><i><em style="width:45%"></em></i></li></ul></div></details>
         <details class="cr"><summary><span class="nm">Monthly costs</span><span class="pc">25%</span><span class="mini"><i style="width:25%"></i></span></summary><div class="body"><p>Site rent, power, and internet. <b>Why it matters:</b> it's our biggest gap, and the next thing we'll fill in.</p><ul class="sub" aria-label="Monthly costs breakdown"><li class="cg"><span>Registration</span><b>100%</b><i><em style="width:100%"></em></i></li><li class="cr"><span>Internet</span><b>40%</b><i><em style="width:40%"></em></i></li><li class="cr"><span>Site rent</span><b>0%</b><i><em style="width:2%"></em></i></li><li class="cr"><span>Power and utilities</span><b>0%</b><i><em style="width:2%"></em></i></li><li class="cr"><span>Insurance</span><b>0%</b><i><em style="width:2%"></em></i></li></ul></div></details>
         <details class="cr"><summary><span class="nm">Tow trucks</span><span class="pc">38%</span><span class="mini"><i style="width:38%"></i></span></summary><div class="body"><p>The trucks that have pulled the rig. <b>Why it matters:</b> safe towing means matching the truck to the trailer's weight.</p><ul class="sub" aria-label="Tow trucks breakdown"><li class="cg"><span>Which trucks and when</span><b>90%</b><i><em style="width:90%"></em></i></li><li class="cy"><span>Towing limits</span><b>60%</b><i><em style="width:60%"></em></i></li><li class="cr"><span>Hitch setup</span><b>0%</b><i><em style="width:2%"></em></i></li><li class="cr"><span>Weigh tickets</span><b>0%</b><i><em style="width:2%"></em></i></li></ul></div></details>
+        <div class="key" aria-label="Color key"><span class="cg">Nearly done</span><span class="cy">In progress</span><span class="cr">Just started</span></div>
       </div>
     </section>
 
