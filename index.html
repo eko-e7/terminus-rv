@@ -142,9 +142,12 @@ p{margin:0}
 .creds li{display:flex;gap:12px;align-items:center;background:var(--card);border:1px solid var(--hair);border-radius:12px;padding:10px 12px}
 .cred-ic{flex:none;width:44px;height:44px;border-radius:10px;display:grid;place-items:center;background:var(--skybg);color:var(--sky)}
 .frameworks{margin-top:16px;padding:14px 16px;border:1px dashed var(--hair);border-radius:12px}
-.fw-h{font-size:14px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--soft)}
+.fw-h{font-size:16px;line-height:1.45;color:var(--soft)}
+.fw-h b{color:var(--ink)}
 .frameworks ul{list-style:none;margin:10px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
-.frameworks li{font:600 14px/1 ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--ink);background:var(--card);border:1px solid var(--hair);border-radius:999px;padding:8px 12px}
+.frameworks a{display:inline-flex;align-items:center;gap:6px;font:600 14px/1 ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--ink);background:var(--card);border:1px solid var(--hair);border-radius:999px;padding:8px 12px;text-decoration:none}
+.frameworks a::after{content:"\2197";font-family:var(--body);color:var(--sky)}
+.frameworks a:hover{border-color:var(--sky)}
 .fw-note{margin-top:10px;font-size:14px;line-height:1.4;color:var(--soft)}
 .cred-ic img{width:44px;height:44px;object-fit:contain}
 .creds b{display:block;color:var(--ink);font-size:17px;line-height:1.25}
@@ -248,9 +251,9 @@ footer{border-top:1px solid var(--hair);padding-block:18px 8px;color:var(--soft)
   .shield ul{grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
   .how>.office{display:contents}
   .how>.office>p{grid-column:1;align-self:start}
-  .how .frameworks{grid-column:1/-1;order:2;margin-top:-10px;display:flex;align-items:center;flex-wrap:wrap;gap:8px 16px}
-  .how .frameworks ul{margin:0}
-  .how .fw-note{margin:0;flex:1 1 260px}
+  .how .frameworks{grid-column:1/-1;order:2;margin-top:-10px;display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:8px 20px}
+  .how .frameworks ul{margin:0;grid-row:1/span 2;grid-column:2}
+  .how .fw-note{margin:0}
   .how .creds{grid-column:1/-1;order:1;margin-top:0;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
   .how>.closing{grid-column:2;border-top:0;padding-top:0;padding-left:28px;border-left:1px solid var(--hair)}
 }
@@ -373,18 +376,18 @@ footer{border-top:1px solid var(--hair);padding-block:18px 8px;color:var(--soft)
       <div class="office">
         <p>This rig has been our office and classroom too. Life aboard has taken in a top information-security certification, FEMA incident-command training, consulting on a company going public, and a Ford Pro Master certification.</p>
         <ul class="creds" aria-label="Certifications and training">
-          <li><span class="cred-ic"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6z"/><rect x="9" y="11" width="6" height="5" rx="1"/><path d="M10.5 11V9.5a1.5 1.5 0 0 1 3 0V11"/></svg></span><span><b>CISSP</b><small>ISC2 information-security certification</small></span></li>
+          <li><span class="cred-ic"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6z"/><rect x="9" y="11" width="6" height="5" rx="1"/><path d="M10.5 11V9.5a1.5 1.5 0 0 1 3 0V11"/></svg></span><span><b>CISSP</b><small>One of the most respected certifications in information security (ISC2)</small></span></li>
           <li><span class="cred-ic"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="5" r="2.2"/><circle cx="5" cy="18" r="2.2"/><circle cx="12" cy="18" r="2.2"/><circle cx="19" cy="18" r="2.2"/><path d="M12 7.2v8.6M12 11H5v4.8M12 11h7v4.8"/></svg></span><span><b>Incident Command System</b><small>FEMA emergency-management training</small></span></li>
           <li><span class="cred-ic"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a4 4 0 0 0 5 5L21 12.6a6 6 0 0 1-7.6 1.6L7 20.6a2 2 0 0 1-2.8-2.8l6.4-6.4A6 6 0 0 1 12.2 3.8z"/></svg></span><span><b>Ford Pro Master</b><small>Ford Pro certification</small></span></li>
         </ul>
         <div class="frameworks">
-          <p class="fw-h">Built using these security frameworks as our guide</p>
-          <ul aria-label="Security frameworks used as a guide">
-            <li>ISO/IEC 27001:2022</li>
-            <li>SOC 2 Type 2</li>
-            <li>NIST CSF</li>
+          <p class="fw-h"><b>Run like a professional security program.</b> We follow the same security rulebooks that banks, hospitals, and tech companies use.</p>
+          <ul aria-label="Security frameworks we follow">
+            <li><a href="https://www.iso.org/standard/27001" target="_blank" rel="noopener">ISO/IEC 27001:2022</a></li>
+            <li><a href="https://www.aicpa-cima.com/topic/audit-assurance/audit-and-assurance-greater-than-soc-2" target="_blank" rel="noopener">SOC 2 Type 2</a></li>
+            <li><a href="https://www.nist.gov/cyberframework" target="_blank" rel="noopener">NIST CSF</a></li>
           </ul>
-          <p class="fw-note">A personal project, not a business: we borrow their practices, but we aren't certified or audited against them.</p>
+          <p class="fw-note">Tap a name to read more. This is a family project, so we follow these rulebooks without paying for formal audits or certification.</p>
         </div>
       </div>
       <div class="closing">
