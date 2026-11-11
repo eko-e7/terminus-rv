@@ -114,15 +114,29 @@ p{margin:0}
 .big-nums{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--hair);border-radius:12px;overflow:hidden}
 .big-nums div{background:var(--card);padding:14px 10px;text-align:center;min-width:0}
 .big-nums b{display:block;font:700 28px/1.1 var(--display);color:var(--sky);font-variant-numeric:tabular-nums}
-.big-nums span{font-size:15px;line-height:1.35;color:var(--soft)}
+.big-nums span{display:block;font-size:15px;line-height:1.35;color:var(--soft);margin-top:4px}
 @media (max-width:520px){.big-nums{grid-template-columns:repeat(2,minmax(0,1fr))}}
 .nh{font-size:15px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--soft);margin-bottom:8px}
-.trust{display:flex;gap:14px;align-items:flex-start;background:var(--card);border-radius:12px;padding:16px}
-.trust .ic{color:var(--good);flex:none}
-.trust p{color:var(--soft)}
-.trust b{color:var(--ink)}
-.trust + .trust{margin-top:-10px}
-.trust a{color:var(--sky);font-weight:600;text-underline-offset:3px}
+.steps li>div{display:flex;flex-direction:column;flex:1;min-width:0}
+.steps .git{align-self:flex-start;margin-top:auto;display:inline-flex;align-items:center;gap:7px;padding:6px 11px;border-radius:999px;border:1px solid var(--hair);background:var(--paper);color:var(--sky);font-size:14px;font-weight:600;line-height:1.2;text-decoration:none}
+.steps span + .git{margin-top:12px}
+.steps li>div br{display:none}
+.steps li>div span{margin-top:4px}
+.steps .git em{font-style:normal;white-space:nowrap}
+.steps .git code{white-space:nowrap;padding-right:7px;border-right:1px solid var(--hair)}
+.steps .git code{font:600 13px/1 ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--ink)}
+.steps .git:hover{border-color:var(--sky)}
+.shield{background:var(--card);border:2px solid var(--good);border-radius:16px;padding:18px 18px 16px}
+.shield-h{display:flex;gap:14px;align-items:center}
+.shield-h .badge{flex:none;width:48px;height:48px;border-radius:50%;background:var(--goodbg);color:var(--good);display:grid;place-items:center}
+.shield-h b{display:block;font:700 23px/1.2 var(--display);color:var(--ink)}
+.shield-h span{display:block;color:var(--soft);font-size:16px;line-height:1.4;margin-top:2px}
+.shield ul{list-style:none;margin:16px 0 0;padding:14px 0 0;border-top:1px solid var(--hair);display:grid;gap:12px}
+.shield li{display:flex;gap:12px;align-items:flex-start}
+.shield .i{flex:none;width:36px;height:36px;border-radius:10px;background:var(--goodbg);color:var(--good);display:grid;place-items:center}
+.shield li p{color:var(--soft);font-size:16px;line-height:1.4}
+.shield li b{display:block;color:var(--ink);font-size:17px}
+.shield a{color:var(--sky);font-weight:600;text-underline-offset:3px;white-space:nowrap}
 .office{color:var(--soft)}
 .closing{border-top:1px solid var(--hair);padding-top:18px}
 .closing p:first-child{font:600 23px/1.4 var(--display)}
@@ -213,8 +227,8 @@ footer{border-top:1px solid var(--hair);padding-block:18px 8px;color:var(--soft)
   .how>div:first-child p{max-width:46em}
   .steps{grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
   .big-nums{grid-template-columns:repeat(6,minmax(0,1fr))}
-  .how>.trust{grid-column:auto}
-  .trust + .trust{margin-top:0}
+  .shield{padding:22px 26px 20px}
+  .shield ul{grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
   .how>.office{grid-column:1;align-self:start}
   .how>.closing{grid-column:2;border-top:0;padding-top:0;padding-left:28px;border-left:1px solid var(--hair)}
 }
@@ -313,21 +327,27 @@ footer{border-top:1px solid var(--hair);padding-block:18px 8px;color:var(--soft)
         <li><span class="ic"><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7l2-3h4l2 3"/><circle cx="12" cy="13.5" r="3.5"/></svg><span class="n">1</span></span><div><b>We gather it</b><br><span>Photos of labels and receipts, our emails, and the makers' manuals.</span></div></li>
         <li><span class="ic"><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6z"/><path d="M9 12l2 2 4-4"/></svg><span class="n">2</span></span><div><b>We clean it first</b><br><span>Names, numbers, and other private details come out before the assistant sees anything.</span></div></li>
         <li><span class="ic"><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M8 13h8"/></svg><span class="n">3</span></span><div><b>The assistant sorts it</b><br><span>It matches each manual to the exact model on our rig and files every fact with a note of where it came from. If anything looks private, it stops and asks us first.</span></div></li>
-        <li><span class="ic"><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="2.5" width="10" height="19" rx="2"/><path d="M11 18.5h2"/></svg><span class="n">4</span></span><div><b>This page updates</b><br><span>Only the safe, big-picture parts show up here for you.</span></div></li>
+        <li><span class="ic"><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="2.5" width="10" height="19" rx="2"/><path d="M11 18.5h2"/></svg><span class="n">4</span></span><div><b>This page updates</b><br><span>Only the safe, big-picture parts show up here for you.</span><a class="git" href="https://github.com/eko-e7/terminus-rv/pulls?q=is%3Apr" target="_blank" rel="noopener" title="Every change to this page is a reviewed pull request"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="5" r="2.2"/><circle cx="6" cy="19" r="2.2"/><circle cx="18" cy="8" r="2.2"/><path d="M6 7.2v9.6"/><path d="M18 10.2c0 4-6 3-11 6.8"/></svg><code>git log</code><em>see every change</em></a></div></li>
       </ol>
       <div>
         <p class="nh">What it has read so far</p>
         <div class="big-nums">
           <div><b>650+</b><span>pages of manuals</span></div>
-          <div><b>56</b><span>manuals and sources</span></div>
+          <div><b>64</b><span>manuals and sources</span></div>
           <div><b>Dozens</b><span>of photos and receipts</span></div>
           <div><b>57</b><span>stops mapped</span></div>
           <div><b>41</b><span>internet speed checks</span></div>
           <div><b>~30</b><span>pages of notes</span></div>
         </div>
       </div>
-      <div class="trust"><span class="ic"><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg></span><p><b>Private by design.</b> We set this up with the same care from years of professional data-protection work. Every fact can be traced back to its source, and account numbers, the RV's ID number, and our exact location never appear here. No system is perfect, so there are more checks behind the scenes too.</p></div>
-      <div class="trust"><span class="ic"><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20h16"/><path d="M7 16v-4"/><path d="M12 16V8"/><path d="M17 16v-6"/></svg></span><p><b>A simple visitor count.</b> We use a privacy-friendly counter called GoatCounter to see roughly how many people stop by, a bit like a guest book that only tallies visits. It doesn't use cookies, doesn't follow you to other websites, and never learns your name or who you are. Anyone can see the same numbers we do: <a href="https://eko.goatcounter.com" target="_blank" rel="noopener">see the visitor counts</a>.</p></div>
+      <div class="shield">
+        <div class="shield-h"><span class="badge"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg></span><p><b>Private by design</b><span>Set up with the same care as our professional data-protection work.</span></p></div>
+        <ul>
+          <li><span class="i"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3l18 18"/><path d="M10.6 5.1A9.8 9.8 0 0 1 12 5c5 0 9 4.5 10 7a13 13 0 0 1-3 4.1M6.2 6.3C4 7.7 2.6 9.8 2 12c1 2.5 5 7 10 7a9.5 9.5 0 0 0 4.2-1"/><path d="M9.9 9.9a3 3 0 0 0 4.2 4.2"/></svg></span><p><b>Never shown here</b>Account numbers, the RV's ID number, or our exact location.</p></li>
+          <li><span class="i"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 14a4.5 4.5 0 0 0 6.4 0l3-3a4.5 4.5 0 0 0-6.4-6.4l-1 1"/><path d="M14 10a4.5 4.5 0 0 0-6.4 0l-3 3a4.5 4.5 0 0 0 6.4 6.4l1-1"/></svg></span><p><b>Every fact has a source</b>And more checks run behind the scenes.</p></li>
+          <li><span class="i"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20h16"/><path d="M7 16v-4"/><path d="M12 16V8"/><path d="M17 16v-6"/></svg></span><p><b>Just a visitor count</b>No cookies, no tracking, no names. <a href="https://eko.goatcounter.com" target="_blank" rel="noopener">See the counts</a></p></li>
+        </ul>
+      </div>
       <p class="office">This rig has been our office and classroom too. Life aboard has taken in a top information-security certification, FEMA incident-command training, consulting on a company going public, and a Ford Pro Master certification.</p>
       <div class="closing">
         <p>The tools help us keep track. You are the reason there's a story to tell.</p>
@@ -336,7 +356,7 @@ footer{border-top:1px solid var(--hair);padding-block:18px 8px;color:var(--soft)
     </section>
   </main>
 
-  <footer>Terminus City RV Project<br>Updated November 9, 2026</footer>
+  <footer>Terminus City RV Project<br>Updated November 10, 2026</footer>
 </div>
 <script type="module">
 const PTS = [[35.3, -97.5], [35.4, -97.5], [34.8, -92.5], [35.6, -87.0], [34.0, -84.4], [34.8, -84.8], [34.0, -84.4], [34.2, -84.1], [36.2, -86.7], [34.0, -84.4], [31.2, -83.5], [26.5, -81.8], [26.5, -82.1], [34.0, -84.4], [30.4, -88.8], [30.2, -92.0], [29.2, -94.9], [29.4, -98.4], [30.6, -103.9], [32.1, -111.0], [36.1, -115.2], [36.7, -119.8], [38.3, -122.7], [40.6, -124.2], [41.5, -124.0], [42.0, -124.3], [43.4, -124.2], [43.7, -124.2], [44.7, -123.8], [43.2, -122.1], [44.1, -121.3], [43.4, -116.7], [40.9, -111.9], [39.7, -110.8], [38.8, -109.8], [39.1, -108.5], [35.2, -101.7], [32.9, -96.6], [32.8, -96.6], [29.7, -98.1], [36.6, -93.2], [36.8, -90.4], [37.4, -88.9], [38.1, -86.9], [34.7, -83.7]];
