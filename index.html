@@ -460,55 +460,55 @@ footer .sep{opacity:.5}
   .how>.closing{grid-column:2;border-top:0;padding-top:0;padding-left:28px;border-left:1px solid var(--hair)}
 }
 
-/* Road to 100%, compact: one progress road (filled to today, dashed road ahead, next stop, flag), stat chips with a work-session sparkline, note for the grandparents */
-.climb{background:var(--card);border:1px solid var(--hair);border-radius:16px;padding:16px 18px 14px;display:flex;flex-direction:column;gap:10px}
-.climb h2{margin:0 0 2px}
-.climb .sub-h{color:var(--soft);font-size:16px;line-height:1.4;margin:0}
-.cl-top{display:flex;flex-direction:column;gap:10px}
-.cl-stats{display:flex;flex-wrap:wrap;gap:8px;margin:0;padding:0;list-style:none}
-.cl-stats li{display:flex;align-items:center;gap:7px;background:var(--paper);border-radius:10px;padding:5px 10px;font-size:14px;color:var(--soft);line-height:1.2}
-.cl-stats b{font:700 19px/1 var(--display);color:var(--ink);font-variant-numeric:tabular-nums}
-.cl-spark{display:block;flex:none}.cl-spark rect{fill:var(--sky)}.cl-spark circle{fill:var(--hair)}
-.cl-road{position:relative;height:66px;margin:0 8px 0 4px}
+/* Getting organized: one progress road (filled to today, dashed road ahead, next stop, flag) replaces the flat bar; stats, note and "See the numbers" sit right under it */
+.org h2{margin-bottom:2px}
+.org>.sub-h{color:var(--soft);margin:0 0 4px}
+.climb{--now:69%;display:flex;flex-direction:column;gap:6px}
+.cl-road{position:relative;height:66px;margin:0 10px 0 16px}
 .cl-track,.cl-fill,.cl-ahead{position:absolute;top:30px;height:8px;border-radius:4px}
 .cl-track{left:0;right:0;background:var(--track)}
-.cl-fill{left:0;width:69%;background:var(--sky)}
-.cl-ahead{left:69%;right:0;height:0;top:33px;border-top:2px dashed var(--soft);opacity:.55;border-radius:0}
+.cl-fill{left:0;width:var(--now);background:var(--sky)}
+.cl-ahead{left:var(--now);right:0;height:0;top:33px;border-top:2px dashed var(--soft);opacity:.55;border-radius:0}
 .cl-mk{position:absolute;top:0;height:100%;font-size:14px;line-height:1.2;color:var(--ink);white-space:nowrap}
-.cl-mk .dot{position:absolute;top:27px;left:-7px;width:14px;height:14px;border-radius:50%;background:var(--card);border:2.5px solid var(--y);box-sizing:border-box}
+.cl-mk .dot{position:absolute;top:27px;left:-7px;width:14px;height:14px;border-radius:50%;background:var(--paper);border:2.5px solid var(--y);box-sizing:border-box}
 .cl-mk.ms .lab{position:absolute;top:46px;transform:translateX(-50%);color:var(--soft)}
 .cl-mk.ms .lab b{color:var(--ink);font-weight:600}
 .cl-mk.fin .dot{border-color:var(--g)}
 .cl-mk.fin svg{position:absolute;top:2px;left:-1px;color:var(--g)}
 .cl-mk.fin .lab{position:absolute;top:6px;right:8px}
 .cl-mk.fin .lab b{font-weight:600}
+/* The RV's nose sits on today's mark, so it never hangs past the start of the road */
+.cl-mk.now{left:var(--now)}
 .cl-mk.now svg{position:absolute;top:4px;left:-15px;color:var(--ink)}
 .cl-mk.now .lab{position:absolute;top:8px;right:22px}
 .cl-mk.now .lab b{font-weight:700}
-.cl-mk.st{color:var(--soft)}.cl-mk.st .lab{position:absolute;top:46px;left:0;font-size:13px}
-.cl-foot{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 16px}
-.gp{flex:1 1 320px;display:flex;gap:8px;align-items:baseline;color:var(--ink);font-size:15px;line-height:1.4;margin:0}
+.gp{display:flex;gap:8px;align-items:baseline;color:var(--ink);font-size:15px;line-height:1.4;margin:0}
 .gp .hrt{flex:none;color:var(--good);position:relative;top:3px}
 .gp b{font-weight:600}
-.cl-nums{flex:none;font-size:14px}
+.cl-foot{display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px}
+.cl-stats{display:flex;flex-wrap:wrap;gap:6px;margin:0;padding:0;list-style:none}
+.cl-stats li{display:flex;align-items:center;gap:6px;background:var(--card);border:1px solid var(--hair);border-radius:10px;padding:4px 9px;font-size:13.5px;color:var(--soft);line-height:1.2}
+.cl-stats b{font:700 17px/1 var(--display);color:var(--ink);font-variant-numeric:tabular-nums}
+.cl-spark{display:block;flex:none;width:50px;height:15px}.cl-spark rect{fill:var(--sky)}.cl-spark circle{fill:var(--hair)}
+.cl-nums{font-size:14px}
 .cl-nums[open]{flex-basis:100%}
 .cl-nums summary{cursor:pointer;color:var(--sky);font-weight:600}
 .cl-nums table{border-collapse:collapse;font-size:14px;margin-top:6px;font-variant-numeric:tabular-nums}
 .cl-nums th,.cl-nums td{text-align:left;padding:3px 14px 3px 0;border-bottom:1px solid var(--hair)}
 .cl-nums p{color:var(--soft);margin:8px 0 0;font-size:14px}
-/* Draw-in when scrolled into view (JS adds .go; without JS everything is shown) */
-.climb.prep .cl-fill{width:0}
-.climb.prep .cl-mk.now{left:0!important}
-.climb.prep .cl-ahead,.climb.prep .cl-mk.ms,.climb.prep .cl-mk.fin,.climb.prep .cl-mk.now .lab{opacity:0}
-.climb.go .cl-fill{width:69%;transition:width 1.4s cubic-bezier(.3,.7,.3,1) .2s}
+.org .key{margin-top:14px}
+/* Draw-in when scrolled into view (JS adds .prep, then .go; without JS everything is shown at today's mark) */
+.climb.prep:not(.go) .cl-fill{width:0}
+.climb.prep:not(.go) .cl-mk.now{left:0}
+.climb.prep:not(.go) .cl-ahead,.climb.prep:not(.go) .cl-mk.ms,.climb.prep:not(.go) .cl-mk.fin,.climb.prep:not(.go) .cl-mk.now .lab{opacity:0}
+.climb.go .cl-fill{transition:width 1.4s cubic-bezier(.3,.7,.3,1) .2s}
 .climb.go .cl-mk.now{transition:left 1.4s cubic-bezier(.3,.7,.3,1) .2s}
-.climb.go .cl-mk.now .lab{opacity:1;transition:opacity .4s 1.5s}
-.climb.go .cl-ahead{opacity:.55;transition:opacity .6s 1.5s}
-.climb.go .cl-mk.ms{opacity:1;transition:opacity .5s 1.8s}
-.climb.go .cl-mk.fin{opacity:1;transition:opacity .5s 2.1s}
+.climb.go .cl-mk.now .lab{transition:opacity .4s 1.5s}
+.climb.go .cl-ahead{transition:opacity .6s 1.5s}
+.climb.go .cl-mk.ms{transition:opacity .5s 1.8s}
+.climb.go .cl-mk.fin{transition:opacity .5s 2.1s}
 @media (prefers-reduced-motion:reduce){.climb.go *{transition:none!important}}
-@media (max-width:559px){.cl-stats{gap:6px}.cl-stats li{padding:5px 8px;font-size:13px;gap:5px}.cl-stats b{font-size:17px}.cl-spark{width:44px;height:14px}.cl-stats .wd,.cl-mk .wd{display:none}.gp{font-size:14px}}
-@media (min-width:900px){.climb{padding:18px 26px 14px}.cl-top{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:20px;align-items:center}}
+@media (max-width:559px){.cl-stats .wd,.cl-mk .wd{display:none}.gp{font-size:14px}}
 </style>
 </head>
 <body>
@@ -595,43 +595,22 @@ footer .sep{opacity:.5}
 
     <section class="org">
       <h2>Getting organized</h2>
-      <div class="overall"><span>The RV's records, all in one place</span><b>69%</b></div>
-      <div class="bar" role="img" aria-label="About 69 percent organized"><i style="width:69%;background:var(--y)"></i></div>
-      <div class="key"><span class="cg">Nearly done</span><span class="cy">In progress</span><span class="cr">Just started</span></div>
-      <div class="acc">
-        <details class="cg"><summary><span class="nm">Trips and nights</span><span class="pc">98%</span><span class="mini"><i style="width:98%"></i></span></summary><div class="body"><p>Every stop since 2022. <b>Why it matters:</b> when something breaks, we know where we'd been.</p><ul class="sub" aria-label="Trips and nights breakdown"><li class="cg"><span>Stops and dates</span><b>100%</b><i><em style="width:100%"></em></i></li><li class="cg"><span>Miles and drive times</span><b>100%</b><i><em style="width:100%"></em></i></li><li class="cg"><span>Loose ends</span><b>90%</b><i><em style="width:90%"></em></i></li></ul></div></details>
-        <details class="cg"><summary><span class="nm">Purchase and warranties</span><span class="pc">95%</span><span class="mini"><i style="width:95%"></i></span></summary><div class="body"><p>Sale papers and protection plans. <b>Why it matters:</b> we can check if a repair is covered before we pay.</p><ul class="sub" aria-label="Purchase and warranties breakdown"><li class="cg"><span>Sale and title papers</span><b>100%</b><i><em style="width:100%"></em></i></li><li class="cg"><span>Protection plans</span><b>100%</b><i><em style="width:100%"></em></i></li><li class="cy"><span>Factory warranty papers</span><b>85%</b><i><em style="width:85%"></em></i></li></ul></div></details>
-        <details class="cy"><summary><span class="nm">Manuals</span><span class="pc">73%</span><span class="mini"><i style="width:73%"></i></span></summary><div class="body"><p>About 20 makers' manuals. <b>Why it matters:</b> answers come from the maker's own book, not guesswork.</p><ul class="sub" aria-label="Manuals breakdown"><li class="cg"><span>Kitchen and appliances</span><b>95%</b><i><em style="width:95%"></em></i></li><li class="cg"><span>Power and electrical</span><b>90%</b><i><em style="width:90%"></em></i></li><li class="cy"><span>Coach, slides and leveling</span><b>65%</b><i><em style="width:65%"></em></i></li><li class="cr"><span>Air conditioners</span><b>40%</b><i><em style="width:40%"></em></i></li></ul></div></details>
-        <details class="cy"><summary><span class="nm">What's installed</span><span class="pc">79%</span><span class="mini"><i style="width:79%"></i></span></summary><div class="body"><p>Models and labels on the equipment. <b>Why it matters:</b> the right part depends on the exact model.</p><ul class="sub" aria-label="What's installed breakdown"><li class="cg"><span>Kitchen and water</span><b>95%</b><i><em style="width:95%"></em></i></li><li class="cy"><span>Power and electrical</span><b>85%</b><i><em style="width:85%"></em></i></li><li class="cy"><span>Heating and cooling</span><b>60%</b><i><em style="width:60%"></em></i></li><li class="cy"><span>Frame, axles and brakes</span><b>75%</b><i><em style="width:75%"></em></i></li></ul></div></details>
-        <details class="cy"><summary><span class="nm">Repair history</span><span class="pc">60%</span><span class="mini"><i style="width:60%"></i></span></summary><div class="body"><p>Every fix and tune-up. <b>Why it matters:</b> a problem that keeps coming back points to its real cause.</p><ul class="sub" aria-label="Repair history breakdown"><li class="cg"><span>Recent work, 2025 on</span><b>90%</b><i><em style="width:90%"></em></i></li><li class="cy"><span>Generator</span><b>85%</b><i><em style="width:85%"></em></i></li><li class="cr"><span>Early years, 2022 to 2023</span><b>40%</b><i><em style="width:40%"></em></i></li><li class="cr"><span>The Utah repairs</span><b>25%</b><i><em style="width:25%"></em></i></li></ul></div></details>
-        <details class="cy"><summary><span class="nm">Campground and hotel stays</span><span class="pc">50%</span><span class="mini"><i style="width:50%"></i></span></summary><div class="body"><p>What each stay cost. <b>Why it matters:</b> it shows the true cost of life on the road.</p><ul class="sub" aria-label="Campground and hotel stays breakdown"><li class="cy"><span>Campgrounds</span><b>55%</b><i><em style="width:55%"></em></i></li><li class="cr"><span>Hotels and rentals</span><b>45%</b><i><em style="width:45%"></em></i></li></ul></div></details>
-        <details class="cr"><summary><span class="nm">Monthly costs</span><span class="pc">25%</span><span class="mini"><i style="width:25%"></i></span></summary><div class="body"><p>Site rent, power, and internet. <b>Why it matters:</b> it's our biggest gap, and the next thing we'll fill in.</p><ul class="sub" aria-label="Monthly costs breakdown"><li class="cg"><span>Registration</span><b>100%</b><i><em style="width:100%"></em></i></li><li class="cr"><span>Internet</span><b>40%</b><i><em style="width:40%"></em></i></li><li class="cr"><span>Site rent</span><b>0%</b><i><em style="width:2%"></em></i></li><li class="cr"><span>Power and utilities</span><b>0%</b><i><em style="width:2%"></em></i></li><li class="cr"><span>Insurance</span><b>0%</b><i><em style="width:2%"></em></i></li></ul></div></details>
-        <details class="cr"><summary><span class="nm">Tow trucks</span><span class="pc">38%</span><span class="mini"><i style="width:38%"></i></span></summary><div class="body"><p>The trucks that have pulled the rig. <b>Why it matters:</b> safe towing means matching the truck to the trailer's weight.</p><ul class="sub" aria-label="Tow trucks breakdown"><li class="cg"><span>Which trucks and when</span><b>90%</b><i><em style="width:90%"></em></i></li><li class="cy"><span>Towing limits</span><b>60%</b><i><em style="width:60%"></em></i></li><li class="cr"><span>Hitch setup</span><b>0%</b><i><em style="width:2%"></em></i></li><li class="cr"><span>Weigh tickets</span><b>0%</b><i><em style="width:2%"></em></i></li></ul></div></details>
-      </div>
-    </section>
-
-    <section class="climb" aria-labelledby="cl-h">
-      <div class="cl-top">
-        <div>
-          <h2 id="cl-h">The road to 100%</h2>
-          <p class="sub-h">We're filling in the RV's paperwork one box at a time.</p>
+      <p class="sub-h">The RV's records, all in one place.</p>
+      <div class="climb">
+        <div class="cl-road" role="img" aria-label="Our records are 69 percent complete today, up from 65 percent on November 8. Next stop is about 85 percent, then the 100 percent finish.">
+          <span class="cl-track"></span><span class="cl-fill"></span><span class="cl-ahead"></span>
+          <span class="cl-mk ms" style="left:85%"><span class="dot"></span><span class="lab"><b>Next stop</b> ~85%</span></span>
+          <span class="cl-mk fin" style="left:100%"><span class="dot"></span><svg viewBox="0 0 18 26" width="18" height="26" aria-hidden="true"><line x1="1" x2="1" y1="1" y2="26" stroke="var(--ink)" stroke-width="2"/><path d="M1 1h16l-4 6 4 6H1z" fill="currentColor"/></svg><span class="lab"><b>100%</b><span class="wd"> finish</span></span></span>
+          <span class="cl-mk now"><svg viewBox="0 0 34 24" width="30" height="22" fill="currentColor" aria-hidden="true"><path d="M2 6h22l4-5h6v14H2z"/><rect x="0" y="6" width="28" height="13" rx="2"/><path fill="var(--card)" d="M5 9h5v4H5zM13 9h5v4h-5z"/><circle cx="9" cy="21" r="3" stroke="var(--card)" stroke-width="1.5"/><circle cx="16" cy="21" r="3" stroke="var(--card)" stroke-width="1.5"/></svg><span class="lab"><b>69%</b> today</span></span>
         </div>
-        <ul class="cl-stats">
+        <p class="gp"><svg class="hrt" viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.4 3 4.5 6.7 4.5c2.2 0 3.7 1.2 5.3 3 1.6-1.8 3.1-3 5.3-3 3.7 0 5.8 3.9 4.3 7.3C19.5 16.4 12 21 12 21z"/></svg><span><b>Grandma and Grandpa:</b> each time you check in, the little RV should be closer to the flag.</span></p>
+        <div class="cl-foot">
+          <ul class="cl-stats">
           <li><b>+4</b><span>points<span class="wd"> since Nov 8</span></span></li>
           <li><b>15</b><span><span class="wd">work </span>sessions</span><svg class="cl-spark" viewBox="0 0 66 20" width="66" height="20" role="img" aria-label="Work sessions per day, November 1 to 11: busiest day November 9 with 4."><title>Work sessions per day, Nov 1–11 (busiest: Nov 9, 4 sessions)</title><rect x="0" y="15" width="4" height="5" rx="1"/><rect x="6" y="15" width="4" height="5" rx="1"/><rect x="12" y="15" width="4" height="5" rx="1"/><rect x="18" y="10" width="4" height="10" rx="1"/><circle cx="26" cy="19" r="1"/><circle cx="32" cy="19" r="1"/><circle cx="38" cy="19" r="1"/><rect x="42" y="10" width="4" height="10" rx="1"/><rect x="48" y="0" width="4" height="20" rx="1"/><rect x="54" y="10" width="4" height="10" rx="1"/><rect x="60" y="10" width="4" height="10" rx="1"/></svg></li>
           <li><b>32</b><span><span class="wd">page </span>updates</span></li>
         </ul>
-      </div>
-      <div class="cl-road" role="img" aria-label="Our records are 69 percent complete today, up from 65 percent on November 8. Next stop is about 85 percent, then the 100 percent finish.">
-        <span class="cl-track"></span><span class="cl-fill"></span><span class="cl-ahead"></span>
-        <span class="cl-mk st" style="left:0"><span class="lab">0%</span></span>
-        <span class="cl-mk ms" style="left:85%"><span class="dot"></span><span class="lab"><b>Next stop</b> ~85%</span></span>
-        <span class="cl-mk fin" style="left:100%"><span class="dot"></span><svg viewBox="0 0 18 26" width="18" height="26" aria-hidden="true"><line x1="1" x2="1" y1="1" y2="26" stroke="var(--ink)" stroke-width="2"/><path d="M1 1h16l-4 6 4 6H1z" fill="currentColor"/></svg><span class="lab"><b>100%</b><span class="wd"> finish</span></span></span>
-        <span class="cl-mk now" style="left:69%"><svg viewBox="0 0 34 24" width="30" height="22" fill="currentColor" aria-hidden="true"><path d="M2 6h22l4-5h6v14H2z"/><rect x="0" y="6" width="28" height="13" rx="2"/><path fill="var(--card)" d="M5 9h5v4H5zM13 9h5v4h-5z"/><circle cx="9" cy="21" r="3" stroke="var(--card)" stroke-width="1.5"/><circle cx="16" cy="21" r="3" stroke="var(--card)" stroke-width="1.5"/></svg><span class="lab"><b>69%</b> today</span></span>
-      </div>
-      <div class="cl-foot">
-        <p class="gp"><svg class="hrt" viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.4 3 4.5 6.7 4.5c2.2 0 3.7 1.2 5.3 3 1.6-1.8 3.1-3 5.3-3 3.7 0 5.8 3.9 4.3 7.3C19.5 16.4 12 21 12 21z"/></svg><span><b>Grandma and Grandpa:</b> each time you check in, the little RV should be closer to the flag. At the flag, every paper is in one safe place.</span></p>
-        <details class="cl-nums"><summary>See the numbers</summary>
+          <details class="cl-nums"><summary>See the numbers</summary>
           <table><thead><tr><th>Date</th><th>Records complete</th><th>Work sessions</th></tr></thead><tbody>
             <tr><td>Nov 1–4</td><td>Not counted yet</td><td>5</td></tr>
             <tr><td>Nov 8</td><td>65% (first count)</td><td>2</td></tr>
@@ -642,6 +621,18 @@ footer .sep{opacity:.5}
           </tbody></table>
           <p>32 page updates since Nov 8. Repairs and upkeep never really hit 100%. Like oil changes, they just keep coming. This line is about getting the paperwork caught up, and then keeping it that way.</p>
         </details>
+        </div>
+      </div>
+      <div class="key"><span class="cg">Nearly done</span><span class="cy">In progress</span><span class="cr">Just started</span></div>
+      <div class="acc">
+        <details class="cg"><summary><span class="nm">Trips and nights</span><span class="pc">98%</span><span class="mini"><i style="width:98%"></i></span></summary><div class="body"><p>Every stop since 2022. <b>Why it matters:</b> when something breaks, we know where we'd been.</p><ul class="sub" aria-label="Trips and nights breakdown"><li class="cg"><span>Stops and dates</span><b>100%</b><i><em style="width:100%"></em></i></li><li class="cg"><span>Miles and drive times</span><b>100%</b><i><em style="width:100%"></em></i></li><li class="cg"><span>Loose ends</span><b>90%</b><i><em style="width:90%"></em></i></li></ul></div></details>
+        <details class="cg"><summary><span class="nm">Purchase and warranties</span><span class="pc">95%</span><span class="mini"><i style="width:95%"></i></span></summary><div class="body"><p>Sale papers and protection plans. <b>Why it matters:</b> we can check if a repair is covered before we pay.</p><ul class="sub" aria-label="Purchase and warranties breakdown"><li class="cg"><span>Sale and title papers</span><b>100%</b><i><em style="width:100%"></em></i></li><li class="cg"><span>Protection plans</span><b>100%</b><i><em style="width:100%"></em></i></li><li class="cy"><span>Factory warranty papers</span><b>85%</b><i><em style="width:85%"></em></i></li></ul></div></details>
+        <details class="cy"><summary><span class="nm">Manuals</span><span class="pc">73%</span><span class="mini"><i style="width:73%"></i></span></summary><div class="body"><p>About 20 makers' manuals. <b>Why it matters:</b> answers come from the maker's own book, not guesswork.</p><ul class="sub" aria-label="Manuals breakdown"><li class="cg"><span>Kitchen and appliances</span><b>95%</b><i><em style="width:95%"></em></i></li><li class="cg"><span>Power and electrical</span><b>90%</b><i><em style="width:90%"></em></i></li><li class="cy"><span>Coach, slides and leveling</span><b>65%</b><i><em style="width:65%"></em></i></li><li class="cr"><span>Air conditioners</span><b>40%</b><i><em style="width:40%"></em></i></li></ul></div></details>
+        <details class="cy"><summary><span class="nm">What's installed</span><span class="pc">79%</span><span class="mini"><i style="width:79%"></i></span></summary><div class="body"><p>Models and labels on the equipment. <b>Why it matters:</b> the right part depends on the exact model.</p><ul class="sub" aria-label="What's installed breakdown"><li class="cg"><span>Kitchen and water</span><b>95%</b><i><em style="width:95%"></em></i></li><li class="cy"><span>Power and electrical</span><b>85%</b><i><em style="width:85%"></em></i></li><li class="cy"><span>Heating and cooling</span><b>60%</b><i><em style="width:60%"></em></i></li><li class="cy"><span>Frame, axles and brakes</span><b>75%</b><i><em style="width:75%"></em></i></li></ul></div></details>
+        <details class="cy"><summary><span class="nm">Repair history</span><span class="pc">60%</span><span class="mini"><i style="width:60%"></i></span></summary><div class="body"><p>Every fix and tune-up. <b>Why it matters:</b> a problem that keeps coming back points to its real cause.</p><ul class="sub" aria-label="Repair history breakdown"><li class="cg"><span>Recent work, 2025 on</span><b>90%</b><i><em style="width:90%"></em></i></li><li class="cy"><span>Generator</span><b>85%</b><i><em style="width:85%"></em></i></li><li class="cr"><span>Early years, 2022 to 2023</span><b>40%</b><i><em style="width:40%"></em></i></li><li class="cr"><span>The Utah repairs</span><b>25%</b><i><em style="width:25%"></em></i></li></ul></div></details>
+        <details class="cy"><summary><span class="nm">Campground and hotel stays</span><span class="pc">50%</span><span class="mini"><i style="width:50%"></i></span></summary><div class="body"><p>What each stay cost. <b>Why it matters:</b> it shows the true cost of life on the road.</p><ul class="sub" aria-label="Campground and hotel stays breakdown"><li class="cy"><span>Campgrounds</span><b>55%</b><i><em style="width:55%"></em></i></li><li class="cr"><span>Hotels and rentals</span><b>45%</b><i><em style="width:45%"></em></i></li></ul></div></details>
+        <details class="cr"><summary><span class="nm">Monthly costs</span><span class="pc">25%</span><span class="mini"><i style="width:25%"></i></span></summary><div class="body"><p>Site rent, power, and internet. <b>Why it matters:</b> it's our biggest gap, and the next thing we'll fill in.</p><ul class="sub" aria-label="Monthly costs breakdown"><li class="cg"><span>Registration</span><b>100%</b><i><em style="width:100%"></em></i></li><li class="cr"><span>Internet</span><b>40%</b><i><em style="width:40%"></em></i></li><li class="cr"><span>Site rent</span><b>0%</b><i><em style="width:2%"></em></i></li><li class="cr"><span>Power and utilities</span><b>0%</b><i><em style="width:2%"></em></i></li><li class="cr"><span>Insurance</span><b>0%</b><i><em style="width:2%"></em></i></li></ul></div></details>
+        <details class="cr"><summary><span class="nm">Tow trucks</span><span class="pc">38%</span><span class="mini"><i style="width:38%"></i></span></summary><div class="body"><p>The trucks that have pulled the rig. <b>Why it matters:</b> safe towing means matching the truck to the trailer's weight.</p><ul class="sub" aria-label="Tow trucks breakdown"><li class="cg"><span>Which trucks and when</span><b>90%</b><i><em style="width:90%"></em></i></li><li class="cy"><span>Towing limits</span><b>60%</b><i><em style="width:60%"></em></i></li><li class="cr"><span>Hitch setup</span><b>0%</b><i><em style="width:2%"></em></i></li><li class="cr"><span>Weigh tickets</span><b>0%</b><i><em style="width:2%"></em></i></li></ul></div></details>
       </div>
     </section>
 
@@ -761,8 +752,8 @@ try{
   if(matchMedia('(prefers-reduced-motion: reduce)').matches||!('IntersectionObserver' in window)) return;
   const prep=f=>{const t=f.parentElement,w=f.style.width;f.dataset.w=w;t.style.setProperty('--w',w);t.classList.add('trk');f.style.width='0%';};
   const fill=(f,d)=>{f.style.transitionDelay=d+'ms';f.style.width=f.dataset.w;f.parentElement.classList.add('full');};
-  const main=sec.querySelector('.bar i'), minis=[...acc.querySelectorAll('.mini i')];
-  [main,...minis].forEach(prep);
+  const main=null, minis=[...acc.querySelectorAll('.mini i')];
+  minis.forEach(prep);
   acc.querySelectorAll('details').forEach(d=>{
     const subs=[...d.querySelectorAll('.sub em')];
     if(d.open) return;
@@ -780,7 +771,7 @@ try{
     es.forEach(e=>{if(!e.isIntersecting) return; io.unobserve(e.target);
       const f=e.target.querySelector('i'); fill(f, f===main?150:150+90*n++);});
   },{threshold:.6,rootMargin:'0px 0px -8% 0px'});
-  [main,...minis].forEach(f=>io.observe(f.parentElement));
+  minis.forEach(f=>io.observe(f.parentElement));
 })();
 </script>
 <script>
