@@ -170,6 +170,9 @@ footer .sep{opacity:.5}
 .ver{display:inline-flex;align-items:center;gap:6px;font:600 12px/1 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.02em;color:var(--ink);background:var(--card);border:1px solid var(--hair);border-radius:6px;padding:4px 7px}
 .ver i{width:6px;height:6px;border-radius:50%;background:var(--g)}
 .ver em{font-style:normal;color:var(--soft);font-weight:500}
+.kicker{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:6px 12px}
+.kicker .ver{text-transform:none;letter-spacing:.02em}
+@media (max-width:520px){.kicker{font-size:13.5px;letter-spacing:.04em}.kicker>span:first-child{white-space:nowrap}}
 .mo-s{display:none}
 @media (max-width:520px){footer{font-size:13px;gap:6px 8px}.mo-l,.sep-v{display:none}.mo-s{display:inline}.ver{flex-basis:auto}}
 @media (prefers-reduced-motion:reduce){.acc .pc::after{transition:none}}
@@ -272,7 +275,7 @@ footer .sep{opacity:.5}
 
 <div class="col">
   <header class="lead">
-    <p class="kicker">News from the Cyclone · November 2026</p>
+    <p class="kicker"><span>News from the Cyclone · November 2026</span><span class="ver" title="Release v1.20.0, built 2026-11-10"><i aria-hidden="true"></i>v1.20.0 <em>build 20261110</em></span></p>
     <h1>Still rolling. Still grateful.</h1>
     <div class="wx" id="wx" role="group" hidden>
       <span class="wx-now"><i class="wx-dot" aria-hidden="true"></i><span class="wx-ic"></span><span><b class="wx-t"></b><span class="wx-f"></span></span></span>
