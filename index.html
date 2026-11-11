@@ -444,18 +444,15 @@ footer .sep{opacity:.5}
   .route .map{margin:0}
   .route .road{align-self:start;padding-top:6px}
   .route .map{position:sticky;top:16px}
-  .todo-sec{grid-column:1/span 5;display:flex;flex-direction:column}
-  /* Stretch the to-do list so the left column ends level with the categories card on the right */
-  .todo-sec .todo:not(.done){flex:1;display:flex;flex-direction:column}
-  .todo-sec .todo:not(.done) li{flex:1;display:flex;align-items:center}
-  .todo-sec .todo:not(.done) li::before{top:50%;margin-top:-10px}
-  .org .acc{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:start}
+  .todo-sec{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:0 24px;align-items:start}
+  .todo-sec>h2,.todo-sec>.sub-h{grid-column:1/-1}
+  .todo-sec .todo.done{margin-top:0}
+  .org .acc{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));align-items:stretch}
   .org .acc details{border-top:1px solid var(--hair)}
-  .org .acc details:nth-child(-n+2){border-top:0}
-  .org .acc details:nth-child(even){border-left:1px solid var(--hair)}
+  .org .acc details:nth-child(-n+4){border-top:0}
+  .org .acc details:not(:nth-child(4n+1)){border-left:1px solid var(--hair)}
   .org .acc summary{padding:14px 16px;align-items:start}
   .org .acc .body{padding:0 16px 16px}
-  .org{grid-column:6/-1}
   .how{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px 28px;padding:34px 34px 30px}
   .how>*{grid-column:1/-1}
   .how>div:first-child p{max-width:46em}
@@ -481,6 +478,12 @@ footer .sep{opacity:.5}
 }
 
 /* Getting organized: one progress road (filled to today, dashed road ahead, next stop, flag) replaces the flat bar; stats, note and "See the numbers" sit right under it */
+/* "Behind the scenes" divider: splits the rig's story (above) from the project's story (below) */
+.chapter{display:flex;align-items:center;gap:14px;margin:8px 0 -18px;font-size:14px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--soft)}
+.chapter::before,.chapter::after{content:"";flex:1;height:1px;background:var(--hair)}
+.chapter::before{flex:0 0 28px}
+main>.chapter{grid-column:1/-1}
+.todo-sec>.sub-h{color:var(--soft);margin:-8px 0 12px}
 .org h2{margin-bottom:2px}
 .org>.sub-h{color:var(--soft);margin:0 0 4px}
 .climb{--now:69%;display:flex;flex-direction:column;gap:2px;background:var(--card);border:1px solid var(--hair);border-radius:12px;padding:8px 14px 12px;margin-top:10px}
@@ -540,7 +543,7 @@ footer .sep{opacity:.5}
 
 <div class="col">
   <header class="lead">
-    <p class="kicker"><span>News from the Cyclone · November 2026</span><span class="ver" title="Release v1.29.0, built 2026-11-11"><i aria-hidden="true"></i>v1.29.0 <em>build 20261111</em></span></p>
+    <p class="kicker"><span>News from the Cyclone · November 2026</span><span class="ver" title="Release v1.30.0, built 2026-11-11"><i aria-hidden="true"></i>v1.30.0 <em>build 20261111</em></span></p>
     <h1>Still rolling. Still grateful.</h1>
     <div class="stage">
       <div class="rig">
@@ -604,22 +607,25 @@ footer .sep{opacity:.5}
     </section>
 
     <section class="todo-sec">
-      <h2>On the to-do list</h2>
+      <h2>What's next for the rig</h2>
+      <p class="sub-h">Jobs on the list, and what we just finished.</p>
       <ul class="todo">
         <li><span class="t">Generator tune-up before winter</span></li>
-        <li class="chk"><div class="t">Clean up the propane gauges, or replace them <span>(fixed Nov 11)</span>
+        <li><span class="t">New trailer tires before our next trip <span>(they're five years old)</span></span></li>
+        <li><span class="t">Garage air conditioner part before summer</span></li>
+      </ul>
+      <ul class="todo done" aria-label="Recently done">
+        <li class="chk"><div class="t">Propane gauges cleaned up and back online <span>(fixed Nov 11)</span>
           <div class="lp" role="group" aria-label="Propane: both sensors online, last reading November 11. Tank 1 at 100 percent, tank 2 at 85 percent, both sensor batteries full.">
             <div class="lp-head" aria-hidden="true"><i class="live"></i>Propane sensors online · last reading Nov 11</div>
             <div class="lp-tank" aria-hidden="true"><span>Tank 1</span><b class="lp-bar"><i style="width:100%"></i></b><span class="lp-pct">100%</span><b class="lp-batt" title="Sensor battery 100%"><i style="width:100%"></i></b></div>
             <div class="lp-tank" aria-hidden="true"><span>Tank 2</span><b class="lp-bar"><i style="width:85%"></i></b><span class="lp-pct">85%</span><b class="lp-batt" title="Sensor battery 100%"><i style="width:100%"></i></b></div>
           </div></div></li>
-        <li><span class="t">New trailer tires before our next trip <span>(they're five years old)</span></span></li>
-        <li><span class="t">Garage air conditioner part before summer</span></li>
-      </ul>
-      <ul class="todo done" aria-label="Recently done">
-        <li>New carbon monoxide and propane alarm <span>(installed and tested November 9, good until 2031)</span></li>
+        <li class="chk">New carbon monoxide and propane alarm <span>(installed and tested November 9, good until 2031)</span></li>
       </ul>
     </section>
+
+    <p class="chapter">Behind the scenes</p>
 
     <section class="org">
       <h2>Getting organized</h2>
@@ -741,7 +747,7 @@ footer .sep{opacity:.5}
     </section>
   </main>
 
-  <footer><span>The Terminus City RV Project</span><span class="sep" aria-hidden="true">·</span><span>Updated <span class="mo-l">November</span><span class="mo-s">Nov</span> 11, 2026</span><span class="sep sep-v" aria-hidden="true">·</span><span class="ver" title="Release v1.29.0, built 2026-11-11"><i aria-hidden="true"></i>v1.29.0 <em>build 20261111</em></span></footer>
+  <footer><span>The Terminus City RV Project</span><span class="sep" aria-hidden="true">·</span><span>Updated <span class="mo-l">November</span><span class="mo-s">Nov</span> 11, 2026</span><span class="sep sep-v" aria-hidden="true">·</span><span class="ver" title="Release v1.30.0, built 2026-11-11"><i aria-hidden="true"></i>v1.30.0 <em>build 20261111</em></span></footer>
 </div>
 <script type="module">
 const PTS = [[35.3, -97.5], [35.4, -97.5], [34.8, -92.5], [35.6, -87.0], [34.0, -84.4], [34.8, -84.8], [34.0, -84.4], [34.2, -84.1], [36.2, -86.7], [34.0, -84.4], [31.2, -83.5], [26.5, -81.8], [26.5, -82.1], [34.0, -84.4], [30.4, -88.8], [30.2, -92.0], [29.2, -94.9], [29.4, -98.4], [30.6, -103.9], [32.1, -111.0], [36.1, -115.2], [36.7, -119.8], [38.3, -122.7], [40.6, -124.2], [41.5, -124.0], [42.0, -124.3], [43.4, -124.2], [43.7, -124.2], [44.7, -123.8], [43.2, -122.1], [44.1, -121.3], [43.4, -116.7], [40.9, -111.9], [39.7, -110.8], [38.8, -109.8], [39.1, -108.5], [35.2, -101.7], [32.9, -96.6], [32.8, -96.6], [29.7, -98.1], [36.6, -93.2], [36.8, -90.4], [37.4, -88.9], [38.1, -86.9], [34.7, -83.7]];
