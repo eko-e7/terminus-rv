@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 180">
+  <rect width="180" height="180" fill="#a8482a"/>
+  <circle cx="132" cy="44" r="15" fill="#f2c14e"/>
+  <path d="M0 140 L48 112 L78 128 L118 100 L180 136 V180 H0Z" fill="#8c3b22"/>
+  <rect x="0" y="134" width="180" height="46" fill="#7a3320"/>
+  <g fill="#fff">
+    <!-- fifth wheel trailer -->
+    <path d="M18 70 H96 Q104 70 104 78 V82 H126 Q132 82 132 88 V96 H104 V118 H18 Q12 118 12 112 V76 Q12 70 18 70Z"/>
+    <!-- truck -->
+    <path d="M100 100 H134 L142 88 H156 Q164 88 166 96 L170 108 V118 Q170 122 166 122 H100Z"/>
+  </g>
+  <g fill="#a8482a">
+    <rect x="24" y="80" width="22" height="12" rx="2"/>
+    <rect x="56" y="80" width="12" height="22" rx="2"/>
+    <path d="M145 92 H155 Q159 92 160 96 L162 103 H145Z"/>
+  </g>
+  <g fill="#1d2730" stroke="#fff" stroke-width="4">
+    <circle cx="52" cy="122" r="9"/><circle cx="74" cy="122" r="9"/>
+    <circle cx="116" cy="124" r="9"/><circle cx="154" cy="124" r="9"/>
+  </g>
+</svg>
