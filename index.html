@@ -47,7 +47,7 @@ h1{font:700 clamp(34px,9vw,48px)/1.08 var(--display);margin:6px 0 12px;text-wrap
 .status{display:inline-flex;align-items:center;gap:10px;background:var(--goodbg);color:var(--good);font-weight:600;font-size:17px;padding:7px 14px;border-radius:999px}
 .status i{width:10px;height:10px;border-radius:50%;background:var(--good)}
 .intro{color:var(--soft);margin:12px 0 0}
-main{display:flex;flex-direction:column;gap:34px;padding-block:22px 40px}
+main{display:flex;flex-direction:column;gap:34px;padding-block:22px 18px}
 h2{font:700 25px/1.2 var(--display);margin:0 0 12px;text-wrap:balance}
 p{margin:0}
 .stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--hair);border:1px solid var(--hair);border-radius:12px;overflow:hidden}
@@ -164,7 +164,14 @@ p{margin:0}
 .map .hb{fill:var(--rock);stroke:var(--card);stroke-width:3}
 .map .hr{fill:none;stroke:var(--rock);stroke-width:2.5}
 .map text{font:600 30px var(--body);fill:var(--ink);paint-order:stroke;stroke:var(--card);stroke-width:7px;stroke-linejoin:round}
-footer{border-top:1px solid var(--hair);padding-block:18px 8px;color:var(--soft);font-size:16px}
+footer{display:flex;flex-wrap:wrap;align-items:center;gap:4px 10px;border-top:1px solid var(--hair);padding-block:12px 14px;color:var(--soft);font-size:14px;line-height:1.3}
+footer>span{white-space:nowrap}
+footer .sep{opacity:.5}
+.ver{display:inline-flex;align-items:center;gap:6px;font:600 12px/1 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.02em;color:var(--ink);background:var(--card);border:1px solid var(--hair);border-radius:6px;padding:4px 7px}
+.ver i{width:6px;height:6px;border-radius:50%;background:var(--g)}
+.ver em{font-style:normal;color:var(--soft);font-weight:500}
+.mo-s{display:none}
+@media (max-width:520px){footer{font-size:13px;gap:6px 8px}.mo-l,.sep-v{display:none}.mo-s{display:inline}.ver{flex-basis:auto}}
 @media (prefers-reduced-motion:reduce){.acc .pc::after{transition:none}}
 /* Live weather: one quiet row beside the status pill; hidden until real data arrives */
 .hrow{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px}
@@ -226,7 +233,7 @@ footer{border-top:1px solid var(--hair);padding-block:18px 8px;color:var(--soft)
   .region{grid-column:2;grid-row:1/span 5;margin-top:4px}
   h1{font-size:56px}
   .rig{justify-content:flex-start;margin-top:4px}
-  main{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:48px 40px;padding-block:34px 56px}
+  main{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:48px 40px;padding-block:34px 24px}
   main>section{grid-column:1/-1;min-width:0}
   .thanks{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:40px;align-items:center;padding-block:26px}
   .thanks p + p{margin-top:0}
@@ -398,7 +405,7 @@ footer{border-top:1px solid var(--hair);padding-block:18px 8px;color:var(--soft)
     </section>
   </main>
 
-  <footer>The Terminus City RV Project<br>Updated November 10, 2026</footer>
+  <footer><span>The Terminus City RV Project</span><span class="sep" aria-hidden="true">·</span><span>Updated <span class="mo-l">November</span><span class="mo-s">Nov</span> 10, 2026</span><span class="sep sep-v" aria-hidden="true">·</span><span class="ver" title="Release v1.20.0, built 2026-11-10"><i aria-hidden="true"></i>v1.20.0 <em>build 20261110</em></span></footer>
 </div>
 <script type="module">
 const PTS = [[35.3, -97.5], [35.4, -97.5], [34.8, -92.5], [35.6, -87.0], [34.0, -84.4], [34.8, -84.8], [34.0, -84.4], [34.2, -84.1], [36.2, -86.7], [34.0, -84.4], [31.2, -83.5], [26.5, -81.8], [26.5, -82.1], [34.0, -84.4], [30.4, -88.8], [30.2, -92.0], [29.2, -94.9], [29.4, -98.4], [30.6, -103.9], [32.1, -111.0], [36.1, -115.2], [36.7, -119.8], [38.3, -122.7], [40.6, -124.2], [41.5, -124.0], [42.0, -124.3], [43.4, -124.2], [43.7, -124.2], [44.7, -123.8], [43.2, -122.1], [44.1, -121.3], [43.4, -116.7], [40.9, -111.9], [39.7, -110.8], [38.8, -109.8], [39.1, -108.5], [35.2, -101.7], [32.9, -96.6], [32.8, -96.6], [29.7, -98.1], [36.6, -93.2], [36.8, -90.4], [37.4, -88.9], [38.1, -86.9], [34.7, -83.7]];
