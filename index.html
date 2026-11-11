@@ -256,6 +256,17 @@ dialog.lb .nav{position:fixed;background:rgba(255,255,255,.16)}
 .closing p+p{color:var(--soft);margin-top:8px}
 .map{margin:0 0 18px;background:var(--card);border:1px solid var(--hair);border-radius:12px;padding:10px 8px}
 .map svg{display:block;width:100%;height:auto}
+/* Paper backup: a snapshot of the road atlas, clipped to the map's lower-right corner (open Atlantic, clear of the route) */
+.map{position:relative}
+.paper{position:absolute;right:14px;bottom:12px;width:clamp(58px,17%,140px);padding:0;border:0;background:none;cursor:zoom-in;color:var(--ink);text-align:center;transform:rotate(4deg);transition:transform .2s}
+.paper:hover{transform:rotate(1deg) scale(1.04)}
+.paper:focus-visible{outline:3px solid var(--sky);outline-offset:4px;border-radius:4px}
+.paper .snap{position:relative;display:block;background:#fff;padding:5px 5px 6px;border-radius:2px;box-shadow:0 3px 10px rgba(0,0,0,.22)}
+.paper .snap::before{content:"";position:absolute;top:-8px;left:50%;width:44%;height:14px;transform:translateX(-50%) rotate(-3deg);background:rgba(240,189,69,.75);box-shadow:0 1px 2px rgba(0,0,0,.12)}
+.paper img{display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:cover}
+.paper .lbl{display:block;margin-top:6px;font:600 clamp(10.5px,1.5vw,14px)/1.15 var(--body);letter-spacing:.02em}
+.map.photos .paper{display:none}
+@media (prefers-reduced-motion:reduce){.paper{transition:none}}
 .map figcaption{font-size:15px;color:var(--soft);padding:2px 8px 4px}
 .map .st{fill:var(--land);stroke:var(--card);stroke-width:1.2}
 .map .rt{fill:none;stroke:var(--rock);stroke-width:3;stroke-linejoin:round;stroke-linecap:round;opacity:.85}
@@ -429,6 +440,7 @@ footer .sep{opacity:.5}
       <h2>Where the road has taken us</h2>
       <figure class="map">
         <svg id="usmap" viewBox="0 0 900 560" role="img" aria-label="Map of our route across the United States since 2022, from Oklahoma to the West Coast, through Utah, and back to North Georgia"><g id="states"></g><g id="route"></g></svg>
+        <button type="button" class="paper" aria-label="Enlarge: Our paper backup, the hand-drawn version of this map. August 2022."><span class="snap"><img src="assets/road/paper-atlas.jpg" alt="A road atlas open on a picnic table, our route traced across the country in highlighter, with doodles and notes in the margin" width="640" height="480" loading="lazy" decoding="async"></span><span class="lbl">Our paper backup</span></button>
       </figure>
       <ol class="road">
         <li data-leg="0-9"><details class="trip"><summary><span class="when">Spring 2022</span>Picked her up in Oklahoma and headed home to Georgia.<span class="more"><span class="o">See 4 photos</span><span class="x">Hide photos</span></span></summary><div class="shots"><figure><button type="button" class="shot" aria-label="Enlarge: Pickup day in Oklahoma, April 2022."><img src="assets/road/2022-spring-1.jpg" alt="Our new fifth-wheel hitched to a white pickup in a sunny dealer lot" width="640" height="480" loading="lazy" decoding="async"></button><figcaption>Pickup day in Oklahoma, April 2022.</figcaption></figure><figure><button type="button" class="shot" aria-label="Enlarge: One of our first evenings set up, May 2022."><img src="assets/road/2022-spring-2.jpg" alt="The fifth-wheel set up under tall trees at dusk, with a canopy and picnic table beside it" width="640" height="480" loading="lazy" decoding="async"></button><figcaption>One of our first evenings set up, May 2022.</figcaption></figure><figure><button type="button" class="shot" aria-label="Enlarge: Fire going, pup in her bed. This is why we did it."><img src="assets/road/2022-spring-3.jpg" alt="A campfire, string lights, and our dog curled up in a pink bed beside the rig" width="640" height="480" loading="lazy" decoding="async"></button><figcaption>Fire going, pup in her bed. This is why we did it.</figcaption></figure><figure><button type="button" class="shot" aria-label="Enlarge: Lakeside morning, May 2022."><img src="assets/road/2022-spring-4.jpg" alt="The rig parked on gravel beside a lake with a fountain and green trees" width="640" height="480" loading="lazy" decoding="async"></button><figcaption>Lakeside morning, May 2022.</figcaption></figure></div></details></li>
@@ -727,6 +739,21 @@ try{
   stops.forEach(li=>{const d=li.querySelector('details.trip'); if(!d) return;
     d.querySelector('summary').addEventListener('click',e=>{if(!wide.matches) return; e.preventDefault(); cur===li?close():open(li);});});
   wide.addEventListener('change',()=>{if(wide.matches) road.querySelectorAll('details.trip[open]').forEach(d=>d.open=false); else close();});
+})();
+</script>
+<script>
+(()=>{ // Paper backup snapshot on the map: open in a full-screen viewer
+  const b=document.querySelector('.map .paper'); if(!b||!window.HTMLDialogElement) return;
+  const i=b.querySelector('img');
+  const lb=document.createElement('dialog'); lb.className='lb'; lb.setAttribute('aria-label','Photo viewer');
+  lb.innerHTML='<button type="button" class="close" aria-label="Close photo">×</button><img alt=""><p></p>';
+  document.body.appendChild(lb);
+  const im=lb.querySelector('img'), cap=lb.querySelector('p');
+  im.src=i.getAttribute('src'); im.alt=i.alt;
+  cap.textContent="Before the digital map, there was this one. Every route went on paper first, because when the signal drops, a highlighter still works.";
+  const n=document.createElement('span'); n.textContent='Our paper backup · August 2022'; cap.appendChild(n);
+  lb.addEventListener('click',()=>lb.close());
+  b.addEventListener('click',()=>lb.showModal());
 })();
 </script>
 <script>
