@@ -444,18 +444,15 @@ footer .sep{opacity:.5}
   .route .map{margin:0}
   .route .road{align-self:start;padding-top:6px}
   .route .map{position:sticky;top:16px}
-  .todo-sec{grid-column:1/span 5;display:flex;flex-direction:column}
-  /* Stretch the to-do list so the left column ends level with the categories card on the right */
-  .todo-sec .todo:not(.done){flex:1;display:flex;flex-direction:column}
-  .todo-sec .todo:not(.done) li{flex:1;display:flex;align-items:center}
-  .todo-sec .todo:not(.done) li::before{top:50%;margin-top:-10px}
-  .org .acc{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:start}
+  .todo-sec{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:0 24px;align-items:start}
+  .todo-sec>h2,.todo-sec>.sub-h{grid-column:1/-1}
+  .todo-sec .todo.done{margin-top:0}
+  .org .acc{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));align-items:stretch}
   .org .acc details{border-top:1px solid var(--hair)}
-  .org .acc details:nth-child(-n+2){border-top:0}
-  .org .acc details:nth-child(even){border-left:1px solid var(--hair)}
+  .org .acc details:nth-child(-n+4){border-top:0}
+  .org .acc details:not(:nth-child(4n+1)){border-left:1px solid var(--hair)}
   .org .acc summary{padding:14px 16px;align-items:start}
   .org .acc .body{padding:0 16px 16px}
-  .org{grid-column:6/-1}
   .how{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px 28px;padding:34px 34px 30px}
   .how>*{grid-column:1/-1}
   .how>div:first-child p{max-width:46em}
@@ -481,6 +478,12 @@ footer .sep{opacity:.5}
 }
 
 /* Getting organized: one progress road (filled to today, dashed road ahead, next stop, flag) replaces the flat bar; stats, note and "See the numbers" sit right under it */
+/* "Behind the scenes" divider: splits the rig's story (above) from the project's story (below) */
+.chapter{display:flex;align-items:center;gap:14px;margin:8px 0 -18px;font-size:14px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--soft)}
+.chapter::before,.chapter::after{content:"";flex:1;height:1px;background:var(--hair)}
+.chapter::before{flex:0 0 28px}
+main>.chapter{grid-column:1/-1}
+.todo-sec>.sub-h{color:var(--soft);margin:-8px 0 12px}
 .org h2{margin-bottom:2px}
 .org>.sub-h{color:var(--soft);margin:0 0 4px}
 .climb{--now:69%;display:flex;flex-direction:column;gap:2px;background:var(--card);border:1px solid var(--hair);border-radius:12px;padding:8px 14px 12px;margin-top:10px}
@@ -604,7 +607,8 @@ footer .sep{opacity:.5}
     </section>
 
     <section class="todo-sec">
-      <h2>On the to-do list</h2>
+      <h2>What's next for the rig</h2>
+      <p class="sub-h">Jobs on the list, and what we just finished.</p>
       <ul class="todo">
         <li><span class="t">Generator tune-up before winter</span></li>
         <li class="chk"><div class="t">Clean up the propane gauges, or replace them <span>(fixed Nov 11)</span>
@@ -620,6 +624,8 @@ footer .sep{opacity:.5}
         <li>New carbon monoxide and propane alarm <span>(installed and tested November 9, good until 2031)</span></li>
       </ul>
     </section>
+
+    <p class="chapter">Behind the scenes</p>
 
     <section class="org">
       <h2>Getting organized</h2>
