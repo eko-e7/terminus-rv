@@ -141,6 +141,11 @@ p{margin:0}
 .creds{list-style:none;margin:16px 0 0;padding:0;display:grid;gap:10px}
 .creds li{display:flex;gap:12px;align-items:center;background:var(--card);border:1px solid var(--hair);border-radius:12px;padding:10px 12px}
 .cred-ic{flex:none;width:44px;height:44px;border-radius:10px;display:grid;place-items:center;background:var(--skybg);color:var(--sky)}
+.frameworks{margin-top:16px;padding:14px 16px;border:1px dashed var(--hair);border-radius:12px}
+.fw-h{font-size:14px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--soft)}
+.frameworks ul{list-style:none;margin:10px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.frameworks li{font:600 14px/1 ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--ink);background:var(--card);border:1px solid var(--hair);border-radius:999px;padding:8px 12px}
+.fw-note{margin-top:10px;font-size:14px;line-height:1.4;color:var(--soft)}
 .cred-ic img{width:44px;height:44px;object-fit:contain}
 .creds b{display:block;color:var(--ink);font-size:17px;line-height:1.25}
 .creds small{display:block;color:var(--soft);font-size:14px;line-height:1.35}
@@ -243,6 +248,9 @@ footer{border-top:1px solid var(--hair);padding-block:18px 8px;color:var(--soft)
   .shield ul{grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
   .how>.office{display:contents}
   .how>.office>p{grid-column:1;align-self:start}
+  .how .frameworks{grid-column:1/-1;order:2;margin-top:-10px;display:flex;align-items:center;flex-wrap:wrap;gap:8px 16px}
+  .how .frameworks ul{margin:0}
+  .how .fw-note{margin:0;flex:1 1 260px}
   .how .creds{grid-column:1/-1;order:1;margin-top:0;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
   .how>.closing{grid-column:2;border-top:0;padding-top:0;padding-left:28px;border-left:1px solid var(--hair)}
 }
@@ -369,6 +377,15 @@ footer{border-top:1px solid var(--hair);padding-block:18px 8px;color:var(--soft)
           <li><span class="cred-ic"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="5" r="2.2"/><circle cx="5" cy="18" r="2.2"/><circle cx="12" cy="18" r="2.2"/><circle cx="19" cy="18" r="2.2"/><path d="M12 7.2v8.6M12 11H5v4.8M12 11h7v4.8"/></svg></span><span><b>Incident Command System</b><small>FEMA emergency-management training</small></span></li>
           <li><span class="cred-ic"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a4 4 0 0 0 5 5L21 12.6a6 6 0 0 1-7.6 1.6L7 20.6a2 2 0 0 1-2.8-2.8l6.4-6.4A6 6 0 0 1 12.2 3.8z"/></svg></span><span><b>Ford Pro Master</b><small>Ford Pro certification</small></span></li>
         </ul>
+        <div class="frameworks">
+          <p class="fw-h">Built using these security frameworks as our guide</p>
+          <ul aria-label="Security frameworks used as a guide">
+            <li>ISO/IEC 27001:2022</li>
+            <li>SOC 2 Type 2</li>
+            <li>NIST CSF</li>
+          </ul>
+          <p class="fw-note">A personal project, not a business: we borrow their practices, but we aren't certified or audited against them.</p>
+        </div>
       </div>
       <div class="closing">
         <p>The tools help us keep track. You are the reason there's a story to tell.</p>
