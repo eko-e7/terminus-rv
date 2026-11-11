@@ -65,6 +65,27 @@ p{margin:0}
 .road li.now::before{background:var(--rock)}
 .road .when{display:block;font-size:15px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--rock)}
 .road b{font-weight:600}
+.trip>summary{list-style:none;cursor:pointer;border-radius:8px}
+.trip>summary::-webkit-details-marker{display:none}
+.trip>summary:focus-visible{outline:3px solid var(--sky);outline-offset:4px}
+.trip .more{display:flex;align-items:center;gap:7px;margin-top:6px;font-size:15px;font-weight:600;color:var(--sky);min-height:32px}
+.trip .more::after{content:"";width:7px;height:7px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(45deg) translateY(-2px);transition:transform .2s}
+.trip[open] .more::after{transform:rotate(-135deg) translateY(-2px)}
+.trip .x,.trip[open] .o{display:none}.trip[open] .x{display:inline}
+.shots{display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;margin:10px 0 2px;padding-bottom:8px;-webkit-overflow-scrolling:touch}
+.shots figure{flex:0 0 min(78%,300px);margin:0;scroll-snap-align:start}
+.shot{display:block;width:100%;padding:0;border:0;background:none;cursor:zoom-in;border-radius:10px}
+.shot:focus-visible{outline:3px solid var(--sky);outline-offset:2px}
+.shots img{display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;border-radius:10px;background:var(--track)}
+.shots figcaption{font-size:14.5px;line-height:1.35;color:var(--soft);margin-top:6px}
+.trip[open] .shots{animation:shotsIn .25s ease-out}
+@keyframes shotsIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+dialog.lb{border:0;padding:0;background:transparent;max-width:min(96vw,1100px);max-height:92vh}
+dialog.lb::backdrop{background:rgba(10,14,18,.95)}
+dialog.lb img{display:block;max-width:100%;max-height:82vh;border-radius:10px;margin:0 auto}
+dialog.lb p{color:#eef2f4;text-align:center;font-size:16px;margin:10px 8px 0}
+dialog.lb .close{position:fixed;top:12px;right:12px;width:44px;height:44px;border-radius:50%;border:0;background:rgba(255,255,255,.16);color:#fff;font-size:26px;line-height:1;cursor:pointer}
+@media (prefers-reduced-motion:reduce){.trip .more::after{transition:none}.trip[open] .shots{animation:none}}
 .todo{list-style:none;margin:0;padding:0;background:var(--card);border:1px solid var(--hair);border-radius:12px}
 .todo li{position:relative;padding:13px 18px 13px 46px;border-top:1px solid var(--hair)}
 .todo li:first-child{border-top:0}
@@ -275,7 +296,7 @@ footer .sep{opacity:.5}
 
 <div class="col">
   <header class="lead">
-    <p class="kicker"><span>News from the Cyclone · November 2026</span><span class="ver" title="Release v1.21.0, built 2026-11-10"><i aria-hidden="true"></i>v1.21.0 <em>build 20261110</em></span></p>
+    <p class="kicker"><span>News from the Cyclone · November 2026</span><span class="ver" title="Release v1.22.0, built 2026-11-10"><i aria-hidden="true"></i>v1.22.0 <em>build 20261110</em></span></p>
     <h1>Still rolling. Still grateful.</h1>
     <div class="wx" id="wx" role="group" hidden>
       <span class="wx-now"><i class="wx-dot" aria-hidden="true"></i><span class="wx-ic"></span><span><b class="wx-t"></b><span class="wx-f"></span></span></span>
@@ -314,8 +335,8 @@ footer .sep{opacity:.5}
         <svg id="usmap" viewBox="0 0 900 560" role="img" aria-label="Map of our route across the United States since 2022, from Oklahoma to the West Coast, through Utah, and back to North Georgia"><g id="states"></g><g id="route"></g></svg>
       </figure>
       <ol class="road">
-        <li><span class="when">Spring 2022</span>Picked her up in Oklahoma and headed home to Georgia.</li>
-        <li><span class="when">Summer 2022</span>Florida, Texas, and the desert, then six months in Petaluma, California.</li>
+        <li><details class="trip"><summary><span class="when">Spring 2022</span>Picked her up in Oklahoma and headed home to Georgia.<span class="more"><span class="o">See 4 photos</span><span class="x">Hide photos</span></span></summary><div class="shots"><figure><button type="button" class="shot" aria-label="Enlarge: Pickup day in Oklahoma, April 2022."><img src="assets/road/2022-spring-1.jpg" alt="Our new fifth-wheel hitched to a white pickup in a sunny dealer lot" width="640" height="480" loading="lazy" decoding="async"></button><figcaption>Pickup day in Oklahoma, April 2022.</figcaption></figure><figure><button type="button" class="shot" aria-label="Enlarge: One of our first evenings set up, May 2022."><img src="assets/road/2022-spring-2.jpg" alt="The fifth-wheel set up under tall trees at dusk, with a canopy and picnic table beside it" width="640" height="480" loading="lazy" decoding="async"></button><figcaption>One of our first evenings set up, May 2022.</figcaption></figure><figure><button type="button" class="shot" aria-label="Enlarge: Fire going, pup in her bed. This is why we did it."><img src="assets/road/2022-spring-3.jpg" alt="A campfire, string lights, and our dog curled up in a pink bed beside the rig" width="640" height="480" loading="lazy" decoding="async"></button><figcaption>Fire going, pup in her bed. This is why we did it.</figcaption></figure><figure><button type="button" class="shot" aria-label="Enlarge: Lakeside morning, May 2022."><img src="assets/road/2022-spring-4.jpg" alt="The rig parked on gravel beside a lake with a fountain and green trees" width="640" height="480" loading="lazy" decoding="async"></button><figcaption>Lakeside morning, May 2022.</figcaption></figure></div></details></li>
+        <li><details class="trip"><summary><span class="when">Summer 2022</span>Florida, Texas, and the desert, then six months in Petaluma, California.<span class="more"><span class="o">See 10 photos</span><span class="x">Hide photos</span></span></summary><div class="shots"><figure><button type="button" class="shot" aria-label="Enlarge: A quiet wooded site, June 2022."><img src="assets/road/2022-summer-1.jpg" alt="Our truck and fifth-wheel parked under tall trees on a sandy wooded site" width="640" height="480" loading="lazy" decoding="async"></button><figcaption>A quiet wooded site, June 2022.</figcaption></figure><figure><button type="button" class="shot" aria-label="Enlarge: Tall pines and a morning moon, June 2022."><img src="assets/road/2022-summer-2.jpg" alt="The rig set up among tall pine trees under a blue sky with the moon still out" width="640" height="480" loading="lazy" decoding="async"></button><figcaption>Tall pines and a morning moon, June 2022.</figcaption></figure><figure><button type="button" class="shot" aria-label="Enlarge: Sunset from the back patio, June 2022."><img src="assets/road/2022-summer-3.jpg" alt="Looking out from the rig's fold-down back patio at a sunset over green brush" width="640" height="480" loading="lazy" decoding="async"></button><figcaption>Sunset from the back patio, June 2022.</figcaption></figure><figure><button type="button" class="shot" aria-label="Enlarge: Made it to Texas! July 2022."><img style="object-position:50% 78%" src="assets/road/2022-summer-4.jpg" alt="The two of us waving under a big Welcome to Texas sign" width="480" height="640" loading="lazy" decoding="async"></button><figcaption>Made it to Texas! July 2022.</figcaption></figure><figure><button type="button" class="shot" aria-label="Enlarge: Taking the rig on a ferry, July 2022."><img src="assets/road/2022-summer-5.jpg" alt="Our truck and fifth-wheel parked on a car ferry deck beside the water" width="640" height="360" loading="lazy" decoding="async"></button><figcaption>Taking the rig on a ferry, July 2022.</figcaption></figure><figure><button type="button" class="shot" aria-label="Enlarge: Sunset on the coast, July 2022."><img src="assets/road/2022-summer-6.jpg" alt="A fiery sunset over a palm-lined RV park, seen from beside our rig" width="640" height="480" loading="lazy" decoding="async"></button><figcaption>Sunset on the coast, July 2022.</figcaption></figure><figure><button type="button" class="shot" aria-label="Enlarge: Canyon overlook on the way west, July 2022."><img src="assets/road/2022-summer-7.jpg" alt="Our truck and fifth-wheel at an overlook above a river canyon under blue sky" width="640" height="480" loading="lazy" decoding="async"></button><figcaption>Canyon overlook on the way west, July 2022.</figcaption></figure><figure><button type="button" class="shot" aria-label="Enlarge: Pulling in after dark, July 2022."><img src="assets/road/2022-summer-8.jpg" alt="The truck lit up with amber lights beside the rig at night" width="640" height="360" loading="lazy" decoding="async"></button><figcaption>Pulling in after dark, July 2022.</figcaption></figure><figure><button type="button" class="shot" aria-label="Enlarge: Desert sunrise, August 2022."><img src="assets/road/2022-summer-9.jpg" alt="The rig parked under a covered site with an orange desert sunrise behind it" width="640" height="360" loading="lazy" decoding="async"></button><figcaption>Desert sunrise, August 2022.</figcaption></figure><figure><button type="button" class="shot" aria-label="Enlarge: A stop in Las Vegas, August 2022."><img src="assets/road/2022-summer-10.jpg" alt="The rig and truck in a big lot with the Las Vegas skyline behind" width="640" height="480" loading="lazy" decoding="async"></button><figcaption>A stop in Las Vegas, August 2022.</figcaption></figure></div></details></li>
         <li><span class="when">2023</span>The Oregon coast, then camp hosts in the Oregon woods.</li>
         <li><span class="when">Late 2023 to spring 2024</span>Seven months in a Utah repair shop. <b>This is when so many of you showed up for us.</b></li>
         <li><span class="when">Summer 2024</span>Back on the road through Colorado, Texas, and Missouri.</li>
@@ -408,7 +429,7 @@ footer .sep{opacity:.5}
     </section>
   </main>
 
-  <footer><span>The Terminus City RV Project</span><span class="sep" aria-hidden="true">·</span><span>Updated <span class="mo-l">November</span><span class="mo-s">Nov</span> 10, 2026</span><span class="sep sep-v" aria-hidden="true">·</span><span class="ver" title="Release v1.21.0, built 2026-11-10"><i aria-hidden="true"></i>v1.21.0 <em>build 20261110</em></span></footer>
+  <footer><span>The Terminus City RV Project</span><span class="sep" aria-hidden="true">·</span><span>Updated <span class="mo-l">November</span><span class="mo-s">Nov</span> 10, 2026</span><span class="sep sep-v" aria-hidden="true">·</span><span class="ver" title="Release v1.22.0, built 2026-11-10"><i aria-hidden="true"></i>v1.22.0 <em>build 20261110</em></span></footer>
 </div>
 <script type="module">
 const PTS = [[35.3, -97.5], [35.4, -97.5], [34.8, -92.5], [35.6, -87.0], [34.0, -84.4], [34.8, -84.8], [34.0, -84.4], [34.2, -84.1], [36.2, -86.7], [34.0, -84.4], [31.2, -83.5], [26.5, -81.8], [26.5, -82.1], [34.0, -84.4], [30.4, -88.8], [30.2, -92.0], [29.2, -94.9], [29.4, -98.4], [30.6, -103.9], [32.1, -111.0], [36.1, -115.2], [36.7, -119.8], [38.3, -122.7], [40.6, -124.2], [41.5, -124.0], [42.0, -124.3], [43.4, -124.2], [43.7, -124.2], [44.7, -123.8], [43.2, -122.1], [44.1, -121.3], [43.4, -116.7], [40.9, -111.9], [39.7, -110.8], [38.8, -109.8], [39.1, -108.5], [35.2, -101.7], [32.9, -96.6], [32.8, -96.6], [29.7, -98.1], [36.6, -93.2], [36.8, -90.4], [37.4, -88.9], [38.1, -86.9], [34.7, -83.7]];
@@ -521,6 +542,18 @@ try{
   if(Date.now()-last>STALE) load();
   setInterval(()=>{if(!document.hidden) load();},STALE);
   document.addEventListener('visibilitychange',()=>{if(!document.hidden&&Date.now()-last>STALE) load();});
+})();
+</script>
+<script>
+(()=>{
+  const shots=document.querySelectorAll('.shot'); if(!shots.length||!window.HTMLDialogElement) return;
+  const d=document.createElement('dialog'); d.className='lb'; d.setAttribute('aria-label','Photo');
+  d.innerHTML='<button type="button" class="close" aria-label="Close photo">\u00d7</button><img alt=""><p></p>';
+  document.body.appendChild(d);
+  const im=d.querySelector('img'), cap=d.querySelector('p');
+  shots.forEach(b=>b.addEventListener('click',()=>{const i=b.querySelector('img');
+    im.src=i.currentSrc||i.src; im.alt=i.alt; cap.textContent=b.closest('figure').querySelector('figcaption').textContent; d.showModal();}));
+  d.addEventListener('click',()=>d.close());
 })();
 </script>
 <script data-goatcounter="https://eko.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
