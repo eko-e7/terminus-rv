@@ -46,6 +46,10 @@ body{background:var(--paper);color:var(--ink);font:19px/1.55 var(--body)}
 h1{font:700 clamp(34px,9vw,48px)/1.08 var(--display);margin:6px 0 12px;text-wrap:balance}
 .status{display:inline-flex;align-items:center;gap:10px;background:var(--goodbg);color:var(--good);font-weight:600;font-size:17px;padding:7px 14px;border-radius:999px}
 .status i{width:10px;height:10px;border-radius:50%;background:var(--good)}
+/* Second pill: rig is healthy but not mobile (no tow vehicle) */
+.status.dock{background:#f8edd3;color:#7a5200}.status.dock i{background:#c98a0b}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .status.dock{background:#3a2f17;color:#f0bd45}:root:not([data-theme="light"]) .status.dock i{background:#f0bd45}}
+:root[data-theme="dark"] .status.dock{background:#3a2f17;color:#f0bd45}:root[data-theme="dark"] .status.dock i{background:#f0bd45}
 .intro{color:var(--soft);margin:12px 0 0}
 main{display:flex;flex-direction:column;gap:34px;padding-block:22px 18px}
 h2{font:700 25px/1.2 var(--display);margin:0 0 12px;text-wrap:balance}
@@ -217,6 +221,8 @@ dialog.lb .nav{position:fixed;background:rgba(255,255,255,.16)}
 @keyframes mruRec{50%{opacity:.2}}
 .feed .cap{position:absolute;z-index:1;left:10px;right:10px;bottom:9px;font-size:14px;line-height:1.35;color:#eef2f4;text-shadow:0 1px 3px #000}
 .on-pill{display:inline-flex;align-items:center;gap:8px;font:700 12.5px/1 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;letter-spacing:.12em;text-transform:uppercase;color:#7fd494;background:rgba(92,196,121,.12);border:1px solid rgba(92,196,121,.4);border-radius:999px;padding:6px 11px}
+.on-pill.dock{color:#f0bd45;background:rgba(240,189,69,.12);border-color:rgba(240,189,69,.4)}
+.on-pill.dock i{width:8px;height:8px;border-radius:2px;background:#f0bd45}
 .mru-backup{color:#b0bcc5;font-size:15.5px;line-height:1.45;margin-top:14px}
 .dash{margin-top:14px;padding-top:14px;border-top:1px solid #24323d}
 .dash-top{display:flex;align-items:center;flex-wrap:wrap;gap:8px 12px}
@@ -409,12 +415,13 @@ footer .sep{opacity:.5}
 
 <div class="col">
   <header class="lead">
-    <p class="kicker"><span>News from the Cyclone · November 2026</span><span class="ver" title="Release v1.26.2, built 2026-11-11"><i aria-hidden="true"></i>v1.26.2 <em>build 20261111</em></span></p>
+    <p class="kicker"><span>News from the Cyclone · November 2026</span><span class="ver" title="Release v1.26.3, built 2026-11-11"><i aria-hidden="true"></i>v1.26.3 <em>build 20261111</em></span></p>
     <h1>Still rolling. Still grateful.</h1>
     <div class="stage">
       <div class="rig">
         <div class="hrow">
           <span class="status"><i></i>All good at home base</span>
+          <span class="status dock" title="The rig is healthy, but we don't have a truck to tow it right now"><i></i>Dry-docked · no tow truck</span>
         </div>
         <p class="intro">We're parked for the season in the North Georgia mountains, and the rig is in good shape.</p>
         <div class="stats" role="group" aria-label="Our travels so far">
@@ -531,7 +538,7 @@ footer .sep{opacity:.5}
         </ul>
         <p class="mru-backup">Backup power, internet and radios are built in, so if one goes down, we stay on the job.</p>
         <div class="dash" aria-label="Unit status dashboard">
-          <div class="dash-top"><span class="dash-l">Status</span><span class="on-pill"><span class="live" aria-hidden="true"></span>Online</span><span class="dash-t">As of Nov 11, 2026</span></div>
+          <div class="dash-top"><span class="dash-l">Status</span><span class="on-pill"><span class="live" aria-hidden="true"></span>Online</span><span class="on-pill dock" title="Systems are up, but the unit can't redeploy until we have a tow vehicle"><i aria-hidden="true"></i>Dry-docked · No tow</span><span class="dash-t">As of Nov 11, 2026</span></div>
           <div class="dash-grid">
             <section><h4>Power</h4><ul><li class="st-go"><span class="lt" aria-hidden="true"></span><span class="nm"><b>Shore power</b><em>50 A</em></span><span class="pl">Primary</span></li><li class="st-warn"><span class="lt" aria-hidden="true"></span><span class="nm"><b>Generator</b><em>5,500 W</em><small>Can run; service overdue</small></span><span class="pl">Standby</span></li><li class="st-go"><span class="lt" aria-hidden="true"></span><span class="nm"><b>Solar</b><em>450 W</em></span><span class="pl">Healthy</span></li><li class="st-go"><span class="lt" aria-hidden="true"></span><span class="nm"><b>Inverter</b><em>3,000 W</em><small>Backup switchover tested this fall</small></span><span class="pl">Healthy</span></li></ul></section>
             <section><h4>Comms</h4><ul><li class="st-go"><span class="lt" aria-hidden="true"></span><span class="nm"><b>Starlink</b><em>Satellite</em></span><span class="pl">Primary</span></li><li class="st-sb"><span class="lt" aria-hidden="true"></span><span class="nm"><b>Verizon</b><em>Hotspot</em></span><span class="pl">Standby</span></li><li class="st-ice"><span class="lt" aria-hidden="true"></span><span class="nm"><b>T-Mobile</b><em>5G</em><small>Weak coverage here</small></span><span class="pl">Frozen</span></li><li class="st-warn"><span class="lt" aria-hidden="true"></span><span class="nm"><b>Campground Wi-Fi</b><em>Encrypted bridge</em><small>Shared network; used only in a pinch</small></span><span class="pl">Last resort</span></li><li class="st-off"><span class="lt" aria-hidden="true"></span><span class="nm"><b>AT&amp;T</b><em>Truck connection</em><small>Retired with the truck</small></span><span class="pl">Offline</span></li></ul></section>
@@ -564,7 +571,7 @@ footer .sep{opacity:.5}
     </section>
   </main>
 
-  <footer><span>The Terminus City RV Project</span><span class="sep" aria-hidden="true">·</span><span>Updated <span class="mo-l">November</span><span class="mo-s">Nov</span> 11, 2026</span><span class="sep sep-v" aria-hidden="true">·</span><span class="ver" title="Release v1.26.2, built 2026-11-11"><i aria-hidden="true"></i>v1.26.2 <em>build 20261111</em></span></footer>
+  <footer><span>The Terminus City RV Project</span><span class="sep" aria-hidden="true">·</span><span>Updated <span class="mo-l">November</span><span class="mo-s">Nov</span> 11, 2026</span><span class="sep sep-v" aria-hidden="true">·</span><span class="ver" title="Release v1.26.3, built 2026-11-11"><i aria-hidden="true"></i>v1.26.3 <em>build 20261111</em></span></footer>
 </div>
 <script type="module">
 const PTS = [[35.3, -97.5], [35.4, -97.5], [34.8, -92.5], [35.6, -87.0], [34.0, -84.4], [34.8, -84.8], [34.0, -84.4], [34.2, -84.1], [36.2, -86.7], [34.0, -84.4], [31.2, -83.5], [26.5, -81.8], [26.5, -82.1], [34.0, -84.4], [30.4, -88.8], [30.2, -92.0], [29.2, -94.9], [29.4, -98.4], [30.6, -103.9], [32.1, -111.0], [36.1, -115.2], [36.7, -119.8], [38.3, -122.7], [40.6, -124.2], [41.5, -124.0], [42.0, -124.3], [43.4, -124.2], [43.7, -124.2], [44.7, -123.8], [43.2, -122.1], [44.1, -121.3], [43.4, -116.7], [40.9, -111.9], [39.7, -110.8], [38.8, -109.8], [39.1, -108.5], [35.2, -101.7], [32.9, -96.6], [32.8, -96.6], [29.7, -98.1], [36.6, -93.2], [36.8, -90.4], [37.4, -88.9], [38.1, -86.9], [34.7, -83.7]];
