@@ -66,9 +66,9 @@ p{margin:0}
 .road .when{display:block;font-size:15px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--rock)}
 .road b{font-weight:600}
 .todo{list-style:none;margin:0;padding:0;background:var(--card);border:1px solid var(--hair);border-radius:12px}
-.todo li{padding:13px 18px;border-top:1px solid var(--hair);display:flex;gap:12px;align-items:baseline}
+.todo li{position:relative;padding:13px 18px 13px 46px;border-top:1px solid var(--hair)}
 .todo li:first-child{border-top:0}
-.todo li::before{content:"";flex:none;width:16px;height:16px;border:2px solid var(--soft);border-radius:4px;transform:translateY(2px)}
+.todo li::before{content:"";position:absolute;left:18px;top:17px;width:16px;height:16px;border:2px solid var(--soft);border-radius:4px}
 .todo span{color:var(--soft)}
 .todo.done{margin-top:10px;background:var(--goodbg);border-color:transparent}
 .todo.done li::before{content:"\2713";border-color:var(--good);background:var(--good);color:var(--card);font:700 12px/12px var(--body);text-align:center}
@@ -227,6 +227,12 @@ footer{border-top:1px solid var(--hair);padding-block:18px 8px;color:var(--soft)
   .route .map{margin:0}
   .route .road{align-self:center}
   .todo-sec{grid-column:1/span 5}
+  .org .acc{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:start}
+  .org .acc details{border-top:1px solid var(--hair)}
+  .org .acc details:nth-child(-n+2){border-top:0}
+  .org .acc details:nth-child(even){border-left:1px solid var(--hair)}
+  .org .acc summary{padding:14px 16px;align-items:start}
+  .org .acc .body{padding:0 16px 16px}
   .org{grid-column:6/-1}
   .how{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px 28px;padding:34px 34px 30px}
   .how>*{grid-column:1/-1}
