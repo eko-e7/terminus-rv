@@ -62,6 +62,24 @@ p{margin:0}
 .thanks{border-top:2px solid var(--ink);border-bottom:1px solid var(--hair);padding-block:20px}
 .thanks p{font:600 23px/1.4 var(--display)}
 .thanks p + p{font:400 19px/1.55 var(--body);color:var(--soft);margin-top:10px}
+/* "Keep this page handy": bookmark / home-screen call to action */
+.keep{background:var(--skybg);border-radius:14px;padding:20px 20px 22px}
+.keep h2{margin-bottom:6px}
+.keep-txt p{color:var(--soft)}
+.keep-act{margin-top:16px}
+.keep-btn{display:inline-flex;align-items:center;gap:10px;font:600 18px/1.2 var(--body);color:#fff;background:var(--sky);border:0;border-radius:999px;padding:13px 22px;min-height:48px;cursor:pointer}
+:root[data-theme="dark"] .keep-btn{color:#141a1f}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .keep-btn{color:#141a1f}}
+.keep-btn svg{width:20px;height:20px;flex:none}
+.keep-btn:focus-visible,.keep-alt:focus-visible{outline:3px solid var(--rock);outline-offset:3px}
+.keep-alt{display:block;margin-top:12px;font:500 17px/1.3 var(--body);color:var(--sky);background:none;border:0;padding:4px 0;cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+.keep-how{margin-top:16px;background:var(--card);border:1px solid var(--hair);border-radius:12px;padding:16px 18px}
+.keep-how ol{margin:0;padding-left:1.4em}
+.keep-how li+li{margin-top:8px}
+.keep-how .ico{display:inline-block;width:1.15em;height:1.15em;vertical-align:-.2em;color:var(--sky)}
+.keep-how kbd{font:600 16px/1 var(--body);background:var(--paper);border:1px solid var(--hair);border-bottom-width:2px;border-radius:6px;padding:3px 7px}
+.keep-how .done{margin-top:12px;color:var(--soft);font-size:17px}
+.keep-ok{margin-top:10px;font-size:17px;color:var(--good);font-weight:600}
 .road{list-style:none;margin:0;padding:0;border-left:3px solid var(--rock);margin-left:7px}
 .road li{position:relative;padding:0 0 16px 22px}
 .road li:last-child{padding-bottom:0}
@@ -377,6 +395,9 @@ footer .sep{opacity:.5}
   main>section{grid-column:1/-1;min-width:0}
   .thanks{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:40px;align-items:center;padding-block:26px}
   .thanks p + p{margin-top:0}
+  .keep{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:12px 40px;align-items:center;padding:26px 30px}
+  .keep-act{margin-top:0}
+  .keep-how{grid-column:1/-1}
   .route{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:4px 40px;align-items:start}
   .route h2{grid-column:1/-1}
   .route .map{margin:0}
@@ -474,7 +495,7 @@ footer .sep{opacity:.5}
 
 <div class="col">
   <header class="lead">
-    <p class="kicker"><span>News from the Cyclone · November 2026</span><span class="ver" title="Release v1.27.0, built 2026-11-11"><i aria-hidden="true"></i>v1.27.0 <em>build 20261111</em></span></p>
+    <p class="kicker"><span>News from the Cyclone · November 2026</span><span class="ver" title="Release v1.28.0, built 2026-11-11"><i aria-hidden="true"></i>v1.28.0 <em>build 20261111</em></span></p>
     <h1>Still rolling. Still grateful.</h1>
     <div class="stage">
       <div class="rig">
@@ -506,6 +527,19 @@ footer .sep{opacity:.5}
     <section class="thanks">
       <p>To everyone who has helped us along the way: thank you.</p>
       <p>You lent a hand, an ear, good advice, and help when we needed it most. You're a big part of why this life works.</p>
+    </section>
+
+    <section class="keep" id="keep" aria-labelledby="keep-h">
+      <div class="keep-txt">
+        <h2 id="keep-h">Keep this page handy</h2>
+        <p>This is our live update page. We add news as it happens, and the mountain weather refreshes on its own. Save it once and you'll always find the latest here.</p>
+      </div>
+      <div class="keep-act">
+        <button type="button" class="keep-btn" aria-expanded="false" aria-controls="keep-how"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h12v18l-6-4-6 4z"/></svg><span>Save this page</span></button>
+        <button type="button" class="keep-alt" hidden>Send the link to someone</button>
+        <p class="keep-ok" role="status" hidden></p>
+      </div>
+      <div class="keep-how" id="keep-how" hidden></div>
     </section>
 
     <section class="route">
@@ -808,7 +842,7 @@ footer .sep{opacity:.5}
     </section>
   </main>
 
-  <footer><span>The Terminus City RV Project</span><span class="sep" aria-hidden="true">·</span><span>Updated <span class="mo-l">November</span><span class="mo-s">Nov</span> 11, 2026</span><span class="sep sep-v" aria-hidden="true">·</span><span class="ver" title="Release v1.27.0, built 2026-11-11"><i aria-hidden="true"></i>v1.27.0 <em>build 20261111</em></span></footer>
+  <footer><span>The Terminus City RV Project</span><span class="sep" aria-hidden="true">·</span><span>Updated <span class="mo-l">November</span><span class="mo-s">Nov</span> 11, 2026</span><span class="sep sep-v" aria-hidden="true">·</span><span class="ver" title="Release v1.28.0, built 2026-11-11"><i aria-hidden="true"></i>v1.28.0 <em>build 20261111</em></span></footer>
 </div>
 <script type="module">
 const PTS = [[35.3, -97.5], [35.4, -97.5], [34.8, -92.5], [35.6, -87.0], [34.0, -84.4], [34.8, -84.8], [34.0, -84.4], [34.2, -84.1], [36.2, -86.7], [34.0, -84.4], [31.2, -83.5], [26.5, -81.8], [26.5, -82.1], [34.0, -84.4], [30.4, -88.8], [30.2, -92.0], [29.2, -94.9], [29.4, -98.4], [30.6, -103.9], [32.1, -111.0], [36.1, -115.2], [36.7, -119.8], [38.3, -122.7], [40.6, -124.2], [41.5, -124.0], [42.0, -124.3], [43.4, -124.2], [43.7, -124.2], [44.7, -123.8], [43.2, -122.1], [44.1, -121.3], [43.4, -116.7], [40.9, -111.9], [39.7, -110.8], [38.8, -109.8], [39.1, -108.5], [35.2, -101.7], [32.9, -96.6], [32.8, -96.6], [29.7, -98.1], [36.6, -93.2], [36.8, -90.4], [37.4, -88.9], [38.1, -86.9], [34.7, -83.7]];
@@ -1052,6 +1086,45 @@ try{
     s.classList.add('go'); rvs.forEach(drive);
     s.querySelectorAll('.cl-bar').forEach((b,i)=>b.style.transitionDelay=(300+i*90)+'ms');});},{threshold:.35});
   io.observe(s.querySelector('.cl-fig'));
+})();
+</script>
+<script>
+(()=>{ // "Keep this page handy": walk each device through saving the page
+  const sec=document.getElementById('keep'); if(!sec) return;
+  // Opened from a home-screen icon already? Nothing to do.
+  if(navigator.standalone||matchMedia('(display-mode: standalone)').matches){sec.hidden=true;return;}
+  const btn=sec.querySelector('.keep-btn'), lbl=btn.querySelector('span'),
+        how=sec.querySelector('.keep-how'), alt=sec.querySelector('.keep-alt'), ok=sec.querySelector('.keep-ok');
+  const ua=navigator.userAgent;
+  const ios=/iPhone|iPad|iPod/.test(ua)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
+  const android=/Android/.test(ua);
+  const mac=/Mac/.test(navigator.platform||ua);
+  const share='<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M8 7l4-4 4 4"/><path d="M6 11H5v10h14V11h-1"/></svg>';
+  const dots='<svg class="ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="12" cy="5" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="12" cy="19" r="2"/></svg>';
+  let steps;
+  if(ios){
+    lbl.textContent='Put it on my home screen';
+    steps='<ol><li>Tap the <b>Share</b> button '+share+' in your browser.</li><li>Scroll down and tap <b>Add to Home Screen</b>.</li><li>Tap <b>Add</b>.</li></ol><p class="done">An <b>RV Update</b> icon will show up with your apps. Tap it any time for our latest news.</p>';
+  }else if(android){
+    lbl.textContent='Put it on my home screen';
+    steps='<ol><li>Tap the menu button '+dots+' at the top right of your browser.</li><li>Tap <b>Add to Home screen</b>.</li><li>Tap <b>Add</b>.</li></ol><p class="done">An <b>RV Update</b> icon will show up with your apps. Tap it any time for our latest news.</p>';
+  }else{
+    lbl.textContent='Bookmark this page';
+    steps='<ol><li>Press <kbd>'+(mac?'⌘':'Ctrl')+'</kbd> + <kbd>D</kbd> on your keyboard.</li><li>Click <b>Done</b>.</li></ol><p class="done">Next time, find it in your bookmarks as <b>Live Status - Terminus City RV</b></p>';
+  }
+  how.innerHTML=steps;
+  btn.addEventListener('click',()=>{
+    const open=how.hidden; how.hidden=!open; btn.setAttribute('aria-expanded',String(open));
+  });
+  // Second option: hand the link to someone else (share sheet on phones, copy on computers)
+  const url='https://eko-e7.github.io/terminus-rv/';
+  if(navigator.share&&(ios||android)){
+    alt.hidden=false;
+    alt.addEventListener('click',()=>navigator.share({title:'How’s the RV?',url}).catch(()=>{}));
+  }else if(navigator.clipboard){
+    alt.textContent='Copy the link to send to someone'; alt.hidden=false;
+    alt.addEventListener('click',()=>navigator.clipboard.writeText(url).then(()=>{ok.textContent='Link copied. Paste it into a text or email.';ok.hidden=false;}).catch(()=>{}));
+  }
 })();
 </script>
 <script data-goatcounter="https://eko.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
