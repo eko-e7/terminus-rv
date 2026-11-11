@@ -1,4 +1,6 @@
-# terminus-rv
+# Terminus City RV Project
+
+`terminus-rv`
 
 ![From the road, to the records, to the page: our fifth-wheel and truck beside the four steps of how the update comes together](assets/readme-banner.png)
 
