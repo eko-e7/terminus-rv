@@ -452,63 +452,55 @@ footer .sep{opacity:.5}
   .how>.closing{grid-column:2;border-top:0;padding-top:0;padding-left:28px;border-left:1px solid var(--hair)}
 }
 
-/* Road to 100%: completeness over time (measured line + dashed goal), work-session strip, note for the grandparents */
-.climb{background:var(--card);border:1px solid var(--hair);border-radius:16px;padding:22px 18px 18px;display:flex;flex-direction:column;gap:16px}
-.climb h2{margin:0}
-.climb .sub-h{color:var(--soft)}
-.cl-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:0;padding:0;list-style:none}
-.cl-stats li{font-size:14px}
-.cl-stats li{background:var(--paper);border-radius:12px;padding:10px 12px;font-size:15px;color:var(--soft);line-height:1.3}
-.cl-stats b{display:block;font:700 26px/1.1 var(--display);color:var(--ink);font-variant-numeric:tabular-nums}
-.cl-fig{margin:0;position:relative}
-.cl-cap{font-size:14px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--soft);margin:0 0 4px}
-.cl-svg{display:block;width:100%;height:auto;overflow:visible}
-.cl-svg.d{display:none}
-.cl-svg text{fill:var(--soft);font:13px var(--body)}
-.cl-svg.m text{font-size:14px}
-.cl-bands rect{opacity:.10}.cl-bands .bg{fill:var(--g)}.cl-bands .by{fill:var(--y)}.cl-bands .br{fill:var(--r)}
-.cl-grid line{stroke:var(--hair);stroke-width:1}
-.cl-ahead{fill:var(--sky);opacity:.06}
-.cl-svg .cl-zone{font-size:11px;letter-spacing:.12em;font-weight:600}
-.cl-today{stroke:var(--soft);stroke-width:1;stroke-dasharray:2 4}
-.cl-area{fill:var(--sky);opacity:.14}
-.cl-line{fill:none;stroke:var(--sky);stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
-.cl-proj{fill:none;stroke:var(--soft);stroke-width:2;stroke-dasharray:7 7;stroke-linecap:round}
-.cl-pt{fill:var(--sky);stroke:var(--card);stroke-width:2}
-.cl-ms circle{fill:var(--card);stroke:var(--y);stroke-width:2.5}
-.cl-flag line{stroke:var(--ink);stroke-width:2}.cl-flagcloth{fill:var(--g)}.cl-flag circle{fill:var(--card);stroke:var(--g);stroke-width:2.5}
-.cl-svg .cl-flag text,.cl-svg .cl-ms text,.cl-svg .cl-now{fill:var(--ink)}
-.cl-svg .cl-lab{fill:var(--ink);font-weight:600}
-.cl-rv rect,.cl-rv>g>path:first-child{fill:var(--ink)}.cl-rv .win{fill:var(--card)}.cl-rv circle{fill:var(--ink);stroke:var(--card);stroke-width:1.5}
-.cl-hit{fill:transparent;cursor:pointer;outline:none}
-.cl-hit:focus-visible{stroke:var(--sky);stroke-width:2}
-.cl-bar{fill:var(--sky)}.cl-zero{fill:var(--hair)}.cl-base{stroke:var(--hair)}
-.cl-tip{position:absolute;pointer-events:none;background:var(--ink);color:var(--paper);font-size:14px;font-weight:500;line-height:1.3;padding:6px 10px;border-radius:8px;white-space:nowrap;transform:translate(-50%,calc(-100% - 12px));opacity:0;transition:opacity .15s}
-.cl-tip.on{opacity:1}
-.gp{display:flex;gap:14px;align-items:flex-start;background:var(--goodbg);color:var(--ink);border-radius:12px;padding:14px 16px;margin:0}
-.gp .hrt{flex:none;color:var(--good);margin-top:3px}
-.gp b{font-family:var(--display);font-size:20px}
-.cl-foot{font-size:15px;color:var(--soft)}
-.cl-nums summary{cursor:pointer;font-size:15px;color:var(--sky);font-weight:600}
-.cl-nums table{border-collapse:collapse;font-size:15px;margin-top:8px;font-variant-numeric:tabular-nums}
-.cl-nums th,.cl-nums td{text-align:left;padding:4px 14px 4px 0;border-bottom:1px solid var(--hair)}
-@media (min-width:560px){.cl-stats li{font-size:15px}.cl-svg.d{display:block}.cl-svg.m{display:none}}
+/* Road to 100%, compact: one progress road (filled to today, dashed road ahead, next stop, flag), stat chips with a work-session sparkline, note for the grandparents */
+.climb{background:var(--card);border:1px solid var(--hair);border-radius:16px;padding:16px 18px 14px;display:flex;flex-direction:column;gap:10px}
+.climb h2{margin:0 0 2px}
+.climb .sub-h{color:var(--soft);font-size:16px;line-height:1.4;margin:0}
+.cl-top{display:flex;flex-direction:column;gap:10px}
+.cl-stats{display:flex;flex-wrap:wrap;gap:8px;margin:0;padding:0;list-style:none}
+.cl-stats li{display:flex;align-items:center;gap:7px;background:var(--paper);border-radius:10px;padding:5px 10px;font-size:14px;color:var(--soft);line-height:1.2}
+.cl-stats b{font:700 19px/1 var(--display);color:var(--ink);font-variant-numeric:tabular-nums}
+.cl-spark{display:block;flex:none}.cl-spark rect{fill:var(--sky)}.cl-spark circle{fill:var(--hair)}
+.cl-road{position:relative;height:66px;margin:0 8px 0 4px}
+.cl-track,.cl-fill,.cl-ahead{position:absolute;top:30px;height:8px;border-radius:4px}
+.cl-track{left:0;right:0;background:var(--track)}
+.cl-fill{left:0;width:69%;background:var(--sky)}
+.cl-ahead{left:69%;right:0;height:0;top:33px;border-top:2px dashed var(--soft);opacity:.55;border-radius:0}
+.cl-mk{position:absolute;top:0;height:100%;font-size:14px;line-height:1.2;color:var(--ink);white-space:nowrap}
+.cl-mk .dot{position:absolute;top:27px;left:-7px;width:14px;height:14px;border-radius:50%;background:var(--card);border:2.5px solid var(--y);box-sizing:border-box}
+.cl-mk.ms .lab{position:absolute;top:46px;transform:translateX(-50%);color:var(--soft)}
+.cl-mk.ms .lab b{color:var(--ink);font-weight:600}
+.cl-mk.fin .dot{border-color:var(--g)}
+.cl-mk.fin svg{position:absolute;top:2px;left:-1px;color:var(--g)}
+.cl-mk.fin .lab{position:absolute;top:6px;right:8px}
+.cl-mk.fin .lab b{font-weight:600}
+.cl-mk.now svg{position:absolute;top:4px;left:-15px;color:var(--ink)}
+.cl-mk.now .lab{position:absolute;top:8px;right:22px}
+.cl-mk.now .lab b{font-weight:700}
+.cl-mk.st{color:var(--soft)}.cl-mk.st .lab{position:absolute;top:46px;left:0;font-size:13px}
+.cl-foot{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 16px}
+.gp{flex:1 1 320px;display:flex;gap:8px;align-items:baseline;color:var(--ink);font-size:15px;line-height:1.4;margin:0}
+.gp .hrt{flex:none;color:var(--good);position:relative;top:3px}
+.gp b{font-weight:600}
+.cl-nums{flex:none;font-size:14px}
+.cl-nums[open]{flex-basis:100%}
+.cl-nums summary{cursor:pointer;color:var(--sky);font-weight:600}
+.cl-nums table{border-collapse:collapse;font-size:14px;margin-top:6px;font-variant-numeric:tabular-nums}
+.cl-nums th,.cl-nums td{text-align:left;padding:3px 14px 3px 0;border-bottom:1px solid var(--hair)}
+.cl-nums p{color:var(--soft);margin:8px 0 0;font-size:14px}
 /* Draw-in when scrolled into view (JS adds .go; without JS everything is shown) */
-.climb.prep .cl-line{stroke-dasharray:1;stroke-dashoffset:1}
-.climb.prep .cl-area,.climb.prep .cl-pt,.climb.prep .cl-ms,.climb.prep .cl-flag,.climb.prep .cl-now,.climb.prep .cl-lab{opacity:0}
-.climb.prep .cl-proj{opacity:0}
-.climb.prep .cl-bar{transform:scaleY(0);transform-box:fill-box;transform-origin:bottom}
-.climb.go .cl-line{stroke-dashoffset:0;transition:stroke-dashoffset 1.4s cubic-bezier(.3,.7,.3,1) .2s}
-.climb.go .cl-area{opacity:.14;transition:opacity .8s .9s}
-.climb.go .cl-pt,.climb.go .cl-lab{opacity:1;transition:opacity .4s .5s}
-.climb.go .cl-now{opacity:1;transition:opacity .5s 1.6s}
-.climb.go .cl-proj{opacity:1;transition:opacity .6s 1.6s;animation:cl-march 1.2s linear 2.2s infinite}
-.climb.go .cl-ms{opacity:1;transition:opacity .5s 2s}
-.climb.go .cl-flag{opacity:1;transition:opacity .5s 2.3s}
-.climb.go .cl-bar{transform:scaleY(1);transition:transform .5s cubic-bezier(.3,.7,.3,1)}
-@keyframes cl-march{to{stroke-dashoffset:-14}}
-@media (prefers-reduced-motion:reduce){.climb.go *{transition:none!important;animation:none!important}}
-@media (min-width:900px){.climb{padding:30px 34px 26px}.climb .cl-top{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:28px;align-items:end}}
+.climb.prep .cl-fill{width:0}
+.climb.prep .cl-mk.now{left:0!important}
+.climb.prep .cl-ahead,.climb.prep .cl-mk.ms,.climb.prep .cl-mk.fin,.climb.prep .cl-mk.now .lab{opacity:0}
+.climb.go .cl-fill{width:69%;transition:width 1.4s cubic-bezier(.3,.7,.3,1) .2s}
+.climb.go .cl-mk.now{transition:left 1.4s cubic-bezier(.3,.7,.3,1) .2s}
+.climb.go .cl-mk.now .lab{opacity:1;transition:opacity .4s 1.5s}
+.climb.go .cl-ahead{opacity:.55;transition:opacity .6s 1.5s}
+.climb.go .cl-mk.ms{opacity:1;transition:opacity .5s 1.8s}
+.climb.go .cl-mk.fin{opacity:1;transition:opacity .5s 2.1s}
+@media (prefers-reduced-motion:reduce){.climb.go *{transition:none!important}}
+@media (max-width:559px){.cl-stats{gap:6px}.cl-stats li{padding:5px 8px;font-size:13px;gap:5px}.cl-stats b{font-size:17px}.cl-spark{width:44px;height:14px}.cl-stats .wd,.cl-mk .wd{display:none}.gp{font-size:14px}}
+@media (min-width:900px){.climb{padding:18px 26px 14px}.cl-top{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:20px;align-items:center}}
 </style>
 </head>
 <body>
@@ -614,178 +606,35 @@ footer .sep{opacity:.5}
       <div class="cl-top">
         <div>
           <h2 id="cl-h">The road to 100%</h2>
-          <p class="sub-h">We're filling in the RV's paperwork one box at a time. This line tracks how complete our records are, and where we're headed.</p>
+          <p class="sub-h">We're filling in the RV's paperwork one box at a time.</p>
         </div>
         <ul class="cl-stats">
-          <li><b>+4</b>points since our first count</li>
-          <li><b>15</b>work sessions in 11 days</li>
-          <li><b>32</b>page updates since Nov 8</li>
+          <li><b>+4</b><span>points<span class="wd"> since Nov 8</span></span></li>
+          <li><b>15</b><span><span class="wd">work </span>sessions</span><svg class="cl-spark" viewBox="0 0 66 20" width="66" height="20" role="img" aria-label="Work sessions per day, November 1 to 11: busiest day November 9 with 4."><title>Work sessions per day, Nov 1–11 (busiest: Nov 9, 4 sessions)</title><rect x="0" y="15" width="4" height="5" rx="1"/><rect x="6" y="15" width="4" height="5" rx="1"/><rect x="12" y="15" width="4" height="5" rx="1"/><rect x="18" y="10" width="4" height="10" rx="1"/><circle cx="26" cy="19" r="1"/><circle cx="32" cy="19" r="1"/><circle cx="38" cy="19" r="1"/><rect x="42" y="10" width="4" height="10" rx="1"/><rect x="48" y="0" width="4" height="20" rx="1"/><rect x="54" y="10" width="4" height="10" rx="1"/><rect x="60" y="10" width="4" height="10" rx="1"/></svg></li>
+          <li><b>32</b><span><span class="wd">page </span>updates</span></li>
         </ul>
       </div>
-      <figure class="cl-fig">
-        <p class="cl-cap">How complete our records are</p>
-<svg class="cl-svg d" viewBox="0 0 760 284" role="img" aria-labelledby="cl-t0"><title id="cl-t0">Line chart: our records went from 65 percent complete on November 8 to 69 percent by November 11. A dashed path ahead shows the goal: about 85 percent next, then 100 percent.</title>
-<g class="cl-bands">
-<rect class="bg" x="46" y="30.0" width="700" height="36.7"/>
-<rect class="by" x="46" y="66.7" width="700" height="146.7"/>
-<rect class="br" x="46" y="213.3" width="700" height="36.7"/>
-</g><g class="cl-grid">
-<line x1="46" x2="746" y1="250.0" y2="250.0"/><text x="38" y="254.0" text-anchor="end">40%</text>
-<line x1="46" x2="746" y1="213.3" y2="213.3"/><text x="38" y="217.3" text-anchor="end">50%</text>
-<line x1="46" x2="746" y1="176.7" y2="176.7"/><text x="38" y="180.7" text-anchor="end">60%</text>
-<line x1="46" x2="746" y1="140.0" y2="140.0"/><text x="38" y="144.0" text-anchor="end">70%</text>
-<line x1="46" x2="746" y1="103.3" y2="103.3"/><text x="38" y="107.3" text-anchor="end">80%</text>
-<line x1="46" x2="746" y1="66.7" y2="66.7"/><text x="38" y="70.7" text-anchor="end">90%</text>
-<line x1="46" x2="746" y1="30.0" y2="30.0"/><text x="38" y="34.0" text-anchor="end">100%</text>
-</g>
-<rect class="cl-ahead" x="452.0" y="16" width="294.0" height="234"/>
-<text class="cl-zone" x="462.0" y="240" text-anchor="start">THE ROAD AHEAD</text>
-<line class="cl-today" x1="452.0" x2="452.0" y1="16" y2="250"/>
-<text class="cl-x" x="46.0" y="270" text-anchor="middle">Nov 1</text>
-<text class="cl-x" x="86.6" y="270" text-anchor="middle">2</text>
-<text class="cl-x" x="127.2" y="270" text-anchor="middle">3</text>
-<text class="cl-x" x="167.8" y="270" text-anchor="middle">4</text>
-<text class="cl-x" x="208.4" y="270" text-anchor="middle">5</text>
-<text class="cl-x" x="249.0" y="270" text-anchor="middle">6</text>
-<text class="cl-x" x="289.6" y="270" text-anchor="middle">7</text>
-<text class="cl-x" x="330.2" y="270" text-anchor="middle">8</text>
-<text class="cl-x" x="370.8" y="270" text-anchor="middle">9</text>
-<text class="cl-x" x="411.4" y="270" text-anchor="middle">10</text>
-<text class="cl-x" x="452.0" y="270" text-anchor="middle">11</text>
-<text class="cl-x" x="746.0" y="270" text-anchor="end">Coming months</text>
-<polygon class="cl-area" points="330.2,250 330.2,158.3 370.8,151.0 411.4,151.0 452.0,143.7 452.0,250"/>
-<polyline class="cl-line" pathLength="1" points="330.2,158.3 370.8,151.0 411.4,151.0 452.0,143.7"/>
-<path class="cl-proj" d="M452.0,143.7 C492.0,143.7 544.3,85.0 584.3,85.0 S690.0,30.0 720.0,30.0"/>
-<g class="cl-ms"><circle cx="584.3" cy="85.0" r="6"/><text x="584.3" y="109.0" text-anchor="middle"><tspan font-weight="600">Next stop</tspan><tspan x="584.3" dy="16">about 85%</tspan></text></g>
-<g class="cl-flag"><line x1="720.0" x2="720.0" y1="30.0" y2="4.0"/><path class="cl-flagcloth" d="M720.0,4.0 h16 l-4,6 4,6 h-16z"/><circle cx="720.0" cy="30.0" r="5"/><text x="712.0" y="18.0" text-anchor="end"><tspan font-weight="600">100%</tspan> finish</text></g>
-<circle class="cl-pt" cx="330.2" cy="158.3" r="5"/>
-<circle class="cl-pt" cx="370.8" cy="151.0" r="5"/>
-<circle class="cl-pt" cx="411.4" cy="151.0" r="5"/>
-<circle class="cl-pt now" cx="452.0" cy="143.7" r="5"/>
-<circle class="cl-hit" cx="330.2" cy="158.3" r="16" data-tip="Nov 8, 2026 · 65% · First count" tabindex="0"><title>Nov 8, 2026 · 65% · First count</title></circle>
-<circle class="cl-hit" cx="370.8" cy="151.0" r="16" data-tip="Nov 9, 2026 · 67% · Manuals and installed gear filled in" tabindex="0"><title>Nov 9, 2026 · 67% · Manuals and installed gear filled in</title></circle>
-<circle class="cl-hit" cx="411.4" cy="151.0" r="16" data-tip="Nov 10, 2026 · 67% · No change" tabindex="0"><title>Nov 10, 2026 · 67% · No change</title></circle>
-<circle class="cl-hit" cx="452.0" cy="143.7" r="16" data-tip="Nov 11, 2026 · 69% · Today: tow truck ratings filed" tabindex="0"><title>Nov 11, 2026 · 69% · Today: tow truck ratings filed</title></circle>
-<text class="cl-lab" x="320.2" y="162.3" text-anchor="end">65%</text>
-<g class="cl-rv" data-x="452.0" data-y="143.7" transform="translate(452.0,143.7)"><g transform="translate(-17,-31)"><path d="M2 6h22l4-5h6v14H2z"/><rect x="0" y="6" width="28" height="13" rx="2"/><path class="win" d="M5 9h5v4H5zM13 9h5v4h-5z"/><circle cx="9" cy="21" r="3"/><circle cx="16" cy="21" r="3"/></g></g>
-<text class="cl-now" x="476.0" y="129.7" text-anchor="start"><tspan font-weight="700">69%</tspan> today</text>
-</svg>
-<svg class="cl-svg m" viewBox="0 0 400 264" role="img" aria-labelledby="cl-t1"><title id="cl-t1">Line chart: our records went from 65 percent complete on November 8 to 69 percent by November 11. A dashed path ahead shows the goal: about 85 percent next, then 100 percent.</title>
-<g class="cl-bands">
-<rect class="bg" x="38" y="30.0" width="348" height="33.3"/>
-<rect class="by" x="38" y="63.3" width="348" height="133.3"/>
-<rect class="br" x="38" y="196.7" width="348" height="33.3"/>
-</g><g class="cl-grid">
-<line x1="38" x2="386" y1="230.0" y2="230.0"/><text x="30" y="234.0" text-anchor="end">40%</text>
-<line x1="38" x2="386" y1="196.7" y2="196.7"/><text x="30" y="200.7" text-anchor="end">50%</text>
-<line x1="38" x2="386" y1="163.3" y2="163.3"/><text x="30" y="167.3" text-anchor="end">60%</text>
-<line x1="38" x2="386" y1="130.0" y2="130.0"/><text x="30" y="134.0" text-anchor="end">70%</text>
-<line x1="38" x2="386" y1="96.7" y2="96.7"/><text x="30" y="100.7" text-anchor="end">80%</text>
-<line x1="38" x2="386" y1="63.3" y2="63.3"/><text x="30" y="67.3" text-anchor="end">90%</text>
-<line x1="38" x2="386" y1="30.0" y2="30.0"/><text x="30" y="34.0" text-anchor="end">100%</text>
-</g>
-<rect class="cl-ahead" x="229.4" y="16" width="156.6" height="214"/>
-<text class="cl-zone" x="239.4" y="220" text-anchor="start">THE ROAD AHEAD</text>
-<line class="cl-today" x1="229.4" x2="229.4" y1="16" y2="230"/>
-<text class="cl-x" x="38.0" y="250" text-anchor="middle">Nov 1</text>
-<text class="cl-x" x="95.4" y="250" text-anchor="middle">4</text>
-<text class="cl-x" x="172.0" y="250" text-anchor="middle">8</text>
-<text class="cl-x" x="229.4" y="250" text-anchor="middle">11</text>
-<text class="cl-x" x="386.0" y="250" text-anchor="end">Coming months</text>
-<polygon class="cl-area" points="172.0,230 172.0,146.7 191.1,140.0 210.3,140.0 229.4,133.3 229.4,230"/>
-<polyline class="cl-line" pathLength="1" points="172.0,146.7 191.1,140.0 210.3,140.0 229.4,133.3"/>
-<path class="cl-proj" d="M229.4,133.3 C269.4,133.3 259.9,80.0 299.9,80.0 S330.0,30.0 360.0,30.0"/>
-<g class="cl-ms"><circle cx="299.9" cy="80.0" r="6"/><text x="299.9" y="104.0" text-anchor="middle"><tspan font-weight="600">Next stop</tspan><tspan x="299.9" dy="16">about 85%</tspan></text></g>
-<g class="cl-flag"><line x1="360.0" x2="360.0" y1="30.0" y2="4.0"/><path class="cl-flagcloth" d="M360.0,4.0 h16 l-4,6 4,6 h-16z"/><circle cx="360.0" cy="30.0" r="5"/><text x="352.0" y="18.0" text-anchor="end"><tspan font-weight="600">100%</tspan> finish</text></g>
-<circle class="cl-pt" cx="172.0" cy="146.7" r="5"/>
-<circle class="cl-pt" cx="191.1" cy="140.0" r="5"/>
-<circle class="cl-pt" cx="210.3" cy="140.0" r="5"/>
-<circle class="cl-pt now" cx="229.4" cy="133.3" r="5"/>
-<circle class="cl-hit" cx="172.0" cy="146.7" r="16" data-tip="Nov 8, 2026 · 65% · First count" tabindex="0"><title>Nov 8, 2026 · 65% · First count</title></circle>
-<circle class="cl-hit" cx="191.1" cy="140.0" r="16" data-tip="Nov 9, 2026 · 67% · Manuals and installed gear filled in" tabindex="0"><title>Nov 9, 2026 · 67% · Manuals and installed gear filled in</title></circle>
-<circle class="cl-hit" cx="210.3" cy="140.0" r="16" data-tip="Nov 10, 2026 · 67% · No change" tabindex="0"><title>Nov 10, 2026 · 67% · No change</title></circle>
-<circle class="cl-hit" cx="229.4" cy="133.3" r="16" data-tip="Nov 11, 2026 · 69% · Today: tow truck ratings filed" tabindex="0"><title>Nov 11, 2026 · 69% · Today: tow truck ratings filed</title></circle>
-<text class="cl-lab" x="162.0" y="150.7" text-anchor="end">65%</text>
-<g class="cl-rv" data-x="229.4" data-y="133.3" transform="translate(229.4,133.3)"><g transform="translate(-17,-31)"><path d="M2 6h22l4-5h6v14H2z"/><rect x="0" y="6" width="28" height="13" rx="2"/><path class="win" d="M5 9h5v4H5zM13 9h5v4h-5z"/><circle cx="9" cy="21" r="3"/><circle cx="16" cy="21" r="3"/></g></g>
-<text class="cl-now" x="205.4" y="119.3" text-anchor="end"><tspan font-weight="700">69%</tspan> today</text>
-</svg>
-
-        <div class="cl-tip" role="status" aria-live="polite"></div>
-      </figure>
-      <figure class="cl-fig">
-        <p class="cl-cap">Work sessions, November</p>
-<svg class="cl-svg d" viewBox="0 0 760 84" role="img" aria-label="Bar chart of work sessions per day, November 1 to 11: 15 sessions in all, the busiest day November 9 with 4."><line class="cl-base" x1="46" x2="746" y1="62" y2="62"/>
-<rect class="cl-bar" x="39.0" y="50" width="14" height="12" rx="3"><title>Nov 1: 1 work session</title></rect>
-<rect class="cl-hit" x="32.0" y="0" width="28" height="62" data-tip="Nov 1 · 1 work session" tabindex="0"/>
-<text class="cl-x" x="46.0" y="80" text-anchor="middle">1</text>
-<rect class="cl-bar" x="79.6" y="50" width="14" height="12" rx="3"><title>Nov 2: 1 work session</title></rect>
-<rect class="cl-hit" x="72.6" y="0" width="28" height="62" data-tip="Nov 2 · 1 work session" tabindex="0"/>
-<text class="cl-x" x="86.6" y="80" text-anchor="middle">2</text>
-<rect class="cl-bar" x="120.2" y="50" width="14" height="12" rx="3"><title>Nov 3: 1 work session</title></rect>
-<rect class="cl-hit" x="113.2" y="0" width="28" height="62" data-tip="Nov 3 · 1 work session" tabindex="0"/>
-<text class="cl-x" x="127.2" y="80" text-anchor="middle">3</text>
-<rect class="cl-bar" x="160.8" y="38" width="14" height="24" rx="3"><title>Nov 4: 2 work sessions</title></rect>
-<rect class="cl-hit" x="153.8" y="0" width="28" height="62" data-tip="Nov 4 · 2 work sessions" tabindex="0"/>
-<text class="cl-x" x="167.8" y="80" text-anchor="middle">4</text>
-<circle class="cl-zero" cx="208.4" cy="62" r="2"/>
-<text class="cl-x" x="208.4" y="80" text-anchor="middle">5</text>
-<circle class="cl-zero" cx="249.0" cy="62" r="2"/>
-<text class="cl-x" x="249.0" y="80" text-anchor="middle">6</text>
-<circle class="cl-zero" cx="289.6" cy="62" r="2"/>
-<text class="cl-x" x="289.6" y="80" text-anchor="middle">7</text>
-<rect class="cl-bar" x="323.2" y="38" width="14" height="24" rx="3"><title>Nov 8: 2 work sessions</title></rect>
-<rect class="cl-hit" x="316.2" y="0" width="28" height="62" data-tip="Nov 8 · 2 work sessions" tabindex="0"/>
-<text class="cl-x" x="330.2" y="80" text-anchor="middle">8</text>
-<rect class="cl-bar" x="363.8" y="14" width="14" height="48" rx="3"><title>Nov 9: 4 work sessions</title></rect>
-<rect class="cl-hit" x="356.8" y="0" width="28" height="62" data-tip="Nov 9 · 4 work sessions" tabindex="0"/>
-<text class="cl-x" x="370.8" y="80" text-anchor="middle">9</text>
-<rect class="cl-bar" x="404.4" y="38" width="14" height="24" rx="3"><title>Nov 10: 2 work sessions</title></rect>
-<rect class="cl-hit" x="397.4" y="0" width="28" height="62" data-tip="Nov 10 · 2 work sessions" tabindex="0"/>
-<text class="cl-x" x="411.4" y="80" text-anchor="middle">10</text>
-<rect class="cl-bar" x="445.0" y="38" width="14" height="24" rx="3"><title>Nov 11: 2 work sessions</title></rect>
-<rect class="cl-hit" x="438.0" y="0" width="28" height="62" data-tip="Nov 11 · 2 work sessions" tabindex="0"/>
-<text class="cl-x" x="452.0" y="80" text-anchor="middle">11</text>
-<text class="cl-x" x="599.0" y="56" text-anchor="middle">More to come as papers turn up</text>
-</svg>
-<svg class="cl-svg m" viewBox="0 0 400 84" role="img" aria-label="Bar chart of work sessions per day, November 1 to 11: 15 sessions in all, the busiest day November 9 with 4."><line class="cl-base" x1="38" x2="386" y1="62" y2="62"/>
-<rect class="cl-bar" x="33.0" y="50" width="10" height="12" rx="3"><title>Nov 1: 1 work session</title></rect>
-<rect class="cl-hit" x="24.0" y="0" width="28" height="62" data-tip="Nov 1 · 1 work session" tabindex="0"/>
-<text class="cl-x" x="38.0" y="80" text-anchor="middle">1</text>
-<rect class="cl-bar" x="52.1" y="50" width="10" height="12" rx="3"><title>Nov 2: 1 work session</title></rect>
-<rect class="cl-hit" x="43.1" y="0" width="28" height="62" data-tip="Nov 2 · 1 work session" tabindex="0"/>
-<rect class="cl-bar" x="71.3" y="50" width="10" height="12" rx="3"><title>Nov 3: 1 work session</title></rect>
-<rect class="cl-hit" x="62.3" y="0" width="28" height="62" data-tip="Nov 3 · 1 work session" tabindex="0"/>
-<rect class="cl-bar" x="90.4" y="38" width="10" height="24" rx="3"><title>Nov 4: 2 work sessions</title></rect>
-<rect class="cl-hit" x="81.4" y="0" width="28" height="62" data-tip="Nov 4 · 2 work sessions" tabindex="0"/>
-<text class="cl-x" x="95.4" y="80" text-anchor="middle">4</text>
-<circle class="cl-zero" cx="114.6" cy="62" r="2"/>
-<circle class="cl-zero" cx="133.7" cy="62" r="2"/>
-<circle class="cl-zero" cx="152.8" cy="62" r="2"/>
-<rect class="cl-bar" x="167.0" y="38" width="10" height="24" rx="3"><title>Nov 8: 2 work sessions</title></rect>
-<rect class="cl-hit" x="158.0" y="0" width="28" height="62" data-tip="Nov 8 · 2 work sessions" tabindex="0"/>
-<text class="cl-x" x="172.0" y="80" text-anchor="middle">8</text>
-<rect class="cl-bar" x="186.1" y="14" width="10" height="48" rx="3"><title>Nov 9: 4 work sessions</title></rect>
-<rect class="cl-hit" x="177.1" y="0" width="28" height="62" data-tip="Nov 9 · 4 work sessions" tabindex="0"/>
-<rect class="cl-bar" x="205.3" y="38" width="10" height="24" rx="3"><title>Nov 10: 2 work sessions</title></rect>
-<rect class="cl-hit" x="196.3" y="0" width="28" height="62" data-tip="Nov 10 · 2 work sessions" tabindex="0"/>
-<rect class="cl-bar" x="224.4" y="38" width="10" height="24" rx="3"><title>Nov 11: 2 work sessions</title></rect>
-<rect class="cl-hit" x="215.4" y="0" width="28" height="62" data-tip="Nov 11 · 2 work sessions" tabindex="0"/>
-<text class="cl-x" x="229.4" y="80" text-anchor="middle">11</text>
-</svg>
-
-      </figure>
-      <p class="gp"><svg class="hrt" viewBox="0 0 24 24" width="26" height="26" fill="currentColor" aria-hidden="true"><path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.4 3 4.5 6.7 4.5c2.2 0 3.7 1.2 5.3 3 1.6-1.8 3.1-3 5.3-3 3.7 0 5.8 3.9 4.3 7.3C19.5 16.4 12 21 12 21z"/></svg><span><b>Grandma and Grandpa, this one's for you.</b><br>Keep an eye on the little RV. Each time you check in, it should be a bit further up the hill. Once it reaches the flag, every paper is in one safe place.</span></p>
-      <p class="cl-foot">Repairs and upkeep never really hit 100%. Like oil changes, they just keep coming. This line is about getting the paperwork caught up, and then keeping it that way.</p>
-      <details class="cl-nums"><summary>See the numbers</summary>
-        <table><thead><tr><th>Date</th><th>Records complete</th><th>Work sessions</th></tr></thead><tbody>
-          <tr><td>Nov 1–4</td><td>Not counted yet</td><td>5</td></tr>
-          <tr><td>Nov 8</td><td>65%</td><td>2</td></tr>
-          <tr><td>Nov 9</td><td>67%</td><td>4</td></tr>
-          <tr><td>Nov 10</td><td>67%</td><td>2</td></tr>
-          <tr><td>Nov 11</td><td>69%</td><td>2</td></tr>
-          <tr><td>Next stop</td><td>about 85% (goal)</td><td>&ndash;</td></tr>
-        </tbody></table>
-      </details>
+      <div class="cl-road" role="img" aria-label="Our records are 69 percent complete today, up from 65 percent on November 8. Next stop is about 85 percent, then the 100 percent finish.">
+        <span class="cl-track"></span><span class="cl-fill"></span><span class="cl-ahead"></span>
+        <span class="cl-mk st" style="left:0"><span class="lab">0%</span></span>
+        <span class="cl-mk ms" style="left:85%"><span class="dot"></span><span class="lab"><b>Next stop</b> ~85%</span></span>
+        <span class="cl-mk fin" style="left:100%"><span class="dot"></span><svg viewBox="0 0 18 26" width="18" height="26" aria-hidden="true"><line x1="1" x2="1" y1="1" y2="26" stroke="var(--ink)" stroke-width="2"/><path d="M1 1h16l-4 6 4 6H1z" fill="currentColor"/></svg><span class="lab"><b>100%</b><span class="wd"> finish</span></span></span>
+        <span class="cl-mk now" style="left:69%"><svg viewBox="0 0 34 24" width="30" height="22" fill="currentColor" aria-hidden="true"><path d="M2 6h22l4-5h6v14H2z"/><rect x="0" y="6" width="28" height="13" rx="2"/><path fill="var(--card)" d="M5 9h5v4H5zM13 9h5v4h-5z"/><circle cx="9" cy="21" r="3" stroke="var(--card)" stroke-width="1.5"/><circle cx="16" cy="21" r="3" stroke="var(--card)" stroke-width="1.5"/></svg><span class="lab"><b>69%</b> today</span></span>
+      </div>
+      <div class="cl-foot">
+        <p class="gp"><svg class="hrt" viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.4 3 4.5 6.7 4.5c2.2 0 3.7 1.2 5.3 3 1.6-1.8 3.1-3 5.3-3 3.7 0 5.8 3.9 4.3 7.3C19.5 16.4 12 21 12 21z"/></svg><span><b>Grandma and Grandpa:</b> each time you check in, the little RV should be closer to the flag. At the flag, every paper is in one safe place.</span></p>
+        <details class="cl-nums"><summary>See the numbers</summary>
+          <table><thead><tr><th>Date</th><th>Records complete</th><th>Work sessions</th></tr></thead><tbody>
+            <tr><td>Nov 1–4</td><td>Not counted yet</td><td>5</td></tr>
+            <tr><td>Nov 8</td><td>65% (first count)</td><td>2</td></tr>
+            <tr><td>Nov 9</td><td>67% (manuals and installed gear)</td><td>4</td></tr>
+            <tr><td>Nov 10</td><td>67%</td><td>2</td></tr>
+            <tr><td>Nov 11</td><td>69% (tow truck ratings filed)</td><td>2</td></tr>
+            <tr><td>Next stop</td><td>about 85% (goal)</td><td>&ndash;</td></tr>
+          </tbody></table>
+          <p>32 page updates since Nov 8. Repairs and upkeep never really hit 100%. Like oil changes, they just keep coming. This line is about getting the paperwork caught up, and then keeping it that way.</p>
+        </details>
+      </div>
     </section>
 
     <section class="how" aria-labelledby="how-h">
@@ -1085,30 +934,13 @@ try{
 })();
 </script>
 <script>
-(()=>{
+(()=>{ // Road to 100%: fill the road and drive the RV to today's mark once it scrolls into view
   const s=document.querySelector('.climb'); if(!s) return;
-  const tip=s.querySelector('.cl-tip'), fig=tip.parentElement;
-  const show=e=>{const t=e.target.closest('.cl-hit'); if(!t) return; const f=t.closest('.cl-fig'); if(f!==fig&&f){f.appendChild(tip);} 
-    const r=t.getBoundingClientRect(), p=tip.parentElement.getBoundingClientRect();
-    tip.textContent=t.dataset.tip; tip.style.left=(r.left+r.width/2-p.left)+'px'; tip.style.top=(r.top-p.top+4)+'px'; tip.classList.add('on');};
-  const hide=()=>tip.classList.remove('on');
-  s.addEventListener('pointerover',show); s.addEventListener('focusin',show);
-  s.addEventListener('pointerout',hide); s.addEventListener('focusout',hide);
   if(matchMedia('(prefers-reduced-motion: reduce)').matches||!('IntersectionObserver' in window)) return;
   s.classList.add('prep');
-  // RV drives up the measured line to today's point
-  const rvs=[...s.querySelectorAll('.cl-rv')];
-  rvs.forEach(rv=>{const svg=rv.ownerSVGElement, pl=svg.querySelector('.cl-line'); rv._pts=pl.getAttribute('points').trim().split(/\s+/).map(p=>p.split(',').map(Number)); rv.setAttribute('transform','translate('+rv._pts[0].join(',')+')');});
-  const drive=rv=>{const P=rv._pts,seg=[];let tot=0;for(let i=1;i<P.length;i++){const d=Math.hypot(P[i][0]-P[i-1][0],P[i][1]-P[i-1][1]);seg.push(d);tot+=d;}
-    const t0=performance.now()+200,dur=1400;
-    const step=now=>{let k=Math.min(1,Math.max(0,(now-t0)/dur));k=1-Math.pow(1-k,3);let L=k*tot,i=0;while(i<seg.length-1&&L>seg[i]){L-=seg[i];i++;}
-      const f=seg[i]?L/seg[i]:1,x=P[i][0]+(P[i+1][0]-P[i][0])*f,y=P[i][1]+(P[i+1][1]-P[i][1])*f;
-      rv.setAttribute('transform','translate('+x.toFixed(1)+','+y.toFixed(1)+')'); if(k<1) requestAnimationFrame(step);};
-    requestAnimationFrame(step);};
   const io=new IntersectionObserver(es=>{es.forEach(e=>{if(!e.isIntersecting) return; io.disconnect();
-    s.classList.add('go'); rvs.forEach(drive);
-    s.querySelectorAll('.cl-bar').forEach((b,i)=>b.style.transitionDelay=(300+i*90)+'ms');});},{threshold:.35});
-  io.observe(s.querySelector('.cl-fig'));
+    requestAnimationFrame(()=>requestAnimationFrame(()=>s.classList.add('go')));});},{threshold:.5});
+  io.observe(s.querySelector('.cl-road'));
 })();
 </script>
 <script>
