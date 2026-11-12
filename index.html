@@ -563,8 +563,17 @@ main>.chapter{grid-column:1/-1}
 .tl-foot .tl-z{margin-left:auto;color:#6f9a7a}
 /* Visitor micro-feed: this visit only, built in the browser; nothing is sent or stored */
 .tail.vf{margin-top:-8px}
-.vf .tl-out{height:96px}
-.vf .tl-out li{grid-template-columns:21ch 4ch 12ch minmax(0,1fr)}
+.vf .tl-out{height:136px}
+.vf .tl-out li{color:#aab7c0}
+.vf .lv.s2{color:#7fd494}.vf .lv.s3{color:#8cbbe0}.vf .lv.s4{color:#f0bd45}.vf .lv.s5{color:#f07a62}.vf .lv.shit{color:#9fd3e6}.vf .lv.sopq{color:#5f6e79}
+.vf .tl-out .p{color:#e6eef3}.vf .tl-out .h3{color:#c9a7ef}.vf .tl-out .ms{color:#7d8a94}.vf .tl-out .xo{color:#8cbbe0}
+.vf .tl-out li.dim .msg{color:#7d8a94}
+.vf .tl-out .cur.pin{display:flex;gap:1ch;align-items:center;background:rgba(92,196,121,.10);color:#cfe9d6;border-radius:3px;padding:0 4px;margin-top:2px}
+.vf .tl-out .cur.pin::after{order:3}
+.vf .tl-out li{grid-template-columns:25ch 4ch 12ch minmax(0,1fr)}
+.vf .lv[title],.vf .src[title]{cursor:help}
+.vf .lv.lv-seen{color:#ff8fb1}.vf .tl-out li.seen .msg{color:#ffd0dd}.vf .tl-out li.seen .src{color:#ff8fb1}
+.tail a.vf-st{color:#0b1116}
 .vf .tl-out .msg{white-space:nowrap;overflow:hidden}
 .vf .tl-out li.you{background:rgba(92,196,121,.12);box-shadow:inset 2px 0 0 #5cc479;border-radius:3px}
 .vf .tl-out li.you .msg{color:#e6eef3;font-weight:600}
@@ -573,7 +582,7 @@ main>.chapter{grid-column:1/-1}
 .vf .tl-up{font-variant-numeric:tabular-nums}
 .vf .tl-out li.you .msg{white-space:normal}
 .vf-st{color:#0b1116;background:#f0bd45;border-radius:3px;padding:0 6px;text-decoration:none;font-weight:700}.vf-st:hover{background:#ffd36b}.vf-st:focus-visible{outline:2px solid #f0bd45;outline-offset:2px}
-@media (max-width:620px){.vf .tl-out li{grid-template-columns:9ch 4ch minmax(0,1fr)}}
+@media (max-width:620px){.vf .tl-out li{grid-template-columns:10ch 4ch minmax(0,1fr)}.vf .tl-out .ms3{display:none}}
 .tl-foot .tl-c{display:none}
 /* Ambient tail traffic: heartbeats, pings, watch polls, idle marks */
 .lv-trc,.lv-dbg{color:#5f6e79}.lv-dbg{color:#7d8a94}
@@ -604,7 +613,7 @@ main>.chapter{grid-column:1/-1}
 
 <div class="col">
   <header class="lead">
-    <p class="kicker"><span>News from the Cyclone · November 2026</span><span class="ver" title="Release v1.34.0, built 2026-11-12"><i aria-hidden="true"></i>v1.34.0 <em>build 20261112</em></span></p>
+    <p class="kicker"><span>News from the Cyclone · November 2026</span><span class="ver" title="Release v1.35.0, built 2026-11-12"><i aria-hidden="true"></i>v1.35.0 <em>build 20261112</em></span></p>
     <h1>Still rolling. Still grateful.</h1>
     <div class="stage">
       <div class="rig">
@@ -814,11 +823,11 @@ main>.chapter{grid-column:1/-1}
     <div class="tl-foot"><b>terminus</b><span class="tl-w">0:tail*</span><span class="tl-n">0 lines</span><span>src: <span class="tl-src">build snapshot</span></span><span class="tl-w">ctrl: <a href="https://www.iso.org/standard/27001" target="_blank" rel="noopener">ISO 27001 A.8.32</a> · <a href="https://www.aicpa-cima.com/topic/audit-assurance/audit-and-assurance-greater-than-soc-2" target="_blank" rel="noopener">SOC 2 CC8.1</a> · <a href="https://www.nist.gov/cyberframework" target="_blank" rel="noopener">CSF PR.PS-01</a></span><span class="tl-c">ctrl: A.8.32 · CC8.1 · PR.PS-01</span><a class="tl-lk" href="https://github.com/eko-e7/terminus-rv/commits/main" target="_blank" rel="noopener" title="Every change to this page, on GitHub">git log ↗</a><a class="tl-lk" href="https://github.com/eko-e7/terminus-rv/pulls?q=is%3Apr+is%3Amerged" target="_blank" rel="noopener" title="Every merged change request">PRs ↗</a><span class="tl-z">UTC</span></div>
   </section>
   <section class="tail vf" id="vf" aria-label="Your visit, live: what this page saw of your visit, shown only to you">
-    <div class="tl-bar"><span class="tl-dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="tl-cmd"><b>ops@terminus-hq</b>:<u>~</u>$ journalctl -f -u <span class="h">terminus-</span>visitor-gw</span><span class="tl-live" aria-hidden="true"><i></i>LIVE</span></div>
-    <ol class="tl-out" role="log" tabindex="0" aria-label="Your visit, newest last"></ol>
-    <div class="tl-foot"><b>visitor-gw</b><span class="tl-w">1:journal*</span><span>sess <span class="vf-id">----</span></span><span>up <span class="tl-up">00:00:00</span></span><a href="#privacy" title="How we handle privacy">geo: not collected · cookies: 0</a><a class="vf-st" href="https://eko.goatcounter.com" target="_blank" rel="noopener" title="See the anonymous visit counts">stats ↗</a><span class="tl-z">UTC</span></div>
+    <div class="tl-bar"><span class="tl-dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="tl-cmd"><b>ops@terminus-hq</b>:<u>~</u>$ journalctl -f -u <span class="h">terminus-</span>visitor-gw <span class="h">-o short-iso --no-pager</span></span><span class="tl-live" aria-hidden="true"><i></i>LIVE</span><button type="button" class="tl-x" aria-expanded="false" aria-controls="vf-out">[+] expand</button></div>
+    <ol class="tl-out" id="vf-out" role="log" aria-live="off" tabindex="0" aria-label="Your visit, raw: every request and event from this page load, newest last"></ol>
+    <div class="tl-foot"><b>visitor-gw</b><span class="tl-w">1:journal*</span><span>sess <span class="vf-id">----</span></span><span>up <span class="tl-up">00:00:00</span></span><span>req <span class="vf-req">0</span> · <span class="vf-kb">0 KB</span> · err <span class="vf-err">0</span></span><a href="#privacy" title="How we handle privacy">by us: no geo · cookies 0</a><span>seen by ≥<span class="vf-eye">0</span></span><a class="vf-st" href="https://eko.goatcounter.com" target="_blank" rel="noopener" title="See the anonymous visit counts">stats ↗</a><span class="tl-z">UTC</span></div>
   </section>
-  <footer><span>The Terminus City RV Project</span><span class="sep" aria-hidden="true">·</span><span>Updated <span class="mo-l">November</span><span class="mo-s">Nov</span> 11, 2026</span><span class="sep sep-v" aria-hidden="true">·</span><span class="ver" title="Release v1.34.0, built 2026-11-12"><i aria-hidden="true"></i>v1.34.0 <em>build 20261112</em></span></footer>
+  <footer><span>The Terminus City RV Project</span><span class="sep" aria-hidden="true">·</span><span>Updated <span class="mo-l">November</span><span class="mo-s">Nov</span> 11, 2026</span><span class="sep sep-v" aria-hidden="true">·</span><span class="ver" title="Release v1.35.0, built 2026-11-12"><i aria-hidden="true"></i>v1.35.0 <em>build 20261112</em></span></footer>
 </div>
 <script type="module">
 const PTS = [[35.3, -97.5], [35.4, -97.5], [34.8, -92.5], [35.6, -87.0], [34.0, -84.4], [34.8, -84.8], [34.0, -84.4], [34.2, -84.1], [36.2, -86.7], [34.0, -84.4], [31.2, -83.5], [26.5, -81.8], [26.5, -82.1], [34.0, -84.4], [30.4, -88.8], [30.2, -92.0], [29.2, -94.9], [29.4, -98.4], [30.6, -103.9], [32.1, -111.0], [36.1, -115.2], [36.7, -119.8], [38.3, -122.7], [40.6, -124.2], [41.5, -124.0], [42.0, -124.3], [43.4, -124.2], [43.7, -124.2], [44.7, -123.8], [43.2, -122.1], [44.1, -121.3], [43.4, -116.7], [40.9, -111.9], [39.7, -110.8], [38.8, -109.8], [39.1, -108.5], [35.2, -101.7], [32.9, -96.6], [32.8, -96.6], [29.7, -98.1], [36.6, -93.2], [36.8, -90.4], [37.4, -88.9], [38.1, -86.9], [34.7, -83.7]];
@@ -1092,8 +1101,8 @@ try{
   const box=document.getElementById('tail'); if(!box) return;
   const out=box.querySelector('.tl-out'), btn=box.querySelector('.tl-x'), srcEl=box.querySelector('.tl-src'), nEl=box.querySelector('.tl-n');
   const GH='https://github.com/eko-e7/terminus-rv';
-  const BUILD='2026-11-12T02:48:00Z', REL='v1.34.0', API='https://api.github.com/repos/eko-e7/terminus-rv/pulls?state=closed&sort=updated&direction=desc&per_page=20';
-  const SEED=[{"n":48,"t":"Breadcrumb links from both terminals to GitHub and analytics (v1.33.0)","m":"2026-11-12T02:41:37Z","b":"breadcrumbs","l":["enhancement"]},{"n":47,"t":"Add live visitor micro-feed under the change log (v1.32.0)","m":"2026-11-12T02:23:03Z","b":"visitor-feed","l":["enhancement","privacy"]},{"n":46,"t":"Add tail -f change log panel above the footer (v1.31.0)","m":"2026-11-12T02:16:41Z","b":"tail-log","l":["enhancement","privacy"]},{"n":45,"t":"Restore the Grandma and Grandpa callout box (v1.30.1)","m":"2026-11-12T01:44:13Z","b":"gp-callout","l":["enhancement"]},{"n":44,"t":"Two-chapter page: What's next for the rig, then Behind the scenes (v1.30.0)","m":"2026-11-11T22:11:56Z","b":"page-two-chapters","l":["enhancement","content"]},{"n":43,"t":"Propane gauges fixed: tank levels and sensor batteries under the to-do item (v1.29.0)","m":"2026-11-11T21:41:06Z","b":"lp-micro-status","l":["enhancement","content"]},{"n":42,"t":"Streamline Getting organized: merge Road to 100%, fix RV marker","m":"2026-11-11T21:27:40Z","b":"org-road-merge","l":["bug","enhancement"]},{"n":41,"t":"Power banner + flush Standby caption on radio shelf","m":"2026-11-11T21:18:33Z","b":"power-radio-banners","l":["enhancement","content"]},{"n":40,"t":"Condense \"The road to 100%\" to about a quarter of its height","m":"2026-11-11T20:55:29Z","b":"road-to-100-compact","l":["enhancement"]},{"n":39,"t":"Tighten Comms column: lead with 'Internet connected'","m":"2026-11-11T20:33:22Z","b":"comms-column-tighten","l":["enhancement","content"]},{"n":38,"t":"SOC: add weBoost and Pepwave 7-in-1 to Comms (Active)","m":"2026-11-11T16:16:20Z","b":"soc-cell-boost","l":["enhancement","content"]},{"n":37,"t":"SOC: split forward response vehicle (deployable) from tow-capable unit (stood down)","m":"2026-11-11T16:12:07Z","b":"soc-forward-vehicle","l":["enhancement","content"]},{"n":36,"t":"SOC: add Deployment model panel (HQ + forward unit, go-kit, Starlink Mini)","m":"2026-11-11T16:07:22Z","b":"soc-deployment-model","l":["enhancement","content"]},{"n":35,"t":"Add 'Keep this page handy' bookmark call to action (v1.28.0)","m":"2026-11-11T15:00:56Z","b":"bookmark-cta","l":["enhancement","content"]},{"n":34,"t":"The road to 100%: completeness-over-time chart + tow recount (v1.27.0)","m":"2026-11-11T14:53:28Z","b":"road-to-100","l":["enhancement","content"]},{"n":33,"t":"Fix Comms status badge overflowing its card","m":"2026-11-11T14:47:40Z","b":"fix/comms-badge-overflow","l":["bug"]},{"n":32,"t":"Add PR ping workflow so new PRs notify the owner","m":"2026-11-11T14:31:52Z","b":"pr-ping","l":["enhancement"]}];
+  const BUILD='2026-11-12T03:03:00Z', REL='v1.35.0', API='https://api.github.com/repos/eko-e7/terminus-rv/pulls?state=closed&sort=updated&direction=desc&per_page=20';
+  const SEED=[{"n":49,"t":"Ambient tail -f traffic: heartbeats, real pings, live merge watch (v1.34.0)","m":"2026-11-12T02:53:42Z","b":"tail-ambient","l":["enhancement"]},{"n":48,"t":"Breadcrumb links from both terminals to GitHub and analytics (v1.33.0)","m":"2026-11-12T02:41:37Z","b":"breadcrumbs","l":["enhancement"]},{"n":47,"t":"Add live visitor micro-feed under the change log (v1.32.0)","m":"2026-11-12T02:23:03Z","b":"visitor-feed","l":["enhancement","privacy"]},{"n":46,"t":"Add tail -f change log panel above the footer (v1.31.0)","m":"2026-11-12T02:16:41Z","b":"tail-log","l":["enhancement","privacy"]},{"n":45,"t":"Restore the Grandma and Grandpa callout box (v1.30.1)","m":"2026-11-12T01:44:13Z","b":"gp-callout","l":["enhancement"]},{"n":44,"t":"Two-chapter page: What's next for the rig, then Behind the scenes (v1.30.0)","m":"2026-11-11T22:11:56Z","b":"page-two-chapters","l":["enhancement","content"]},{"n":43,"t":"Propane gauges fixed: tank levels and sensor batteries under the to-do item (v1.29.0)","m":"2026-11-11T21:41:06Z","b":"lp-micro-status","l":["enhancement","content"]},{"n":42,"t":"Streamline Getting organized: merge Road to 100%, fix RV marker","m":"2026-11-11T21:27:40Z","b":"org-road-merge","l":["bug","enhancement"]},{"n":41,"t":"Power banner + flush Standby caption on radio shelf","m":"2026-11-11T21:18:33Z","b":"power-radio-banners","l":["enhancement","content"]},{"n":40,"t":"Condense \"The road to 100%\" to about a quarter of its height","m":"2026-11-11T20:55:29Z","b":"road-to-100-compact","l":["enhancement"]},{"n":39,"t":"Tighten Comms column: lead with 'Internet connected'","m":"2026-11-11T20:33:22Z","b":"comms-column-tighten","l":["enhancement","content"]},{"n":38,"t":"SOC: add weBoost and Pepwave 7-in-1 to Comms (Active)","m":"2026-11-11T16:16:20Z","b":"soc-cell-boost","l":["enhancement","content"]},{"n":37,"t":"SOC: split forward response vehicle (deployable) from tow-capable unit (stood down)","m":"2026-11-11T16:12:07Z","b":"soc-forward-vehicle","l":["enhancement","content"]},{"n":36,"t":"SOC: add Deployment model panel (HQ + forward unit, go-kit, Starlink Mini)","m":"2026-11-11T16:07:22Z","b":"soc-deployment-model","l":["enhancement","content"]},{"n":35,"t":"Add 'Keep this page handy' bookmark call to action (v1.28.0)","m":"2026-11-11T15:00:56Z","b":"bookmark-cta","l":["enhancement","content"]},{"n":34,"t":"The road to 100%: completeness-over-time chart + tow recount (v1.27.0)","m":"2026-11-11T14:53:28Z","b":"road-to-100","l":["enhancement","content"]},{"n":33,"t":"Fix Comms status badge overflowing its card","m":"2026-11-11T14:47:40Z","b":"fix/comms-badge-overflow","l":["bug"]},{"n":32,"t":"Add PR ping workflow so new PRs notify the owner","m":"2026-11-11T14:31:52Z","b":"pr-ping","l":["enhancement"]}];
   /* Rig status snapshot, mirrors the unit dashboard as of this build */
   const SNAP=[
     ['OK','health','power: shore 50A · backups 3/3 (gen standby, solar ok, inverter ok)'],
@@ -1208,45 +1217,157 @@ try{
 })();
 </script>
 <script>
-/* Visitor micro-feed: logs this visit as it happens, entirely in the browser */
+/* Visitor feed, raw: every request, timing and interaction from THIS page load, streamed like an access log.
+   All real, all from the visitor's own browser; nothing is sent or stored. Held while off screen, then spilled. */
 (()=>{
   const box=document.getElementById('vf'); if(!box) return;
-  const out=box.querySelector('.tl-out'), up=box.querySelector('.tl-up'), idEl=box.querySelector('.vf-id');
-  const t0=Date.now(), MAX=14, rows=[];
+  const out=box.querySelector('.tl-out'), up=box.querySelector('.tl-up'), idEl=box.querySelector('.vf-id'), btn=box.querySelector('.tl-x');
+  const rqEl=box.querySelector('.vf-req'), kbEl=box.querySelector('.vf-kb'), erEl=box.querySelector('.vf-err');
+  const t0=Date.now(), MAX=90, Q=[], RM=matchMedia('(prefers-reduced-motion: reduce)').matches, SP='⠋⠙⠹⠸⠼⠴⠦⠧⠇⠏';
   const sid=Array.from(crypto.getRandomValues(new Uint8Array(3)),b=>b.toString(16).padStart(2,'0')).join('');
   idEl.textContent=sid;
+  let inView=false, you=false, req=0, bytes=0, errs=0, spi=0;
   const esc=v=>String(v).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
   const ua=navigator.userAgent;
   const dev=/iPad|Tablet/.test(ua)||(/Macintosh/.test(ua)&&navigator.maxTouchPoints>1)?'tablet':/iPhone|Android.+Mobile|Mobile/.test(ua)?'phone':'desktop';
   const os=/iPhone|iPad|iOS/.test(ua)||(/Macintosh/.test(ua)&&navigator.maxTouchPoints>1)?'ios':/Android/.test(ua)?'android':/Mac OS X/.test(ua)?'macos':/Windows/.test(ua)?'windows':/CrOS/.test(ua)?'chromeos':/Linux/.test(ua)?'linux':'unknown';
   const br=/Edg\//.test(ua)?'edge':/Firefox\//.test(ua)?'firefox':/CriOS|Chrome\//.test(ua)?'chrome':/Safari\//.test(ua)?'safari':'browser';
   const theme=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';
-  function log(lv,src,msg,cls,at){
+  const TO=performance.timeOrigin||t0-performance.now();
+  /* plain-English tooltips: hover or long-press a code to learn what it means */
+  const TIP={'200':'200 OK: the file arrived fresh over the internet','204':'204 No Content: request worked, nothing to send back','301':'301: moved permanently, the browser followed the new address','304':'304 Not Modified: your copy is still current, nothing re-sent','404':'404 Not Found: asked for something that isn’t there','HIT':'Cache hit: your device already had this, so nothing was downloaded','OPQ':'Opaque: another site served this and keeps its details private (normal and safe)',
+    'NEW':'A new visit just connected','PASS':'A check that passed','OK':'All good','INFO':'Information','DBG':'Debug: behind-the-scenes detail engineers use','TRC':'Trace: the finest, chattiest level of detail','WARN':'Worth a look, not an emergency','NOTE':'Something noteworthy happened','STAT':'A statistic',
+    img:'A picture loading',script:'A program the page runs',css:'Styling: colors and layout',link:'Fonts or styles linked by the page',fetch:'Data the page asked for on its own, like the GitHub log or a ping',xmlhttprequest:'Data the page asked for on its own',beacon:'A tiny one-way message (here: the anonymous visit counter)',other:'Another kind of file',
+    perf:'Performance: how fast things showed up on your screen',gfx:'Graphics: how smoothly your screen is redrawing',ui:'Something you did: scrolling, tapping, resizing',net:'Your internet connection',nav:'The page itself loading: looking up the address, connecting securely, first bytes',hw:'Your device’s basic specs, read locally and never sent',gw:'The front door: where your visit came in',privacy:'What we do not collect',
+    'SEEN':'Someone other than us who could see that this visit happened. Every server your device talks to sees your internet address and the time. That is how the internet works, not a hack.'};
+  /* queue a line: at=epoch ms, lv=label, lc=level class */
+  function q(at,lv,lc,src,msg,cls){
     const t=new Date(at||Date.now()).toISOString();
-    rows.push('<li'+(cls?' class="'+cls+'"':'')+'><time datetime="'+t+'"><span class="d">'+t.slice(0,10)+' </span>'+t.slice(11,19)+'Z</time><span class="lv lv-'+lv.toLowerCase()+'">'+(lv.length<4?' '+lv+' ':lv)+'</span><span class="src">'+esc(src)+'</span><span class="msg">'+msg+'</span></li>');
-    while(rows.length>MAX) rows.shift();
-    out.innerHTML=rows.join('')+'<li class="cur" aria-hidden="true"></li>';
-    out.scrollTop=out.scrollHeight;
+    Q.push('<li'+(cls?' class="'+cls+'"':'')+'><time datetime="'+t+'"><span class="d">'+t.slice(0,10)+' </span>'+t.slice(11,19)+'<span class="ms3">'+t.slice(19,23)+'</span>Z</time><span class="lv '+lc+'"'+(TIP[lv]?' title="'+TIP[lv]+'"':'')+'>'+(lv.length<4?' '+lv+' ':lv)+'</span><span class="src"'+(TIP[src]?' title="'+TIP[src]+'"':'')+'>'+esc(src)+'</span><span class="msg">'+msg+'</span></li>');
+    if(Q.length>240) Q.splice(0,Q.length-240);
   }
-  const nav=performance.getEntriesByType&&performance.getEntriesByType('navigation')[0];
+  const log=(lv,src,msg,cls,at)=>q(at,lv,'lv-'+lv.toLowerCase(),src,msg,cls);
+  /* the pinned bottom row */
+  const cur=document.createElement('li'); cur.className='cur pin'; cur.setAttribute('aria-hidden','true'); out.appendChild(cur);
+  const kb=n=>n>1048576?(n/1048576).toFixed(1)+' MB':Math.round(n/1024)+' KB';
+  function pin(){
+    cur.innerHTML='<span class="spin">'+(RM?'·':SP[spi%SP.length])+'</span><span>'+(you?'sess '+sid+' · that’s you \u{1F44B} · '+req+' req · '+kb(bytes)+' · seen by ≥'+seen.size+' · '+(Q.length?'+'+Q.length+' buffered':'following'):(Q.length?'spooling '+Q.length+' buffered lines …':'following stream …'))+'</span>';
+    rqEl.textContent=req; kbEl.textContent=kb(bytes); erEl.textContent=errs;
+  }
+  function add(html){
+    cur.insertAdjacentHTML('beforebegin',html);
+    if(!RM){const n=cur.previousElementSibling;n&&n.classList.add('nw');}
+    while(out.children.length>MAX+1) out.removeChild(out.firstElementChild);
+    if(!box.classList.contains('open')||out.scrollHeight-out.scrollTop-out.clientHeight<80) out.scrollTop=out.scrollHeight;
+  }
+  (function drip(){
+    let wait=400;
+    if(inView&&!document.hidden&&Q.length){
+      const k=Q.length>80?3:Q.length>30?2:1;
+      for(let i=0;i<k&&Q.length;i++) add(Q.shift());
+      pin();
+      wait=Q.length>30?45:Q.length>8?110:140+Math.random()*420;
+    }
+    setTimeout(drip,wait);
+  })();
+  if(!RM) setInterval(()=>{if(!inView||document.hidden) return;spi++;const sp=cur.querySelector('.spin');if(sp) sp.textContent=SP[spi%SP.length];},110);
+  btn.addEventListener('click',()=>{const o=box.classList.toggle('open');btn.setAttribute('aria-expanded',o);btn.textContent=o?'[–] collapse':'[+] expand';requestAnimationFrame(()=>{out.scrollTop=out.scrollHeight;});});
+
+  /* session open */
   const ref=document.referrer?(()=>{try{return new URL(document.referrer).hostname}catch(e){return 'link'}})():'direct';
   log('NEW','gw','inbound '+location.protocol.replace(':','')+' · '+esc(location.hostname||'local')+' · ref='+esc(ref),'',t0);
-  log('INFO','sess['+sid+']',dev+' · '+os+' · '+br+' · '+theme+' mode · '+innerWidth+'px','',t0+1);
-  log('PASS','privacy','<a href="#privacy">geo not collected · no cookies · no names</a> · session ends with tab','',t0+2);
-  window.addEventListener('load',()=>{const ms=nav?Math.round(nav.loadEventStart||nav.duration):Math.round(performance.now());log('OK','render','page ready in '+ms+' ms');},{once:true});
-  /* Optional real total from GoatCounter (only shows if the public counter is enabled) */
+  log('INFO','sess['+sid+']',dev+' · '+os+' · '+br+' · '+theme+' mode · '+innerWidth+'×'+innerHeight+' @'+(devicePixelRatio||1)+'x','',t0);
+  log('PASS','privacy','<a href="#privacy">geo not collected · no cookies · no names</a> · session ends with tab','',t0);
+  const cn=navigator.connection;
+  if(navigator.hardwareConcurrency) log('DBG','hw','cores='+navigator.hardwareConcurrency+(navigator.deviceMemory?' mem≈'+navigator.deviceMemory+'GB':'')+' touch='+(navigator.maxTouchPoints||0)+' lang='+esc(navigator.language||'-'),'dim',t0);
+  const netLine=()=>log('INFO','net','link '+esc(cn.effectiveType||'?')+' · rtt≈'+(cn.rtt??'?')+'ms · down≈'+(cn.downlink??'?')+'Mbps'+(cn.saveData?' · save-data':''));
+  if(cn){netLine();cn.addEventListener&&cn.addEventListener('change',()=>{log('WARN','net','link changed');netLine();});}
+
+  /* navigation timing breakdown */
+  const ms=v=>Math.max(0,Math.round(v));
+  window.addEventListener('load',()=>setTimeout(()=>{
+    const n=performance.getEntriesByType&&performance.getEntriesByType('navigation')[0];
+    if(n){
+      log('DBG','nav','dns '+ms(n.domainLookupEnd-n.domainLookupStart)+'ms · tcp '+ms(n.connectEnd-n.connectStart)+'ms · tls '+(n.secureConnectionStart?ms(n.connectEnd-n.secureConnectionStart):0)+'ms · ttfb '+ms(n.responseStart-n.requestStart)+'ms','',TO+n.responseStart);
+      log('DBG','nav','<span class="p">GET '+esc(location.pathname)+'</span> '+proto(n.nextHopProtocol)+' '+(n.transferSize||'-')+' · dom '+ms(n.domContentLoadedEventEnd)+'ms','',TO+n.domContentLoadedEventEnd);
+      log('OK','render','page ready in '+ms(n.loadEventStart||n.duration)+' ms','',TO+(n.loadEventEnd||n.duration));
+    } else log('OK','render','page ready in '+ms(performance.now())+' ms');
+  },0),{once:true});
+
+  /* who else could see this visit: every server you connect to sees your IP address and the time */
+  const eyeEl=box.querySelector('.vf-eye'), seen=new Set();
+  const eye=(key,src,msg,at)=>{if(seen.has(key)) return;seen.add(key);eyeEl.textContent=seen.size;log('SEEN',src,msg,'seen',at);};
+  const VENDOR={safari:'Apple',chrome:'Google',edge:'Microsoft',firefox:'Mozilla'};
+  eye('isp','isp','\u{1F441} your internet provider or cell carrier · sees you connected to '+esc(location.hostname||'this site')+', not what you read (HTTPS)',t0);
+  eye('dns','dns','\u{1F441} your DNS service · looked up this address for you, keeps lookups per its own policy',t0);
+  if(/github\.io$/.test(location.hostname)){eye('cdn','cdn','\u{1F441} Fastly edge network (GitHub Pages) · delivered this page, sees your IP',t0);eye('gh','host','\u{1F441} GitHub (Microsoft) · hosts this page, keeps standard server logs',t0);}
+  if(VENDOR[br]) eye('br','browser','\u{1F441} '+VENDOR[br]+' (your browser maker) · may check sites against a safe-browsing list',t0);
+  const ORG=[[/googleapis\.com$|gstatic\.com$/,'Google Fonts','served the lettering on this page · sees your IP and this page'],[/goatcounter\.com$|zgo\.at$/,'GoatCounter','our anonymous visit counter · counts the visit, no cookies or names'],[/api\.github\.com$/,'GitHub API','served the change log · sees your IP'],[/open-meteo\.com$/,'Open-Meteo','served the campground weather · sees your IP'],[/unpkg\.com$/,'unpkg','served the US map outline for the route · sees your IP'],[/./,'','a third-party server · sees your IP']];
+  /* every network request this page makes, access-log style */
+  function proto(p){return p==='h3'?'<span class="h3">HTTP/3</span>':p==='h2'?'HTTP/2':p?esc(String(p).toUpperCase()):'-';}
+  function res(e){
+    let u; try{u=new URL(e.name);}catch(x){return;}
+    if(u.protocol==='data:'||u.protocol==='blob:') return;
+    const same=u.origin===location.origin;
+    const path=(same?'':'<span class="xo">'+esc(u.hostname)+'</span>')+esc(u.pathname.length>46?u.pathname.slice(0,22)+'…'+u.pathname.slice(-20):u.pathname);
+    let st=e.responseStatus||0, lab, cls;
+    if(st){lab=String(st);cls='s'+String(st)[0];if(st>=400) errs++;}
+    else if(e.transferSize===0&&e.decodedBodySize>0){lab='HIT';cls='shit';}
+    else if(e.transferSize>0){lab='200';cls='s2';}
+    else {lab='OPQ';cls='sopq';}
+    req++; bytes+=e.transferSize||0;
+    if(!same&&!/github\.io$/.test(u.hostname)){const o=ORG.find(r=>r[0].test(u.hostname));eye(o[1]||u.hostname,'3p','\u{1F441} '+(o[1]?esc(o[1])+' ('+esc(u.hostname)+')':esc(u.hostname))+' · '+o[2],TO+e.startTime);}
+    const meth=/[?&]ping=/.test(u.search)?'HEAD':'GET';
+    q(TO+e.responseEnd,lab,cls,e.initiatorType||'other','<span class="p">'+meth+' '+path+'</span> '+proto(e.nextHopProtocol)+' '+(e.transferSize||'-')+' <span class="ms">'+ms(e.duration)+'ms</span>');
+  }
+  try{new PerformanceObserver(l=>l.getEntries().forEach(res)).observe({type:'resource',buffered:true});}
+  catch(x){(performance.getEntriesByType('resource')||[]).forEach(res);}
+
+  /* paint + web vitals as they happen */
+  const obs=(type,fn)=>{try{new PerformanceObserver(l=>l.getEntries().forEach(fn)).observe({type,buffered:true});}catch(x){}};
+  const tag=el=>el?esc(el.tagName.toLowerCase()+(el.id?'#'+el.id:el.classList&&el.classList[0]?'.'+el.classList[0]:'')):'?';
+  obs('paint',e=>log('DBG','perf',e.name.replace('first-','first ').replace('contentful','contentful')+' '+ms(e.startTime)+'ms','',TO+e.startTime));
+  obs('largest-contentful-paint',e=>log('DBG','perf','LCP candidate '+ms(e.startTime)+'ms &lt;'+tag(e.element)+'&gt; '+(e.size||0)+'px²','',TO+e.startTime));
+  let cls=0; obs('layout-shift',e=>{if(e.hadRecentInput) return;cls+=e.value;if(e.value<.001) return;log(e.value>.05?'WARN':'TRC','perf','layout-shift +'+e.value.toFixed(4)+' Σ'+cls.toFixed(4),'dim',TO+e.startTime);});
+  obs('longtask',e=>log('WARN','perf','longtask '+ms(e.duration)+'ms · main thread blocked','',TO+e.startTime));
+  obs('first-input',e=>log('DBG','perf','first-input '+esc(e.name)+' delay '+ms(e.processingStart-e.startTime)+'ms','',TO+e.startTime));
+
+  /* frame-rate sampler while the panel is watched */
+  let frames=0,last=performance.now(),jank=0,lf=performance.now();
+  (function raf(t){frames++;if(t-lf>50) jank++;lf=t;
+    if(t-last>=5000){if(inView&&!document.hidden) log(jank>3?'WARN':'TRC','gfx','fps='+Math.round(frames*1000/(t-last))+' dropped='+jank,'dim');frames=0;jank=0;last=t;}
+    requestAnimationFrame(raf);})(performance.now());
+
+  /* interactions */
+  let lastY=-1, st=0;
+  addEventListener('scroll',()=>{if(st) return;st=setTimeout(()=>{st=0;const H=document.documentElement.scrollHeight-innerHeight,y=Math.round(scrollY),pct=H>0?Math.round(y/H*100):0;
+    if(Math.abs(pct-lastY)>=6){log('TRC','ui','scroll y='+y+' ('+pct+'%) '+(pct>lastY?'↓':'↑'),'dim');lastY=pct;}},600);},{passive:true});
+  addEventListener('click',e=>{const el=e.target.closest('a,button,summary,img,[role=button]')||e.target;const tx=(el.textContent||el.alt||'').trim().replace(/\s+/g,' ').slice(0,28);
+    log('TRC','ui','click &lt;'+tag(el)+'&gt;'+(tx?' "'+esc(tx)+'"':''),'dim');},true);
+  let rz=0; addEventListener('resize',()=>{clearTimeout(rz);rz=setTimeout(()=>log('TRC','ui','resize '+innerWidth+'×'+innerHeight,'dim'),400);});
+  addEventListener('copy',()=>log('NOTE','ui','clipboard copy '+String(getSelection()||'').length+' chars'));
+  addEventListener('online',()=>log('OK','net','link up · back online'));
+  addEventListener('offline',()=>log('WARN','net','link down · offline'));
+  addEventListener('blur',()=>log('TRC','ui','window blur','dim'));
+  addEventListener('focus',()=>log('TRC','ui','window focus','dim'));
+  document.addEventListener('visibilitychange',()=>log(document.hidden?'NOTE':'INFO','sess['+sid+']',document.hidden?'tab in background · holding':'welcome back · resumed'));
+
+  /* optional real total from GoatCounter */
   fetch('https://eko.goatcounter.com/counter/TOTAL.json').then(r=>r.ok?r.json():null).then(d=>{if(d&&d.count) log('STAT','count','<a href="https://eko.goatcounter.com" target="_blank" rel="noopener">'+esc(d.count)+' visits counted to date</a> · anonymous');}).catch(()=>{});
-  /* Reading trail: logs each part of the page as this visitor reaches it */
+
+  /* reading trail + the hello */
   const marks=[['.route','route','reading: where the road has taken us'],['.todo-sec','todo','reading: what’s next for the rig'],['.org','org','reading: getting organized'],['.how','how','reading: how this update comes together'],['.mru','mru','entered: mobile response unit'],['#tail','changes','reviewing the change log']];
   if('IntersectionObserver' in window){
     const io=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting) return;io.unobserve(e.target);const m=e.target._vf;log('INFO','trail['+m[1]+']',m[2]);}),{threshold:.25});
     marks.forEach(m=>{const el=document.querySelector(m[0]);if(el){el._vf=m;io.observe(el);}});
-    const me=new IntersectionObserver(es=>{if(es.some(e=>e.isIntersecting)){me.disconnect();setTimeout(()=>log('OK','sess['+sid+']','\u{1F44B} that’s you, live. thanks for stopping by!','you'),450);}},{threshold:.6});
+    new IntersectionObserver(es=>{inView=es.some(e=>e.isIntersecting);},{rootMargin:'60px'}).observe(box);
+    const me=new IntersectionObserver(es=>{if(es.some(e=>e.isIntersecting)){me.disconnect();
+      const hi=()=>{if(Q.length>6) return setTimeout(hi,300);log('OK','sess['+sid+']','\u{1F44B} that’s you, live, in all that noise. thanks for stopping by!','you');you=true;};setTimeout(hi,600);}},{threshold:.6});
     me.observe(box);
-  }
-  document.addEventListener('visibilitychange',()=>log(document.hidden?'NOTE':'INFO','sess['+sid+']',document.hidden?'tab in background · holding':'welcome back · resumed'));
+  } else inView=true;
+  pin();
   const pad=n=>String(n).padStart(2,'0');
-  setInterval(()=>{const s=Math.floor((Date.now()-t0)/1000);up.textContent=pad(Math.floor(s/3600))+':'+pad(Math.floor(s/60)%60)+':'+pad(s%60);},1000);
+  setInterval(()=>{const s=Math.floor((Date.now()-t0)/1000);up.textContent=pad(Math.floor(s/3600))+':'+pad(Math.floor(s/60)%60)+':'+pad(s%60);if(!Q.length) pin();},1000);
 })();
 </script>
 <script data-goatcounter="https://eko.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
