@@ -535,6 +535,35 @@ main>.chapter{grid-column:1/-1}
 @media (prefers-reduced-motion:reduce){.climb.go *{transition:none!important}}
 .cl-stats .wd{display:none}
 @media (max-width:559px){.cl-mk .wd{display:none}.gp{font-size:14px}.climb{padding:8px 10px 10px}.cl-stats{gap:5px}.cl-stats li{padding:4px 7px;font-size:12.5px;gap:4px}.cl-stats b{font-size:15px}.cl-spark{width:34px;height:12px}.acc .key{gap:4px 14px;font-size:13.5px;padding:10px 16px}}
+/* tail -f change log: build traceability panel above the footer (always dark, like the SOC unit) */
+.tail{--tm:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;margin:4px 0 18px;background:#0b1116;color:#c9d4db;border:1px solid #24323d;border-radius:12px;overflow:hidden;box-shadow:inset 0 0 0 1px rgba(92,196,121,.06);font:500 12.5px/20px var(--tm)}
+.tl-bar{display:flex;align-items:center;gap:10px;padding:8px 12px;background:#121b22;border-bottom:1px solid #24323d}
+.tl-dots{display:flex;gap:6px;flex:none}.tl-dots i{width:10px;height:10px;border-radius:50%;background:#f07a62}.tl-dots i+i{background:#f0bd45}.tl-dots i+i+i{background:#5cc479}
+.tl-cmd{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:#93a1ab}
+.tl-cmd b{color:#7fd494;font-weight:600}.tl-cmd u{text-decoration:none;color:#8cbbe0}
+.tl-live{display:inline-flex;align-items:center;gap:6px;flex:none;font:700 10.5px/1 var(--tm);letter-spacing:.12em;color:#7fd494}
+.tl-live i{width:7px;height:7px;border-radius:50%;background:#5cc479;animation:mruPulse 2s infinite}
+.tl-x{flex:none;font:600 11.5px/1 var(--tm);color:#8cbbe0;background:none;border:1px solid #2c3a45;border-radius:6px;padding:5px 8px;cursor:pointer}
+.tl-x:hover{border-color:#8cbbe0}.tl-x:focus-visible,.tl-out:focus-visible{outline:2px solid #8cbbe0;outline-offset:2px}
+.tl-out{list-style:none;margin:0;padding:8px 12px;height:136px;overflow:hidden;-webkit-mask-image:linear-gradient(transparent,#000 34px);mask-image:linear-gradient(transparent,#000 34px);transition:height .3s ease}
+.tail.open .tl-out{height:min(360px,60vh);overflow-y:auto;-webkit-mask-image:none;mask-image:none;scrollbar-width:thin;scrollbar-color:#2c3a45 transparent}
+.tl-out li{display:grid;grid-template-columns:21ch 4ch 12ch minmax(0,1fr);column-gap:1.4ch;white-space:nowrap}
+.tl-out li>*{min-width:0;overflow:hidden;text-overflow:ellipsis}
+.tail.open .tl-out .msg{white-space:normal;overflow:visible}
+.tl-out time{color:#5f6e79}
+.tl-out .src{color:#93a1ab}
+.tl-out .lv{font-weight:700;text-align:center}
+.lv-info{color:#8cbbe0}.lv-ok,.lv-pass{color:#7fd494}.lv-warn{color:#f0bd45}.lv-fix{color:#f07a62}.lv-note{color:#c9a7ef}
+.tl-out .tg{font-style:normal;color:#c9a7ef}.tl-out .rel{font-style:normal;color:#f0bd45}.tl-out .br{color:#7fd494}.tl-out q{color:#e6eef3;quotes:"\201C" "\201D"}
+.tl-out .cur{display:block}.tl-out .cur::after{content:"";display:inline-block;width:.6em;height:1.05em;vertical-align:-.15em;background:#7fd494;animation:mruRec 1.1s steps(1) infinite}
+.tail.go .tl-out li{animation:tlIn .28s ease both;animation-delay:calc(var(--i,0)*70ms)}
+@keyframes tlIn{from{opacity:0;transform:translateX(-4px)}to{opacity:1;transform:none}}
+.tl-foot{display:flex;flex-wrap:wrap;gap:2px 14px;padding:5px 12px;background:#1a2a1f;color:#a9d8b4;font:600 11px/1.5 var(--tm);letter-spacing:.02em}
+.tl-foot b{color:#0b1116;background:#5cc479;padding:0 6px;border-radius:3px;font-weight:700}
+.tl-foot .tl-z{margin-left:auto;color:#6f9a7a}
+.tl-foot .tl-c{display:none}
+@media (max-width:620px){.tail{font-size:11.5px}.tl-out li{grid-template-columns:9ch 4ch minmax(0,1fr);column-gap:1.2ch}.tl-out .d,.tl-out .src{display:none}.tl-cmd .h{display:none}.tl-live{display:none}.tl-foot .tl-w,.tl-foot .tl-z{display:none}.tl-foot .tl-c{display:inline}}
+@media (prefers-reduced-motion:reduce){.tl-live i,.tl-out .cur::after,.tail.go .tl-out li{animation:none}.tl-out{transition:none}}
 </style>
 </head>
 <body>
@@ -543,7 +572,7 @@ main>.chapter{grid-column:1/-1}
 
 <div class="col">
   <header class="lead">
-    <p class="kicker"><span>News from the Cyclone · November 2026</span><span class="ver" title="Release v1.30.1, built 2026-11-12"><i aria-hidden="true"></i>v1.30.1 <em>build 20261112</em></span></p>
+    <p class="kicker"><span>News from the Cyclone · November 2026</span><span class="ver" title="Release v1.31.0, built 2026-11-12"><i aria-hidden="true"></i>v1.31.0 <em>build 20261112</em></span></p>
     <h1>Still rolling. Still grateful.</h1>
     <div class="stage">
       <div class="rig">
@@ -747,7 +776,12 @@ main>.chapter{grid-column:1/-1}
     </section>
   </main>
 
-  <footer><span>The Terminus City RV Project</span><span class="sep" aria-hidden="true">·</span><span>Updated <span class="mo-l">November</span><span class="mo-s">Nov</span> 11, 2026</span><span class="sep sep-v" aria-hidden="true">·</span><span class="ver" title="Release v1.30.1, built 2026-11-12"><i aria-hidden="true"></i>v1.30.1 <em>build 20261112</em></span></footer>
+  <section class="tail" id="tail" aria-label="Behind-the-scenes change log: every update to this page, as it shipped">
+    <div class="tl-bar"><span class="tl-dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="tl-cmd"><b>ops@terminus-hq</b>:<u>~/terminus-rv</u>$ tail -f <span class="h">/var/log/terminus/</span>changes.log</span><span class="tl-live" aria-hidden="true"><i></i>FOLLOW</span><button type="button" class="tl-x" aria-expanded="false" aria-controls="tl-out">[+] expand</button></div>
+    <ol class="tl-out" id="tl-out" role="log" tabindex="0" aria-label="Change log, newest last"></ol>
+    <div class="tl-foot"><b>terminus</b><span class="tl-w">0:tail*</span><span class="tl-n">0 lines</span><span>src: <span class="tl-src">build snapshot</span></span><span class="tl-w">ctrl: ISO 27001 A.8.32 · SOC 2 CC8.1 · CSF PR.PS-01</span><span class="tl-c">ctrl: A.8.32 · CC8.1 · PR.PS-01</span><span class="tl-z">UTC</span></div>
+  </section>
+  <footer><span>The Terminus City RV Project</span><span class="sep" aria-hidden="true">·</span><span>Updated <span class="mo-l">November</span><span class="mo-s">Nov</span> 11, 2026</span><span class="sep sep-v" aria-hidden="true">·</span><span class="ver" title="Release v1.31.0, built 2026-11-12"><i aria-hidden="true"></i>v1.31.0 <em>build 20261112</em></span></footer>
 </div>
 <script type="module">
 const PTS = [[35.3, -97.5], [35.4, -97.5], [34.8, -92.5], [35.6, -87.0], [34.0, -84.4], [34.8, -84.8], [34.0, -84.4], [34.2, -84.1], [36.2, -86.7], [34.0, -84.4], [31.2, -83.5], [26.5, -81.8], [26.5, -82.1], [34.0, -84.4], [30.4, -88.8], [30.2, -92.0], [29.2, -94.9], [29.4, -98.4], [30.6, -103.9], [32.1, -111.0], [36.1, -115.2], [36.7, -119.8], [38.3, -122.7], [40.6, -124.2], [41.5, -124.0], [42.0, -124.3], [43.4, -124.2], [43.7, -124.2], [44.7, -123.8], [43.2, -122.1], [44.1, -121.3], [43.4, -116.7], [40.9, -111.9], [39.7, -110.8], [38.8, -109.8], [39.1, -108.5], [35.2, -101.7], [32.9, -96.6], [32.8, -96.6], [29.7, -98.1], [36.6, -93.2], [36.8, -90.4], [37.4, -88.9], [38.1, -86.9], [34.7, -83.7]];
@@ -1013,6 +1047,65 @@ try{
     alt.textContent='Copy the link to send to someone'; alt.hidden=false;
     alt.addEventListener('click',()=>navigator.clipboard.writeText(url).then(()=>{ok.textContent='Link copied. Paste it into a text or email.';ok.hidden=false;}).catch(()=>{}));
   }
+})();
+</script>
+<script>
+/* tail -f change log: seeded from the build, refreshed from the public GitHub API when it scrolls into view */
+(()=>{
+  const box=document.getElementById('tail'); if(!box) return;
+  const out=box.querySelector('.tl-out'), btn=box.querySelector('.tl-x'), srcEl=box.querySelector('.tl-src'), nEl=box.querySelector('.tl-n');
+  const BUILD='2026-11-12T02:15:00Z', REL='v1.31.0', API='https://api.github.com/repos/eko-e7/terminus-rv/pulls?state=closed&sort=updated&direction=desc&per_page=20';
+  const SEED=[{"n":45,"t":"Restore the Grandma and Grandpa callout box (v1.30.1)","m":"2026-11-12T01:44:13Z","b":"gp-callout","l":["enhancement"]},{"n":44,"t":"Two-chapter page: What's next for the rig, then Behind the scenes (v1.30.0)","m":"2026-11-11T22:11:56Z","b":"page-two-chapters","l":["enhancement","content"]},{"n":43,"t":"Propane gauges fixed: tank levels and sensor batteries under the to-do item (v1.29.0)","m":"2026-11-11T21:41:06Z","b":"lp-micro-status","l":["enhancement","content"]},{"n":42,"t":"Streamline Getting organized: merge Road to 100%, fix RV marker","m":"2026-11-11T21:27:40Z","b":"org-road-merge","l":["bug","enhancement"]},{"n":41,"t":"Power banner + flush Standby caption on radio shelf","m":"2026-11-11T21:18:33Z","b":"power-radio-banners","l":["enhancement","content"]},{"n":40,"t":"Condense \"The road to 100%\" to about a quarter of its height","m":"2026-11-11T20:55:29Z","b":"road-to-100-compact","l":["enhancement"]},{"n":39,"t":"Tighten Comms column: lead with 'Internet connected'","m":"2026-11-11T20:33:22Z","b":"comms-column-tighten","l":["enhancement","content"]},{"n":38,"t":"SOC: add weBoost and Pepwave 7-in-1 to Comms (Active)","m":"2026-11-11T16:16:20Z","b":"soc-cell-boost","l":["enhancement","content"]},{"n":37,"t":"SOC: split forward response vehicle (deployable) from tow-capable unit (stood down)","m":"2026-11-11T16:12:07Z","b":"soc-forward-vehicle","l":["enhancement","content"]},{"n":36,"t":"SOC: add Deployment model panel (HQ + forward unit, go-kit, Starlink Mini)","m":"2026-11-11T16:07:22Z","b":"soc-deployment-model","l":["enhancement","content"]},{"n":35,"t":"Add 'Keep this page handy' bookmark call to action (v1.28.0)","m":"2026-11-11T15:00:56Z","b":"bookmark-cta","l":["enhancement","content"]},{"n":34,"t":"The road to 100%: completeness-over-time chart + tow recount (v1.27.0)","m":"2026-11-11T14:53:28Z","b":"road-to-100","l":["enhancement","content"]},{"n":33,"t":"Fix Comms status badge overflowing its card","m":"2026-11-11T14:47:40Z","b":"fix/comms-badge-overflow","l":["bug"]},{"n":32,"t":"Add PR ping workflow so new PRs notify the owner","m":"2026-11-11T14:31:52Z","b":"pr-ping","l":["enhancement"]}];
+  /* Rig status snapshot, mirrors the unit dashboard as of this build */
+  const SNAP=[
+    ['OK','health','power: shore 50A · backups 3/3 (gen standby, solar ok, inverter ok)'],
+    ['WARN','health','generator: 5,500W runs · scheduled service overdue'],
+    ['OK','comms','inet: starlink primary · failover verizon → campground wifi'],
+    ['OK','comms','radio: gmrs×2 ham cb · standby'],
+    ['WARN','fleet','hq: dry-docked · tow unit stood down · fwd vehicle deployable'],
+    ['NOTE','fleet','starlink-mini: inbound · 2nd dish for fwd team']
+  ];
+  const esc=v=>String(v).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+  const stamp=iso=>{const t=new Date(iso).toISOString();return '<time datetime="'+t+'"><span class="d">'+t.slice(0,10)+' </span>'+t.slice(11,19)+'Z</time>';};
+  const line=(at,lv,src,msg,i)=>'<li style="--i:'+i+'">'+stamp(at)+'<span class="lv lv-'+lv.toLowerCase()+'">'+(lv.length<4?' '+lv+' ':lv)+'</span><span class="src">'+esc(src)+'</span><span class="msg">'+msg+'</span></li>';
+  let last='';
+  function render(prs,live,err){
+    const ev=[], merged=prs.filter(p=>p&&p.m);
+    merged.forEach(p=>{
+      const v=(String(p.t).match(/v\d+\.\d+\.\d+/)||[])[0], t=String(p.t).replace(/\s*\(v\d+\.\d+\.\d+\)\s*$/,'');
+      const bug=(p.l||[]).includes('bug');
+      ev.push({at:p.m,lv:bug?'FIX':'INFO',src:'deploy[#'+p.n+']',msg:'merged <span class="br">'+esc(p.b)+'</span> → main <q>'+esc(t)+'</q> '+(p.l||[]).map(l=>'<i class="tg">#'+esc(l)+'</i>').join(' ')+(v?' <i class="rel">'+v+'</i>':'')});
+    });
+    const labeled=merged.filter(p=>(p.l||[]).length).length;
+    const b=Date.parse(BUILD);
+    ev.push({at:BUILD,lv:'INFO',src:'build',msg:'release <i class="rel">'+REL+'</i> packaged · static · noindex · pages'});
+    SNAP.forEach((r,k)=>ev.push({at:new Date(b+(k+1)*1000).toISOString(),lv:r[0],src:r[1],msg:esc(r[2])}));
+    ev.push({at:new Date(b+(SNAP.length+1)*1000).toISOString(),lv:merged.length&&labeled===merged.length?'PASS':'WARN',src:'audit',msg:'change-mgmt: '+labeled+'/'+merged.length+' merged PRs labeled · review gate: owner approval · owner pinged on open'});
+    ev.sort((x,y)=>Date.parse(x.at)-Date.parse(y.at));
+    if(err) ev.push({at:new Date().toISOString(),lv:'WARN',src:'feed',msg:'live refresh lagging ('+esc(err)+') · showing build snapshot · retry on reload'});
+    const keep=ev.slice(-24), n=keep.length;
+    const html=keep.map((e,k)=>line(e.at,e.lv,e.src,e.msg,Math.max(0,k-(n-7)))).join('')+'<li class="cur" aria-hidden="true"></li>';
+    if(html!==last){out.innerHTML=html;last=html;}
+    nEl.textContent=n+' lines'; srcEl.textContent=live?'api.github.com · live':err?'build snapshot · STALE':'build snapshot';
+    out.scrollTop=out.scrollHeight;
+  }
+  render(SEED,false);
+  btn.addEventListener('click',()=>{const o=box.classList.toggle('open');btn.setAttribute('aria-expanded',o);btn.textContent=o?'[–] collapse':'[+] expand';requestAnimationFrame(()=>{out.scrollTop=out.scrollHeight;});});
+  const KEY='tl-prs-v1', TTL=6e5;
+  async function refresh(){
+    try{const c=JSON.parse(sessionStorage.getItem(KEY)||'null');if(c&&Date.now()-c.t<TTL){render(c.d,true);return;}}catch(e){}
+    try{
+      const ac=new AbortController(), to=setTimeout(()=>ac.abort(),6000);
+      const r=await fetch(API,{headers:{Accept:'application/vnd.github+json'},signal:ac.signal}); clearTimeout(to);
+      if(!r.ok){render(SEED,false,r.status===403||r.status===429?'rate limited':'http '+r.status);return;}
+      const d=(await r.json()).filter(p=>p.merged_at).map(p=>({n:p.number,t:p.title,m:p.merged_at,b:p.head&&p.head.ref||'',l:(p.labels||[]).map(l=>l.name)}));
+      if(!d.length){render(SEED,false,'empty response');return;}
+      render(d,true);
+      try{sessionStorage.setItem(KEY,JSON.stringify({t:Date.now(),d}));}catch(e){}
+    }catch(e){render(SEED,false,e&&e.name==='AbortError'?'timeout 6s':'unreachable');}
+  }
+  const go=()=>{box.classList.add('go');refresh();};
+  if('IntersectionObserver' in window){const io=new IntersectionObserver(es=>{if(es.some(e=>e.isIntersecting)){io.disconnect();go();}},{rootMargin:'200px'});io.observe(box);}else go();
 })();
 </script>
 <script data-goatcounter="https://eko.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
