@@ -214,37 +214,13 @@ dialog.lb .nav{position:fixed;background:rgba(255,255,255,.16)}
 .key{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:16px;color:var(--soft);margin-top:12px}
 .key span{display:inline-flex;align-items:center;gap:7px}
 .key span::before{content:"";width:13px;height:13px;border-radius:50%;background:var(--c)}
-.acc{border:1px solid var(--hair);border-radius:12px;background:var(--card);margin-top:14px}
-.acc details+details{border-top:1px solid var(--hair)}
-.acc summary{list-style:none;cursor:pointer;padding:14px 18px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px 12px;align-items:center;min-height:56px}
-.acc summary::-webkit-details-marker{display:none}
-.acc summary:focus-visible{outline:3px solid var(--sky);outline-offset:-3px;border-radius:12px}
-.acc .nm{font-weight:600;min-width:0}
-.acc .pc{font-weight:700;font-variant-numeric:tabular-nums;white-space:nowrap}
-.acc .pc::after{content:"";display:inline-block;width:9px;height:9px;border-right:2.5px solid var(--soft);border-bottom:2.5px solid var(--soft);transform:rotate(45deg);margin-left:14px;vertical-align:3px;transition:transform .2s}
-.acc details[open] .pc::after{transform:rotate(-135deg);vertical-align:-1px}
-.acc .mini{grid-column:1/-1;height:9px;border-radius:5px;background:var(--track);overflow:hidden}
-.acc .mini i{display:block;height:100%;background:var(--c);border-radius:5px}
-.acc .body{padding:0 18px 16px;color:var(--soft)}
-.acc .body b{color:var(--ink)}
 .sub{list-style:none;margin:14px 0 2px 4px;padding:12px 14px 14px 16px;background:var(--paper);border-left:3px solid var(--c);border-radius:4px 10px 10px 4px;display:grid;gap:9px}
 .sub::before{content:"The breakdown";font-size:13px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--soft);margin-bottom:1px}
 .sub li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:3px 10px;align-items:baseline;font-size:16px;line-height:1.4}
 .sub li span{min-width:0}
 .sub li b{color:var(--soft);font-weight:600;font-size:15px;font-variant-numeric:tabular-nums}
 .sub li i{grid-column:1/-1;display:block;height:5px;border-radius:3px;background:var(--track);overflow:hidden}
-.acc details[open]>summary{padding-bottom:10px}
 .sub li em{display:block;height:100%;border-radius:3px;background:var(--c)}
-.rig5{margin-top:18px;border:1px solid var(--hair);border-left:4px solid var(--sky);border-radius:12px;background:var(--card);padding:14px 16px}
-.rig5-h{margin:0 0 10px;font-size:17px;line-height:1.4}
-.rig5-h b{color:var(--ink)}
-.rig5 ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:10px 22px}
-.rig5 li{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:2px 8px;font-size:16px}
-.rig5 li .em{font-size:18px;line-height:1}
-.rig5 li b{color:var(--ink);font-variant-numeric:tabular-nums}
-.rig5 li i{grid-column:1/-1;height:7px;border-radius:4px;background:var(--track);overflow:hidden}
-.rig5 li i em{display:block;height:100%;border-radius:4px;background:var(--c)}
-.rig5-n{margin:10px 0 0;font-size:15px;color:var(--soft)}
 .cg{--c:var(--g)} .cy{--c:var(--y)} .cr{--c:var(--r)}
 .how{background:var(--skybg);border-radius:16px;padding:22px 20px;display:flex;flex-direction:column;gap:22px}
 .how h2{margin:0}
@@ -404,7 +380,7 @@ footer .sep{opacity:.5}
 @media (max-width:520px){.kicker{font-size:13.5px;letter-spacing:.04em}.kicker>span:first-child{white-space:nowrap}}
 .mo-s{display:none}
 @media (max-width:520px){footer{font-size:13px;gap:6px 8px}.mo-l,.sep-v{display:none}.mo-s{display:inline}.ver{flex-basis:auto}}
-@media (prefers-reduced-motion:reduce){.acc .pc::after{transition:none}}
+
 /* Live weather: one quiet row beside the status pill; hidden until real data arrives */
 .hrow{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px}
 .wx{display:flex;align-items:center;gap:14px;margin:2px 0 14px;padding:9px 16px;background:var(--skybg);border:1px solid color-mix(in srgb,var(--sky) 14%,transparent);border-radius:12px;color:var(--soft);font-size:14px;line-height:1.25;animation:wxIn .6s ease both}
@@ -493,12 +469,6 @@ footer .sep{opacity:.5}
   .todo-sec{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:0 24px;align-items:start}
   .todo-sec>h2,.todo-sec>.sub-h{grid-column:1/-1}
   .todo-sec .todo.done{margin-top:0}
-  .org .acc{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));align-items:stretch}
-  .org .acc details{border-top:1px solid var(--hair)}
-  .org .acc details:nth-child(-n+4){border-top:0}
-  .org .acc details:not(:nth-child(4n+1)){border-left:1px solid var(--hair)}
-  .org .acc summary{padding:14px 16px;align-items:start}
-  .org .acc .body{padding:0 16px 16px}
   .how{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px 28px;padding:34px 34px 30px}
   .how>*{grid-column:1/-1}
   .how>div:first-child p{max-width:46em}
@@ -532,7 +502,7 @@ main>.chapter{grid-column:1/-1}
 .todo-sec>.sub-h{color:var(--soft);margin:-8px 0 12px}
 .org h2{margin-bottom:2px}
 .org>.sub-h{color:var(--soft);margin:0 0 4px}
-.climb{--now:69%;display:flex;flex-direction:column;gap:2px;background:var(--card);border:1px solid var(--hair);border-radius:12px;padding:8px 14px 12px;margin-top:10px}
+.climb{--now:72%;display:flex;flex-direction:column;gap:2px;background:var(--card);border:1px solid var(--hair);border-radius:12px;padding:8px 14px 12px;margin-top:10px}
 .cl-road{position:relative;height:66px;margin:0 10px 0 16px}
 .cl-track,.cl-fill,.cl-ahead{position:absolute;top:30px;height:8px;border-radius:4px}
 .cl-track{left:0;right:0;background:var(--track)}
@@ -554,20 +524,97 @@ main>.chapter{grid-column:1/-1}
 .gp{display:flex;gap:12px;align-items:flex-start;background:var(--goodbg);color:var(--ink);border-radius:12px;padding:12px 14px;font-size:15px;line-height:1.4;margin:0}
 .gp .hrt{flex:none;color:var(--good);margin-top:1px}
 .gp b{font-weight:600}
-.cl-foot{display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px}
 .cl-stats{display:flex;flex-wrap:wrap;gap:6px;margin:0;padding:0;list-style:none}
 .cl-stats li{display:flex;align-items:center;gap:6px;background:var(--card);border:1px solid var(--hair);border-radius:10px;padding:4px 9px;font-size:13.5px;color:var(--soft);line-height:1.2}
 .cl-stats b{font:700 17px/1 var(--display);color:var(--ink);font-variant-numeric:tabular-nums}
-.cl-spark{display:block;flex:none;width:50px;height:15px}.cl-spark rect{fill:var(--sky)}.cl-spark circle{fill:var(--hair)}
-.cl-nums{font-size:14px}
-.cl-nums[open]{flex-basis:100%}
-.cl-nums summary{cursor:pointer;color:var(--sky);font-weight:600}
-.cl-nums table{border-collapse:collapse;font-size:14px;margin-top:6px;font-variant-numeric:tabular-nums}
-.cl-nums th,.cl-nums td{text-align:left;padding:3px 14px 3px 0;border-bottom:1px solid var(--hair)}
-.cl-nums p{color:var(--soft);margin:8px 0 0;font-size:14px}
 .org .gp{margin:12px 0}
-.acc .key{grid-column:1/-1;margin:0;padding:12px 18px;border-top:1px solid var(--hair);font-size:14.5px}
-.acc .key span::before{width:11px;height:11px}
+.vh{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+/* Activity ticker: lines up under the road; the trace ends at the RV (today) */
+.climb{--mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+.cl-tick{position:relative;height:74px;margin:-4px 10px 4px 16px}
+.tk-plot{position:absolute;left:0;top:14px;width:var(--now);height:40px;outline:none;cursor:crosshair;touch-action:pan-y}
+.tk-plot:focus-visible{outline:2px solid var(--sky);outline-offset:3px;border-radius:3px}
+.tk-svg{display:block;width:100%;height:100%;overflow:visible}
+.tk-grid line{stroke:var(--hair);stroke-width:1;vector-effect:non-scaling-stroke}
+.tk-grid .dy{opacity:.45}
+.tk-base{stroke:var(--soft);stroke-width:1;opacity:.35;stroke-dasharray:2 3;vector-effect:non-scaling-stroke}
+.tk-bars rect{fill:var(--sky);opacity:.55}
+.tk-wave{fill:none;stroke:var(--g);stroke-width:1.6;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.tk-pip{position:absolute;left:calc(var(--f)*100%);top:-14px;transform:translateX(-50%);font:600 10.5px/1 var(--mono);color:var(--soft);white-space:nowrap}
+.tk-pip::after{content:"";position:absolute;left:50%;top:13px;height:18px;border-left:1px dashed var(--soft);opacity:.5}
+.tk-pip b{color:var(--ink);font-weight:700}
+.tk-live{position:absolute;right:-4px;top:13px;width:8px;height:8px;border-radius:50%;background:var(--g);box-shadow:0 0 0 0 var(--g);animation:tkPulse 2.2s infinite}
+@keyframes tkPulse{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--g) 60%,transparent)}80%,100%{box-shadow:0 0 0 7px transparent}}
+.tk-p16{transform:translateX(-70%)}
+.tk-hair{position:absolute;top:-2px;bottom:-2px;width:0;border-left:1.5px solid var(--sky);opacity:0;pointer-events:none;transition:opacity .15s}
+.tk-plot.on .tk-hair{opacity:1}
+.tk-ahead{display:none}
+.tk-axis{position:absolute;left:0;top:57px;width:var(--now);height:12px}
+.tk-d{position:absolute;left:calc(var(--f)*100%);transform:translateX(-50%);font:600 10.5px/1 var(--mono);letter-spacing:.06em;color:var(--soft);white-space:nowrap}
+.tk-d:first-child{transform:none;left:0}
+.tk-read{position:absolute;left:calc(var(--now) + 18px);right:0;top:20px;margin:0;font:500 11.5px/1.45 var(--mono);color:var(--soft);white-space:normal}
+.tk-read .tk-k{display:block;color:var(--sky);font-weight:700;letter-spacing:.06em}
+.cl-stats{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:0;padding:0;list-style:none}
+.cl-stats li.tk-legend{background:none;border:0;font:500 11.5px/1 var(--mono);color:var(--soft);gap:5px;padding:4px 2px}
+.tk-legend i{display:inline-block;width:14px;height:0;border-top:2px solid var(--g)}
+.tk-legend i.lb{width:4px;height:9px;border:0;background:var(--sky);opacity:.55;margin-left:8px}
+.climb.prep:not(.go) .tk-svg{clip-path:inset(0 100% 0 0)}
+.climb.prep:not(.go) .tk-pip,.climb.prep:not(.go) .tk-live,.climb.prep:not(.go) .tk-read{opacity:0}
+.climb.go .tk-svg{clip-path:inset(0 0 0 0);transition:clip-path 1.6s ease-out .3s}
+.climb.go .tk-pip,.climb.go .tk-read{transition:opacity .4s 1.7s}
+.climb.go .tk-live{transition:opacity .3s 1.9s}
+@media (prefers-reduced-motion:reduce){.tk-live{animation:none}}
+/* Scorecard: two tight rows (the rig, the records); details unfurl one at a time below the records */
+.score{margin-top:14px;border:1px solid var(--hair);border-radius:12px;background:var(--card);padding:6px 16px 4px}
+.sc-row{display:grid;grid-template-columns:104px minmax(0,1fr);gap:8px 16px;align-items:start;padding:12px 0}
+.sc-row+.sc-row{border-top:1px solid var(--hair)}
+.sc-h{margin:0;display:flex;flex-direction:column;line-height:1.15}
+.sc-h span{font-size:12.5px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--soft)}
+.sc-h b{font:700 30px/1.05 var(--display);font-variant-numeric:tabular-nums}
+.sc-h small{font-size:13px;color:var(--soft)}
+.sc-rig,.sc-cells{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.sc-rig{grid-template-columns:repeat(5,minmax(0,1fr))}
+.sc-rig li{display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:4px 6px;font-size:15px;padding:6px 0}
+.sc-rig .em{font-size:16px;line-height:1}
+.sc-rig .nm{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.sc-rig b,.sc-cell b{font:700 15px/1 var(--mono,ui-monospace,Menlo,monospace);font-variant-numeric:tabular-nums;color:var(--ink)}
+.sc-rig i,.sc-cell i{grid-column:1/-1;display:block;height:5px;border-radius:3px;background:var(--track);overflow:hidden}
+.sc-rig em,.sc-cell em{display:block;height:100%;border-radius:3px;background:var(--c)}
+.sc-cells{grid-template-columns:repeat(8,minmax(0,1fr));gap:6px}
+.sc-cell{width:100%;display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:baseline;gap:6px 4px;font:inherit;font-size:13.5px;color:var(--soft);text-align:left;background:none;border:1px solid var(--hair);border-radius:8px;padding:7px 8px 8px;cursor:pointer;min-height:44px}
+.sc-cell .nm{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.sc-cell:hover{border-color:var(--soft)}
+.sc-cell:focus-visible{outline:2px solid var(--sky);outline-offset:2px}
+.sc-cell[aria-expanded="true"]{border-color:var(--sky);background:var(--skybg);color:var(--ink)}
+.sc-panel{margin-top:10px;padding:10px 14px 12px;border-radius:8px;background:var(--paper);border-left:3px solid var(--c,var(--sky));font-size:16px;color:var(--soft)}
+.sc-panel p{margin:0 0 4px}.sc-panel b{color:var(--ink)}
+.sc-panel .sc-t{font-size:15px}
+.sc-panel .sub{margin:8px 0 0;background:var(--card)}
+.sc-what{border-top:1px solid var(--hair);padding:8px 0 10px;font-size:14px;color:var(--soft)}
+.sc-what summary{cursor:pointer;color:var(--sky);font-weight:600}
+.sc-what p{margin:8px 0 0}.sc-what p b{color:var(--ink)}
+.sc-what .key{font-size:14px;margin-top:8px}
+@media (max-width:899px){.sc-cells{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media (max-width:379px){.sc-cells{grid-template-columns:repeat(2,minmax(0,1fr))}.org .sc-cell{grid-template-columns:minmax(0,1fr) auto;min-height:40px}}
+@media (max-width:640px){
+  .sc-row{grid-template-columns:1fr;gap:8px}
+  .sc-h{flex-direction:row;align-items:baseline;gap:8px}
+  .sc-h b{font-size:24px}
+  .sc-rig{grid-template-columns:repeat(5,minmax(0,1fr));gap:6px}
+  .sc-rig li{grid-template-columns:1fr;justify-items:center;text-align:center;gap:3px;font-size:11.5px;padding:2px 0}
+  .sc-rig .nm{white-space:normal;line-height:1.15;min-height:2.3em}
+  .sc-rig i{width:100%}
+  .sc-cell{font-size:12.5px;padding:6px 7px 7px}
+  .cl-tick{height:96px}
+  .tk-read{left:0;right:0;top:74px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .tk-read .tk-k{display:inline;margin-right:6px}
+  .tk-read .tk-n{display:none}
+  .sc-cell{grid-template-columns:1fr;gap:3px}
+  .sc-cell .nm{font-size:12px}
+  .tk-pip{display:none}
+  .tk-d.hm{display:none}
+}
+
 /* Draw-in when scrolled into view (JS adds .prep, then .go; without JS everything is shown at today's mark) */
 .climb.prep:not(.go) .cl-fill{width:0}
 .climb.prep:not(.go) .cl-mk.now{left:0}
@@ -580,7 +627,7 @@ main>.chapter{grid-column:1/-1}
 .climb.go .cl-mk.fin{transition:opacity .5s 2.1s}
 @media (prefers-reduced-motion:reduce){.climb.go *{transition:none!important}}
 .cl-stats .wd{display:none}
-@media (max-width:559px){.cl-mk .wd{display:none}.gp{font-size:14px}.climb{padding:8px 10px 10px}.cl-stats{gap:5px}.cl-stats li{padding:4px 7px;font-size:12.5px;gap:4px}.cl-stats b{font-size:15px}.cl-spark{width:34px;height:12px}.acc .key{gap:4px 14px;font-size:13.5px;padding:10px 16px}}
+@media (max-width:559px){.cl-mk .wd{display:none}.gp{font-size:14px}.climb{padding:8px 10px 10px}.cl-stats{gap:5px}.cl-stats li{padding:4px 7px;font-size:12.5px;gap:4px}.cl-stats b{font-size:15px}}
 /* tail -f change log: build traceability panel above the footer (always dark, like the SOC unit) */
 .tail{--tm:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;margin:4px 0 18px;background:#0b1116;color:#c9d4db;border:1px solid #24323d;border-radius:12px;overflow:hidden;box-shadow:inset 0 0 0 1px rgba(92,196,121,.06);font:500 12.5px/20px var(--tm)}
 .tl-bar{display:flex;align-items:center;gap:10px;padding:8px 12px;background:#121b22;border-bottom:1px solid #24323d}
@@ -659,7 +706,7 @@ main>.chapter{grid-column:1/-1}
 
 <div class="col">
   <header class="lead">
-    <p class="kicker"><span>News from the Cyclone · November 2026</span><span class="ver" title="Release v1.42.1, built 2026-11-16"><i aria-hidden="true"></i>v1.42.1 <em>build 20261116</em></span></p>
+    <p class="kicker"><span>News from the Cyclone · November 2026</span><span class="ver" title="Release v1.43.0, built 2026-11-16"><i aria-hidden="true"></i>v1.43.0 <em>build 20261116</em></span></p>
     <h1>Still rolling. Still grateful.</h1>
     <div class="stage">
       <div class="rig">
@@ -757,53 +804,46 @@ main>.chapter{grid-column:1/-1}
       <h2>Getting organized</h2>
       <p class="sub-h">The RV's records, all in one place.</p>
       <div class="climb">
-        <div class="cl-road" role="img" aria-label="Our records are 69 percent complete today, up from 65 percent on November 8. Next stop is about 85 percent, then the 100 percent finish.">
+        <div class="cl-road" role="img" aria-label="Our records are 72 percent complete today, up from 65 percent on November 8. Next stop is about 85 percent, then the 100 percent finish.">
           <span class="cl-track"></span><span class="cl-fill"></span><span class="cl-ahead"></span>
           <span class="cl-mk ms" style="left:85%"><span class="dot"></span><span class="lab"><b>Next stop</b> ~85%</span></span>
           <span class="cl-mk fin" style="left:100%"><span class="dot"></span><svg viewBox="0 0 18 26" width="18" height="26" aria-hidden="true"><line x1="1" x2="1" y1="1" y2="26" stroke="var(--ink)" stroke-width="2"/><path d="M1 1h16l-4 6 4 6H1z" fill="currentColor"/></svg><span class="lab"><b>100%</b><span class="wd"> finish</span></span></span>
-          <span class="cl-mk now"><svg viewBox="0 0 34 24" width="30" height="22" fill="currentColor" aria-hidden="true"><path d="M2 6h22l4-5h6v14H2z"/><rect x="0" y="6" width="28" height="13" rx="2"/><path fill="var(--card)" d="M5 9h5v4H5zM13 9h5v4h-5z"/><circle cx="9" cy="21" r="3" stroke="var(--card)" stroke-width="1.5"/><circle cx="16" cy="21" r="3" stroke="var(--card)" stroke-width="1.5"/></svg><span class="lab"><b>69%</b> today</span></span>
+          <span class="cl-mk now"><svg viewBox="0 0 34 24" width="30" height="22" fill="currentColor" aria-hidden="true"><path d="M2 6h22l4-5h6v14H2z"/><rect x="0" y="6" width="28" height="13" rx="2"/><path fill="var(--card)" d="M5 9h5v4H5zM13 9h5v4h-5z"/><circle cx="9" cy="21" r="3" stroke="var(--card)" stroke-width="1.5"/><circle cx="16" cy="21" r="3" stroke="var(--card)" stroke-width="1.5"/></svg><span class="lab"><b>72%</b> today</span></span>
         </div>
-        <div class="cl-foot">
-          <ul class="cl-stats">
-          <li><b>+4</b><span>points<span class="wd"> since Nov 8</span></span></li>
-          <li><b>15</b><span><span class="wd">work </span>sessions</span><svg class="cl-spark" viewBox="0 0 66 20" width="66" height="20" role="img" aria-label="Work sessions per day, November 1 to 11: busiest day November 9 with 4."><title>Work sessions per day, Nov 1–11 (busiest: Nov 9, 4 sessions)</title><rect x="0" y="15" width="4" height="5" rx="1"/><rect x="6" y="15" width="4" height="5" rx="1"/><rect x="12" y="15" width="4" height="5" rx="1"/><rect x="18" y="10" width="4" height="10" rx="1"/><circle cx="26" cy="19" r="1"/><circle cx="32" cy="19" r="1"/><circle cx="38" cy="19" r="1"/><rect x="42" y="10" width="4" height="10" rx="1"/><rect x="48" y="0" width="4" height="20" rx="1"/><rect x="54" y="10" width="4" height="10" rx="1"/><rect x="60" y="10" width="4" height="10" rx="1"/></svg></li>
-          <li><b>32</b><span><span class="wd">page </span>updates</span></li>
+        <div class="cl-tick" data-days="16">
+          <div class="tk-plot" tabindex="0" role="group" aria-label="Activity, November 1 to 16: 22 work sessions and 59 page updates. Use the arrow keys to step through the days.">
+            <svg class="tk-svg" viewBox="0 0 160 40" preserveAspectRatio="none" aria-hidden="true"><g class="tk-grid"><line x1="0.0" x2="0.0" y1="0" y2="40" class="wk"/><line x1="10.0" x2="10.0" y1="0" y2="40" class="dy"/><line x1="20.0" x2="20.0" y1="0" y2="40" class="dy"/><line x1="30.0" x2="30.0" y1="0" y2="40" class="dy"/><line x1="40.0" x2="40.0" y1="0" y2="40" class="dy"/><line x1="50.0" x2="50.0" y1="0" y2="40" class="dy"/><line x1="60.0" x2="60.0" y1="0" y2="40" class="dy"/><line x1="70.0" x2="70.0" y1="0" y2="40" class="wk"/><line x1="80.0" x2="80.0" y1="0" y2="40" class="dy"/><line x1="90.0" x2="90.0" y1="0" y2="40" class="dy"/><line x1="100.0" x2="100.0" y1="0" y2="40" class="dy"/><line x1="110.0" x2="110.0" y1="0" y2="40" class="dy"/><line x1="120.0" x2="120.0" y1="0" y2="40" class="dy"/><line x1="130.0" x2="130.0" y1="0" y2="40" class="dy"/><line x1="140.0" x2="140.0" y1="0" y2="40" class="wk"/><line x1="150.0" x2="150.0" y1="0" y2="40" class="dy"/><line x1="160.0" x2="160.0" y1="0" y2="40" class="dy"/></g><line class="tk-base" x1="0" x2="160" y1="17.0" y2="17.0"/><g class="tk-bars"><rect x="3.4" y="38.0" width="3.2" height="2.0"/><rect x="13.4" y="38.0" width="3.2" height="2.0"/><rect x="23.4" y="38.0" width="3.2" height="2.0"/><rect x="33.4" y="36.0" width="3.2" height="4.0"/><rect x="73.4" y="36.0" width="3.2" height="4.0"/><rect x="83.4" y="32.0" width="3.2" height="8.0"/><rect x="93.4" y="36.0" width="3.2" height="4.0"/><rect x="103.4" y="36.0" width="3.2" height="4.0"/><rect x="123.4" y="38.0" width="3.2" height="2.0"/><rect x="133.4" y="36.0" width="3.2" height="4.0"/><rect x="153.4" y="32.0" width="3.2" height="8.0"/></g><path class="tk-wave" d="M0.0,17.0 L0.8,15.3 L1.6,14.7 L2.4,15.7 L3.2,17.6 L4.0,19.0 L4.8,18.9 L5.6,17.6 L6.4,16.0 L7.2,15.3 L8.0,15.8 L8.8,17.0 L9.6,18.0 L10.4,18.2 L11.2,17.6 L12.0,16.7 L12.8,16.1 L13.6,16.0 L14.4,16.7 L15.2,17.6 L16.0,18.2 L16.8,18.0 L17.6,17.1 L18.4,15.9 L19.2,15.3 L20.0,15.9 L20.8,17.4 L21.6,18.8 L22.4,19.0 L23.2,17.8 L24.0,15.9 L24.8,14.7 L25.6,15.1 L26.4,16.8 L27.2,18.8 L28.0,19.6 L28.8,18.6 L29.6,16.5 L30.4,14.6 L31.2,14.4 L32.0,16.0 L32.8,18.2 L33.6,19.3 L34.4,18.9 L35.2,17.2 L36.0,15.6 L36.8,15.1 L37.6,15.9 L38.4,17.3 L39.2,18.3 L40.0,18.4 L40.8,17.5 L41.6,16.5 L42.4,16.2 L43.2,16.4 L44.0,16.9 L44.8,17.3 L45.6,17.5 L46.4,17.3 L47.2,16.9 L48.0,16.6 L48.8,16.5 L49.6,16.8 L50.4,17.2 L51.2,17.5 L52.0,17.4 L52.8,17.1 L53.6,16.7 L54.4,16.6 L55.2,16.8 L56.0,17.0 L56.8,17.2 L57.6,17.2 L58.4,17.1 L59.2,16.9 L60.0,16.8 L60.8,16.8 L61.6,17.0 L62.4,17.2 L63.2,17.3 L64.0,17.2 L64.8,17.0 L65.6,16.7 L66.4,16.4 L67.2,16.6 L68.0,17.5 L68.8,18.8 L69.6,19.2 L70.4,17.6 L71.2,14.7 L72.0,12.7 L72.8,13.7 L73.6,17.4 L74.4,20.9 L75.2,21.5 L76.0,19.2 L76.8,15.5 L77.6,12.9 L78.4,13.1 L79.2,16.0 L80.0,19.6 L80.8,21.3 L81.6,20.2 L82.4,16.8 L83.2,13.4 L84.0,12.2 L84.8,14.4 L85.6,18.8 L86.4,22.5 L87.2,22.8 L88.0,18.8 L88.8,12.6 L89.6,8.8 L90.4,10.5 L91.2,17.2 L92.0,24.6 L92.8,27.0 L93.6,22.5 L94.4,13.9 L95.2,7.4 L96.0,7.6 L96.8,14.2 L97.6,22.5 L98.4,26.7 L99.2,24.1 L100.0,17.0 L100.8,10.6 L101.6,9.1 L102.4,13.0 L103.2,18.9 L104.0,22.8 L104.8,22.5 L105.6,18.7 L106.4,14.1 L107.2,12.0 L108.0,13.3 L108.8,16.9 L109.6,20.0 L110.4,20.5 L111.2,18.7 L112.0,16.4 L112.8,15.6 L113.6,16.1 L114.4,16.8 L115.2,17.2 L116.0,17.5 L116.8,17.5 L117.6,17.0 L118.4,16.2 L119.2,15.7 L120.0,16.1 L120.8,17.4 L121.6,18.6 L122.4,18.8 L123.2,17.7 L124.0,16.1 L124.8,15.3 L125.6,15.7 L126.4,16.9 L127.2,18.1 L128.0,18.5 L128.8,18.0 L129.6,16.7 L130.4,15.4 L131.2,15.0 L132.0,16.1 L132.8,18.2 L133.6,19.9 L134.4,19.8 L135.2,17.4 L136.0,14.3 L136.8,13.0 L137.6,14.5 L138.4,17.7 L139.2,19.9 L140.0,19.7 L140.8,17.9 L141.6,16.2 L142.4,15.7 L143.2,16.3 L144.0,16.9 L144.8,17.3 L145.6,17.5 L146.4,17.5 L147.2,16.8 L148.0,15.5 L148.8,14.9 L149.6,15.9 L150.4,18.3 L151.2,20.2 L152.0,20.1 L152.8,17.6 L153.6,14.2 L154.4,12.3 L155.2,13.6 L156.0,17.7 L156.8,22.0 L157.6,23.4 L158.4,20.1 L159.2,13.9 L160.0,9.0"/></svg><span class="tk-pip" style="--f:0.4688"><b>65%</b></span><span class="tk-pip" style="--f:0.5312"><b>67%</b></span><span class="tk-pip" style="--f:0.6562"><b>69%</b></span><span class="tk-pip tk-p16" style="--f:0.9688"><b>72%</b></span><span class="tk-hair" aria-hidden="true"></span><span class="tk-live" aria-hidden="true"></span>
+          </div>
+          <span class="tk-ahead" aria-hidden="true"></span>
+          <div class="tk-axis" aria-hidden="true"><span class="tk-d" style="--f:0.0312">NOV 1</span><span class="tk-d" style="--f:0.4688">8</span><span class="tk-d hm" style="--f:0.6562">11</span><span class="tk-d" style="--f:0.9688">16</span></div>
+          <p class="tk-read" aria-live="polite"><span class="tk-k">NOV 16</span> 72% · 4 sessions · 3 updates</p>
+          <table class="vh"><caption>Activity by day</caption><thead><tr><th>Day</th><th>Records complete</th><th>Work sessions</th><th>Page updates</th></tr></thead><tbody><tr><td>Nov 1</td><td>not counted yet</td><td>1</td><td>0</td></tr><tr><td>Nov 2</td><td>not counted yet</td><td>1</td><td>0</td></tr><tr><td>Nov 3</td><td>not counted yet</td><td>1</td><td>0</td></tr><tr><td>Nov 4</td><td>not counted yet</td><td>2</td><td>0</td></tr><tr><td>Nov 8</td><td>65%</td><td>2</td><td>2</td></tr><tr><td>Nov 9</td><td>67%</td><td>4</td><td>5</td></tr><tr><td>Nov 10</td><td>67%</td><td>2</td><td>18</td></tr><tr><td>Nov 11</td><td>69%</td><td>2</td><td>28</td></tr><tr><td>Nov 13</td><td>69%</td><td>1</td><td>1</td></tr><tr><td>Nov 14</td><td>69%</td><td>2</td><td>2</td></tr><tr><td>Nov 16</td><td>72%</td><td>4</td><td>3</td></tr></tbody></table>
+        </div>
+        <ul class="cl-stats">
+          <li><b>+7</b><span>points<span class="wd"> since Nov 8</span></span></li>
+          <li><b>22</b><span><span class="wd">work </span>sessions</span></li>
+          <li><b>59</b><span><span class="wd">page </span>updates</span></li>
+          <li class="tk-legend"><i class="lw"></i>activity <i class="lb"></i>sessions per day</li>
         </ul>
-          <details class="cl-nums"><summary>See the numbers</summary>
-          <table><thead><tr><th>Date</th><th>Records complete</th><th>Work sessions</th></tr></thead><tbody>
-            <tr><td>Nov 1–4</td><td>Not counted yet</td><td>5</td></tr>
-            <tr><td>Nov 8</td><td>65% (first count)</td><td>2</td></tr>
-            <tr><td>Nov 9</td><td>67% (manuals and installed gear)</td><td>4</td></tr>
-            <tr><td>Nov 10</td><td>67%</td><td>2</td></tr>
-            <tr><td>Nov 11</td><td>69% (tow truck ratings filed)</td><td>2</td></tr>
-            <tr><td>Next stop</td><td>about 85% (goal)</td><td>&ndash;</td></tr>
-          </tbody></table>
-          <p>Repairs never hit 100%. This tracks the paperwork catching up.</p>
-        </details>
-        </div>
       </div>
       <p class="gp"><svg class="hrt" viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true"><path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.4 3 4.5 6.7 4.5c2.2 0 3.7 1.2 5.3 3 1.6-1.8 3.1-3 5.3-3 3.7 0 5.8 3.9 4.3 7.3C19.5 16.4 12 21 12 21z"/></svg><span><b>Grandma and Grandpa:</b> each time you check in, the little RV should be closer to the flag.</span></p>
-      <div class="rig5" role="group" aria-label="How well we know the rig itself, by area: 78 percent overall. Power 93, heat, A/C and propane 90, wheels, jacks and slides 76, kitchen and living 68, water 67 percent.">
-        <p class="rig5-h"><b>The rig itself: 78%.</b> How well we know each part of the RV, by area.</p>
-        <ul>
-          <li class="cg"><span class="em" aria-hidden="true">⚡</span><span>Power</span><b>93%</b><i><em style="width:93%"></em></i></li>
-          <li class="cg"><span class="em" aria-hidden="true">🔥</span><span>Heat, A/C &amp; propane</span><b>90%</b><i><em style="width:90%"></em></i></li>
-          <li class="cy"><span class="em" aria-hidden="true">🛞</span><span>Wheels, jacks &amp; slides</span><b>76%</b><i><em style="width:76%"></em></i></li>
-          <li class="cy"><span class="em" aria-hidden="true">🛋️</span><span>Kitchen &amp; living</span><b>68%</b><i><em style="width:68%"></em></i></li>
-          <li class="cy"><span class="em" aria-hidden="true">💧</span><span>Water</span><b>67%</b><i><em style="width:67%"></em></i></li>
-        </ul>
-        <p class="rig5-n">“Known” means we have the right manual and have matched the part to its label. It's not a health score. We're still stitching the older records together, so these numbers will climb.</p>
-      </div>
-      <div class="acc">
-        <details class="cg"><summary><span class="nm">Trips and nights</span><span class="pc">98%</span><span class="mini"><i style="width:98%"></i></span></summary><div class="body"><p>Every stop since 2022. <b>Why it matters:</b> when something breaks, we know where we'd been.</p><ul class="sub" aria-label="Trips and nights breakdown"><li class="cg"><span>Stops and dates</span><b>100%</b><i><em style="width:100%"></em></i></li><li class="cg"><span>Miles and drive times</span><b>100%</b><i><em style="width:100%"></em></i></li><li class="cg"><span>Loose ends</span><b>90%</b><i><em style="width:90%"></em></i></li></ul></div></details>
-        <details class="cg"><summary><span class="nm">Purchase and warranties</span><span class="pc">95%</span><span class="mini"><i style="width:95%"></i></span></summary><div class="body"><p>Sale papers and protection plans. <b>Why it matters:</b> we can check if a repair is covered before we pay.</p><ul class="sub" aria-label="Purchase and warranties breakdown"><li class="cg"><span>Sale and title papers</span><b>100%</b><i><em style="width:100%"></em></i></li><li class="cg"><span>Protection plans</span><b>100%</b><i><em style="width:100%"></em></i></li><li class="cy"><span>Factory warranty papers</span><b>85%</b><i><em style="width:85%"></em></i></li></ul></div></details>
-        <details class="cy"><summary><span class="nm">Manuals</span><span class="pc">73%</span><span class="mini"><i style="width:73%"></i></span></summary><div class="body"><p>About 20 makers' manuals. <b>Why it matters:</b> answers come from the maker's own book, not guesswork.</p><ul class="sub" aria-label="Manuals breakdown"><li class="cg"><span>Kitchen and appliances</span><b>95%</b><i><em style="width:95%"></em></i></li><li class="cg"><span>Power and electrical</span><b>90%</b><i><em style="width:90%"></em></i></li><li class="cy"><span>Coach, slides and leveling</span><b>65%</b><i><em style="width:65%"></em></i></li><li class="cr"><span>Air conditioners</span><b>40%</b><i><em style="width:40%"></em></i></li></ul></div></details>
-        <details class="cy"><summary><span class="nm">What's installed</span><span class="pc">79%</span><span class="mini"><i style="width:79%"></i></span></summary><div class="body"><p>Models and labels on the equipment. <b>Why it matters:</b> the right part depends on the exact model.</p><ul class="sub" aria-label="What's installed breakdown"><li class="cg"><span>Kitchen and water</span><b>95%</b><i><em style="width:95%"></em></i></li><li class="cy"><span>Power and electrical</span><b>85%</b><i><em style="width:85%"></em></i></li><li class="cy"><span>Heating and cooling</span><b>60%</b><i><em style="width:60%"></em></i></li><li class="cy"><span>Frame, axles and brakes</span><b>75%</b><i><em style="width:75%"></em></i></li></ul></div></details>
-        <details class="cy"><summary><span class="nm">Repair history</span><span class="pc">60%</span><span class="mini"><i style="width:60%"></i></span></summary><div class="body"><p>Every fix and tune-up. <b>Why it matters:</b> a problem that keeps coming back points to its real cause.</p><ul class="sub" aria-label="Repair history breakdown"><li class="cg"><span>Recent work, 2025 on</span><b>90%</b><i><em style="width:90%"></em></i></li><li class="cy"><span>Generator</span><b>85%</b><i><em style="width:85%"></em></i></li><li class="cr"><span>Early years, 2022 to 2023</span><b>40%</b><i><em style="width:40%"></em></i></li><li class="cr"><span>The Utah repairs</span><b>25%</b><i><em style="width:25%"></em></i></li></ul></div></details>
-        <details class="cy"><summary><span class="nm">Campground and hotel stays</span><span class="pc">50%</span><span class="mini"><i style="width:50%"></i></span></summary><div class="body"><p>What each stay cost. <b>Why it matters:</b> it shows the true cost of life on the road.</p><ul class="sub" aria-label="Campground and hotel stays breakdown"><li class="cy"><span>Campgrounds</span><b>55%</b><i><em style="width:55%"></em></i></li><li class="cr"><span>Hotels and rentals</span><b>45%</b><i><em style="width:45%"></em></i></li></ul></div></details>
-        <details class="cr"><summary><span class="nm">Monthly costs</span><span class="pc">25%</span><span class="mini"><i style="width:25%"></i></span></summary><div class="body"><p>Site rent, power, and internet. <b>Why it matters:</b> it's our biggest gap, and the next thing we'll fill in.</p><ul class="sub" aria-label="Monthly costs breakdown"><li class="cg"><span>Registration</span><b>100%</b><i><em style="width:100%"></em></i></li><li class="cr"><span>Internet</span><b>40%</b><i><em style="width:40%"></em></i></li><li class="cr"><span>Site rent</span><b>0%</b><i><em style="width:2%"></em></i></li><li class="cr"><span>Power and utilities</span><b>0%</b><i><em style="width:2%"></em></i></li><li class="cr"><span>Insurance</span><b>0%</b><i><em style="width:2%"></em></i></li></ul></div></details>
-        <details class="cr"><summary><span class="nm">Tow trucks</span><span class="pc">38%</span><span class="mini"><i style="width:38%"></i></span></summary><div class="body"><p>The trucks that have pulled the rig. <b>Why it matters:</b> safe towing means matching the truck to the trailer's weight.</p><ul class="sub" aria-label="Tow trucks breakdown"><li class="cg"><span>Which trucks and when</span><b>90%</b><i><em style="width:90%"></em></i></li><li class="cy"><span>Towing limits</span><b>60%</b><i><em style="width:60%"></em></i></li><li class="cr"><span>Hitch setup</span><b>0%</b><i><em style="width:2%"></em></i></li><li class="cr"><span>Weigh tickets</span><b>0%</b><i><em style="width:2%"></em></i></li></ul></div></details>
-        <div class="key" aria-label="Color key"><span class="cg">Nearly done</span><span class="cy">In progress</span><span class="cr">Just started</span></div>
+      <div class="score">
+        <div class="sc-row" role="group" aria-label="The rig itself: 78 percent known. Power 93, heat, A/C and propane 90, wheels, jacks and slides 76, kitchen and living 68, water 67 percent.">
+          <p class="sc-h"><span>The rig</span><b>78%</b><small>known</small></p>
+          <ul class="sc-rig"><li class="cg" title="Power: 93%"><span class="em" aria-hidden="true">⚡</span><span class="nm">Power</span><b>93%</b><i><em style="width:93%"></em></i></li><li class="cg" title="Heat, A/C and propane: 90%"><span class="em" aria-hidden="true">🔥</span><span class="nm">Heat &amp; A/C</span><b>90%</b><i><em style="width:90%"></em></i></li><li class="cy" title="Wheels, jacks and slides: 76%"><span class="em" aria-hidden="true">🛞</span><span class="nm">Wheels &amp; slides</span><b>76%</b><i><em style="width:76%"></em></i></li><li class="cy" title="Kitchen and living: 68%"><span class="em" aria-hidden="true">🛋️</span><span class="nm">Kitchen</span><b>68%</b><i><em style="width:68%"></em></i></li><li class="cy" title="Water: 67%"><span class="em" aria-hidden="true">💧</span><span class="nm">Water</span><b>67%</b><i><em style="width:67%"></em></i></li></ul>
+        </div>
+        <div class="sc-row">
+          <p class="sc-h"><span>The records</span><b>72%</b><small>complete</small></p>
+          <div class="sc-rec">
+            <ul class="sc-cells" aria-label="Records by area. Tap one for its breakdown."><li class="cg"><button type="button" class="sc-cell" aria-expanded="false" aria-controls="sc-p"><span class="nm">Trips</span><b>99%</b><i><em style="width:99%"></em></i><span class="vh">, Trips and nights. Show details</span></button><div class="sc-body" hidden><p class="sc-t"><b>Trips and nights</b> · 99%</p><p>Every stop since 2022. <b>Why it matters:</b> when something breaks, we know where we'd been.</p><ul class="sub" aria-label="Trips and nights breakdown"><li class="cg"><span>Stops and dates</span><b>100%</b><i><em style="width:100%"></em></i></li><li class="cg"><span>Miles and drive times</span><b>100%</b><i><em style="width:100%"></em></i></li><li class="cg"><span>Loose ends</span><b>97%</b><i><em style="width:97%"></em></i></li></ul></div></li><li class="cg"><button type="button" class="sc-cell" aria-expanded="false" aria-controls="sc-p"><span class="nm">Warranty</span><b>95%</b><i><em style="width:95%"></em></i><span class="vh">, Purchase and warranties. Show details</span></button><div class="sc-body" hidden><p class="sc-t"><b>Purchase and warranties</b> · 95%</p><p>Sale papers and protection plans. <b>Why it matters:</b> we can check if a repair is covered before we pay.</p><ul class="sub" aria-label="Purchase and warranties breakdown"><li class="cg"><span>Sale and title papers</span><b>100%</b><i><em style="width:100%"></em></i></li><li class="cg"><span>Protection plans</span><b>100%</b><i><em style="width:100%"></em></i></li><li class="cy"><span>Factory warranty papers</span><b>85%</b><i><em style="width:85%"></em></i></li></ul></div></li><li class="cy"><button type="button" class="sc-cell" aria-expanded="false" aria-controls="sc-p"><span class="nm">Manuals</span><b>78%</b><i><em style="width:78%"></em></i><span class="vh">, Manuals. Show details</span></button><div class="sc-body" hidden><p class="sc-t"><b>Manuals</b> · 78%</p><p>About 20 makers' manuals. <b>Why it matters:</b> answers come from the maker's own book, not guesswork.</p><ul class="sub" aria-label="Manuals breakdown"><li class="cg"><span>Kitchen and appliances</span><b>95%</b><i><em style="width:95%"></em></i></li><li class="cg"><span>Power and electrical</span><b>90%</b><i><em style="width:90%"></em></i></li><li class="cy"><span>Coach, slides and leveling</span><b>65%</b><i><em style="width:65%"></em></i></li><li class="cy"><span>Heating and cooling</span><b>60%</b><i><em style="width:60%"></em></i></li></ul></div></li><li class="cy"><button type="button" class="sc-cell" aria-expanded="false" aria-controls="sc-p"><span class="nm">Installed</span><b>83%</b><i><em style="width:83%"></em></i><span class="vh">, What's installed. Show details</span></button><div class="sc-body" hidden><p class="sc-t"><b>What's installed</b> · 83%</p><p>Models and labels on the equipment. <b>Why it matters:</b> the right part depends on the exact model.</p><ul class="sub" aria-label="What's installed breakdown"><li class="cg"><span>Kitchen and water</span><b>95%</b><i><em style="width:95%"></em></i></li><li class="cy"><span>Power and electrical</span><b>85%</b><i><em style="width:85%"></em></i></li><li class="cy"><span>Heating and cooling</span><b>75%</b><i><em style="width:75%"></em></i></li><li class="cy"><span>Frame, axles and brakes</span><b>75%</b><i><em style="width:75%"></em></i></li></ul></div></li><li class="cy"><button type="button" class="sc-cell" aria-expanded="false" aria-controls="sc-p"><span class="nm">Repairs</span><b>61%</b><i><em style="width:61%"></em></i><span class="vh">, Repair history. Show details</span></button><div class="sc-body" hidden><p class="sc-t"><b>Repair history</b> · 61%</p><p>Every fix and tune-up. <b>Why it matters:</b> a problem that keeps coming back points to its real cause.</p><ul class="sub" aria-label="Repair history breakdown"><li class="cg"><span>Recent work, 2025 on</span><b>95%</b><i><em style="width:95%"></em></i></li><li class="cy"><span>Generator</span><b>85%</b><i><em style="width:85%"></em></i></li><li class="cr"><span>Early years, 2022 to 2023</span><b>40%</b><i><em style="width:40%"></em></i></li><li class="cr"><span>The Utah repairs</span><b>25%</b><i><em style="width:25%"></em></i></li></ul></div></li><li class="cy"><button type="button" class="sc-cell" aria-expanded="false" aria-controls="sc-p"><span class="nm">Stays</span><b>55%</b><i><em style="width:55%"></em></i><span class="vh">, Campground and hotel stays. Show details</span></button><div class="sc-body" hidden><p class="sc-t"><b>Campground and hotel stays</b> · 55%</p><p>What each stay cost. <b>Why it matters:</b> it shows the true cost of life on the road.</p><ul class="sub" aria-label="Campground and hotel stays breakdown"><li class="cy"><span>Campgrounds</span><b>62%</b><i><em style="width:62%"></em></i></li><li class="cr"><span>Hotels and rentals</span><b>48%</b><i><em style="width:48%"></em></i></li></ul></div></li><li class="cr"><button type="button" class="sc-cell" aria-expanded="false" aria-controls="sc-p"><span class="nm">Monthly</span><b>25%</b><i><em style="width:25%"></em></i><span class="vh">, Monthly costs. Show details</span></button><div class="sc-body" hidden><p class="sc-t"><b>Monthly costs</b> · 25%</p><p>Site rent, power, and internet. <b>Why it matters:</b> it's our biggest gap, and the next thing we'll fill in.</p><ul class="sub" aria-label="Monthly costs breakdown"><li class="cg"><span>Registration</span><b>100%</b><i><em style="width:100%"></em></i></li><li class="cr"><span>Internet</span><b>40%</b><i><em style="width:40%"></em></i></li><li class="cr"><span>Site rent</span><b>0%</b><i><em style="width:2%"></em></i></li><li class="cr"><span>Power and utilities</span><b>0%</b><i><em style="width:2%"></em></i></li><li class="cr"><span>Insurance</span><b>0%</b><i><em style="width:2%"></em></i></li></ul></div></li><li class="cr"><button type="button" class="sc-cell" aria-expanded="false" aria-controls="sc-p"><span class="nm">Tow</span><b>38%</b><i><em style="width:38%"></em></i><span class="vh">, Tow trucks. Show details</span></button><div class="sc-body" hidden><p class="sc-t"><b>Tow trucks</b> · 38%</p><p>The trucks that have pulled the rig. <b>Why it matters:</b> safe towing means matching the truck to the trailer's weight.</p><ul class="sub" aria-label="Tow trucks breakdown"><li class="cg"><span>Which trucks and when</span><b>90%</b><i><em style="width:90%"></em></i></li><li class="cy"><span>Towing limits</span><b>60%</b><i><em style="width:60%"></em></i></li><li class="cr"><span>Hitch setup</span><b>0%</b><i><em style="width:2%"></em></i></li><li class="cr"><span>Weigh tickets</span><b>0%</b><i><em style="width:2%"></em></i></li></ul></div></li></ul>
+            <div class="sc-panel" id="sc-p" hidden></div>
+          </div>
+        </div>
+        <details class="sc-what"><summary>What these numbers mean</summary>
+          <p><b>The rig</b>: “known” means we have the right manual and have matched the part to its label. It's not a health score.</p>
+          <p><b>The records</b>: how much of the paperwork is caught up. Repairs never hit 100%; this tracks the paperwork catching up. The total weighs what a tech needs most: manuals and warranties count triple, monthly costs once, everything else double. Tap any area for its breakdown.</p>
+          <div class="key" aria-label="Color key"><span class="cg">Nearly done</span><span class="cy">In progress</span><span class="cr">Just started</span></div>
+        </details>
       </div>
     </section>
 
@@ -894,7 +934,7 @@ main>.chapter{grid-column:1/-1}
     <ol class="tl-out" id="vf-out" role="log" aria-live="off" tabindex="0" aria-label="Your visit, raw: every request and event from this page load, newest last"></ol>
     <div class="tl-foot"><b>visitor-gw</b><span class="tl-w">1:journal*</span><span>sess <span class="vf-id">----</span></span><span>up <span class="tl-up">00:00:00</span></span><span>req <span class="vf-req">0</span> · <span class="vf-kb">0 KB</span> · err <span class="vf-err">0</span></span><a href="#privacy" title="How we handle privacy">by us: no geo · cookies 0</a><span>seen by ≥<span class="vf-eye">0</span></span><a class="vf-st" href="https://eko.goatcounter.com" target="_blank" rel="noopener" title="See the anonymous visit counts">stats ↗</a><span class="tl-z">UTC</span></div>
   </section>
-  <footer><span>The Terminus City RV Project</span><span class="sep" aria-hidden="true">·</span><span>Updated <span class="mo-l">November</span><span class="mo-s">Nov</span> 16, 2026</span><span class="sep sep-v" aria-hidden="true">·</span><span class="ver" title="Release v1.42.1, built 2026-11-16"><i aria-hidden="true"></i>v1.42.1 <em>build 20261116</em></span></footer>
+  <footer><span>The Terminus City RV Project</span><span class="sep" aria-hidden="true">·</span><span>Updated <span class="mo-l">November</span><span class="mo-s">Nov</span> 16, 2026</span><span class="sep sep-v" aria-hidden="true">·</span><span class="ver" title="Release v1.43.0, built 2026-11-16"><i aria-hidden="true"></i>v1.43.0 <em>build 20261116</em></span></footer>
 </div>
 <script type="module">
 const PTS = [[35.3, -97.5], [35.4, -97.5], [34.8, -92.5], [35.6, -87.0], [34.0, -84.4], [34.8, -84.8], [34.0, -84.4], [34.2, -84.1], [36.2, -86.7], [34.0, -84.4], [31.2, -83.5], [26.5, -81.8], [26.5, -82.1], [34.0, -84.4], [30.4, -88.8], [30.2, -92.0], [29.2, -94.9], [29.4, -98.4], [30.6, -103.9], [32.1, -111.0], [36.1, -115.2], [36.7, -119.8], [38.3, -122.7], [40.6, -124.2], [41.5, -124.0], [42.0, -124.3], [43.4, -124.2], [43.7, -124.2], [44.7, -123.8], [43.2, -122.1], [44.1, -121.3], [43.4, -116.7], [40.9, -111.9], [39.7, -110.8], [38.8, -109.8], [39.1, -108.5], [35.2, -101.7], [32.9, -96.6], [32.8, -96.6], [29.7, -98.1], [36.6, -93.2], [36.8, -90.4], [37.4, -88.9], [38.1, -86.9], [34.7, -83.7]];
@@ -1124,6 +1164,36 @@ try{
 })();
 </script>
 <script>
+(()=>{ // Activity ticker readout + scorecard drawers
+  const tk=document.querySelector('.cl-tick');
+  if(tk){
+    const D=[[1,0,0],[1,0,0],[1,0,0],[2,0,0],[0,0,0],[0,0,0],[0,0,0],[2,2,65],[4,5,67],[2,18,67],[2,28,69],[0,0,69],[1,1,69],[2,2,69],[0,0,69],[4,3,72]], plot=tk.querySelector('.tk-plot'), hair=tk.querySelector('.tk-hair'), out=tk.querySelector('.tk-read');
+    const N=D.length, NOTE={1:'project started',8:'first count',9:'manuals and installed gear',11:'tow truck ratings filed',16:'rig areas counted; travel loose ends confirmed'};
+    let cur=N-1;
+    const show=(i,on)=>{cur=Math.max(0,Math.min(N-1,i));const [s,u,r]=D[cur],d=cur+1;
+      hair.style.left=((cur+.5)/N*100)+'%';plot.classList.toggle('on',!!on);
+      out.innerHTML='<span class="tk-k">NOV '+d+(d===N?' · TODAY':'')+'</span>'+(r?r+'% · ':'')+s+' session'+(s===1?'':'s')+' · '+u+' update'+(u===1?'':'s')+(NOTE[d]?'<span class="tk-n"><br>'+NOTE[d]+'</span>':'');};
+    const at=e=>{const b=plot.getBoundingClientRect();return Math.floor((e.clientX-b.left)/b.width*N);};
+    plot.addEventListener('pointermove',e=>show(at(e),true));
+    plot.addEventListener('pointerdown',e=>show(at(e),true));
+    plot.addEventListener('pointerleave',()=>show(N-1,false));
+    plot.addEventListener('keydown',e=>{if(e.key==='ArrowLeft'||e.key==='ArrowRight'){e.preventDefault();show(cur+(e.key==='ArrowLeft'?-1:1),true);}else if(e.key==='Home'){show(0,true);}else if(e.key==='End'){show(N-1,true);}});
+    plot.addEventListener('blur',()=>show(N-1,false));
+    show(N-1,false);
+  }
+  const sc=document.querySelector('.score'); if(!sc) return;
+  const panel=sc.querySelector('.sc-panel'), btns=[...sc.querySelectorAll('.sc-cell')];
+  btns.forEach(b=>b.addEventListener('click',()=>{
+    const open=b.getAttribute('aria-expanded')==='true';
+    btns.forEach(x=>x.setAttribute('aria-expanded','false'));
+    if(open){panel.hidden=true;panel.innerHTML='';return;}
+    b.setAttribute('aria-expanded','true');
+    const li=b.parentElement;panel.className='sc-panel '+li.className;
+    panel.innerHTML=li.querySelector('.sc-body').innerHTML;panel.hidden=false;
+  }));
+})();
+</script>
+<script>
 (()=>{ // "Keep this page handy": walk each device through saving the page
   const sec=document.getElementById('keep'); if(!sec) return;
   // Opened from a home-screen icon already? Nothing to do.
@@ -1171,7 +1241,7 @@ try{
   const box=document.getElementById('tail'); if(!box) return;
   const out=box.querySelector('.tl-out'), btn=box.querySelector('.tl-x'), srcEl=box.querySelector('.tl-src'), nEl=box.querySelector('.tl-n');
   const GH='https://github.com/eko-e7/terminus-rv';
-  const BUILD='2026-11-17T00:00:00Z', REL='v1.42.1', API='https://api.github.com/repos/eko-e7/terminus-rv/pulls?state=closed&sort=updated&direction=desc&per_page=20';
+  const BUILD='2026-11-17T00:00:00Z', REL='v1.43.0', API='https://api.github.com/repos/eko-e7/terminus-rv/pulls?state=closed&sort=updated&direction=desc&per_page=20';
   const SEED=[{"n":49,"t":"Ambient tail -f traffic: heartbeats, real pings, live merge watch (v1.34.0)","m":"2026-11-12T02:53:42Z","b":"tail-ambient","l":["enhancement"]},{"n":48,"t":"Breadcrumb links from both terminals to GitHub and analytics (v1.33.0)","m":"2026-11-12T02:41:37Z","b":"breadcrumbs","l":["enhancement"]},{"n":47,"t":"Add live visitor micro-feed under the change log (v1.32.0)","m":"2026-11-12T02:23:03Z","b":"visitor-feed","l":["enhancement","privacy"]},{"n":46,"t":"Add tail -f change log panel above the footer (v1.31.0)","m":"2026-11-12T02:16:41Z","b":"tail-log","l":["enhancement","privacy"]},{"n":45,"t":"Restore the Grandma and Grandpa callout box (v1.30.1)","m":"2026-11-12T01:44:13Z","b":"gp-callout","l":["enhancement"]},{"n":44,"t":"Two-chapter page: What's next for the rig, then Behind the scenes (v1.30.0)","m":"2026-11-11T22:11:56Z","b":"page-two-chapters","l":["enhancement","content"]},{"n":43,"t":"Propane gauges fixed: tank levels and sensor batteries under the to-do item (v1.29.0)","m":"2026-11-11T21:41:06Z","b":"lp-micro-status","l":["enhancement","content"]},{"n":42,"t":"Streamline Getting organized: merge Road to 100%, fix RV marker","m":"2026-11-11T21:27:40Z","b":"org-road-merge","l":["bug","enhancement"]},{"n":41,"t":"Power banner + flush Standby caption on radio shelf","m":"2026-11-11T21:18:33Z","b":"power-radio-banners","l":["enhancement","content"]},{"n":40,"t":"Condense \"The road to 100%\" to about a quarter of its height","m":"2026-11-11T20:55:29Z","b":"road-to-100-compact","l":["enhancement"]},{"n":39,"t":"Tighten Comms column: lead with 'Internet connected'","m":"2026-11-11T20:33:22Z","b":"comms-column-tighten","l":["enhancement","content"]},{"n":38,"t":"SOC: add weBoost and Pepwave 7-in-1 to Comms (Active)","m":"2026-11-11T16:16:20Z","b":"soc-cell-boost","l":["enhancement","content"]},{"n":37,"t":"SOC: split forward response vehicle (deployable) from tow-capable unit (stood down)","m":"2026-11-11T16:12:07Z","b":"soc-forward-vehicle","l":["enhancement","content"]},{"n":36,"t":"SOC: add Deployment model panel (HQ + forward unit, go-kit, Starlink Mini)","m":"2026-11-11T16:07:22Z","b":"soc-deployment-model","l":["enhancement","content"]},{"n":35,"t":"Add 'Keep this page handy' bookmark call to action (v1.28.0)","m":"2026-11-11T15:00:56Z","b":"bookmark-cta","l":["enhancement","content"]},{"n":34,"t":"The road to 100%: completeness-over-time chart + tow recount (v1.27.0)","m":"2026-11-11T14:53:28Z","b":"road-to-100","l":["enhancement","content"]},{"n":33,"t":"Fix Comms status badge overflowing its card","m":"2026-11-11T14:47:40Z","b":"fix/comms-badge-overflow","l":["bug"]},{"n":32,"t":"Add PR ping workflow so new PRs notify the owner","m":"2026-11-11T14:31:52Z","b":"pr-ping","l":["enhancement"]}];
   /* Rig status snapshot, mirrors the unit dashboard as of this build */
   const SNAP=[
