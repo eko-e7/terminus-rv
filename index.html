@@ -273,42 +273,39 @@ dialog.lb .nav{position:fixed;background:rgba(255,255,255,.16)}
 :is(.todo,.mx) .wf-bar u{position:absolute;top:0;bottom:0;width:2px;margin-left:-1px;background:var(--card);text-decoration:none}
 :is(.todo,.mx) .wf-next{font-size:12px;line-height:1.4;color:var(--soft)}
 :is(.todo,.mx) .wf-next b{color:var(--ink);font-weight:600}
-/* Rig maintenance status (Option B): investigation callout, needs-now list, coming-up calendar, live gauges */
+/* Rig maintenance status: health tach, needs-now (with the under-investigation box), coming-up calendar, live gauges */
 .mx{display:block!important}
+.mx-top{display:flex;flex-wrap:wrap;align-items:flex-end;gap:10px 24px;margin-bottom:14px}
+.mx-top .sub-h{margin:0!important}
 .mx .dot{display:inline-block;width:10px;height:10px;border-radius:50%;flex:none}
 .mx .dot.g{background:var(--g)}.mx .dot.y{background:var(--y)}.mx .dot.r{background:var(--r)}.mx .dot.b{background:var(--sky)}
-.mx-inv{background:color-mix(in srgb,var(--y) 9%,var(--card));border:1.5px solid color-mix(in srgb,var(--y) 55%,var(--hair));border-radius:12px;padding:14px 16px 16px}
-.mx-ch{display:flex;align-items:center;gap:9px;margin:0 0 10px;font:700 13px var(--body);letter-spacing:.09em;text-transform:uppercase}
-.mx-flag{display:grid;place-items:center;width:20px;height:20px;border-radius:5px;background:#c98a0b;color:#fff;font:700 13px var(--body);letter-spacing:0}
-.mx-ch .n{margin-left:auto;color:var(--soft);font-weight:600;letter-spacing:.04em}
-.cases{list-style:none;margin:0;padding:0;display:grid;gap:10px}
-.case{background:var(--card);border:1px solid var(--hair);border-radius:10px;padding:12px 14px 13px;box-shadow:inset 4px 0 0 var(--c)}
-.case.cr{--c:var(--r)}.case.cy{--c:var(--y)}
-.case p{margin:0}
-.case-h{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
-.case-h b{font-size:18px;font-weight:600}
-.case-st{margin-left:auto;font:700 12px var(--body);letter-spacing:.07em;text-transform:uppercase;color:var(--c)}
-.case-t{font-size:15.5px;line-height:1.45;color:var(--soft);margin-top:4px!important}
-.prog{list-style:none;margin:12px 0 0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));font-size:12.5px;line-height:1.25;color:var(--soft)}
-.prog li{position:relative;padding:20px 4px 0 0}
-.prog li::before{content:"";position:absolute;left:0;right:0;top:6px;height:3px;background:var(--track)}
-.prog li:last-child::before{right:auto;width:0}
-.prog li::after{content:"";position:absolute;left:0;top:1px;width:13px;height:13px;border-radius:50%;background:var(--card);border:2px solid var(--soft);box-sizing:border-box}
-.prog li.ok::before{background:var(--g)}
-.prog li.ok::after{background:var(--g);border-color:var(--g)}
-.prog li.at{color:var(--ink);font-weight:600}
-.prog li.at::after{background:var(--c);border-color:var(--c);animation:mx-pulse 2.2s infinite}
-@keyframes mx-pulse{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--c) 60%,transparent)}70%{box-shadow:0 0 0 7px transparent}100%{box-shadow:0 0 0 0 transparent}}
-.mx-row{display:grid;gap:12px;margin-top:12px}
+.tach{display:flex;align-items:center;gap:14px}
+.tach svg{width:150px;height:auto;display:block;overflow:visible}
+.tach .tz{fill:none;stroke-width:13}
+.tach .tz.r{stroke:var(--r);opacity:.55}.tach .tz.y{stroke:var(--y);opacity:.7}.tach .tz.g{stroke:var(--g)}
+.tach .tk line{stroke:var(--soft);stroke-width:1.5;opacity:.7}
+.tach .needle{transform-origin:100px 100px;transition:transform 1.6s cubic-bezier(.3,.7,.3,1)}
+.tach .needle line{stroke:var(--ink);stroke-width:4;stroke-linecap:round}
+.tach .needle circle{fill:var(--ink);stroke:var(--card);stroke-width:3}
+.tach-r{margin:0;display:flex;flex-direction:column;line-height:1.2}
+.tach-v{font:700 30px/1 var(--display);color:var(--g)}
+.tach-l{font-weight:600;font-size:15px;margin-top:4px}
+.tach-n{font-size:13px;color:var(--soft)}
+.mx-row{display:grid;gap:12px}
 .mx-card{background:var(--card);border:1px solid var(--hair);border-radius:12px;padding:14px 16px}
-.mx-k{display:flex;align-items:center;gap:8px;margin:0 0 8px;font:700 12.5px var(--body);letter-spacing:.09em;text-transform:uppercase;color:var(--soft)}
-.mx-span{font-weight:600;letter-spacing:.06em}
+.mx-k{display:flex;align-items:center;gap:8px;margin:0 0 10px;font:700 12.5px var(--body);letter-spacing:.09em;text-transform:uppercase;color:var(--soft)}
+.mx-span{font-weight:700}
+.mx-inv{border:1.5px solid color-mix(in srgb,var(--r) 60%,var(--hair));background:color-mix(in srgb,var(--r) 8%,var(--card));border-radius:10px;padding:10px 12px 11px;margin-bottom:4px}
+.mx-ch{display:flex;align-items:center;gap:8px;margin:0 0 6px;font:700 11.5px var(--body);letter-spacing:.09em;text-transform:uppercase;color:var(--r)}
+.mx-flag{display:grid;place-items:center;width:17px;height:17px;border-radius:4px;background:#c98a0b;color:#fff;font:700 11.5px var(--body);letter-spacing:0}
+.mx-it{margin:0;display:flex;flex-direction:column}
+.mx-it b{font-size:18px;font-weight:600}
+.mx-it span,.mx-list span{font-size:15px;line-height:1.45;color:var(--soft)}
 .mx-list{list-style:none;margin:0;padding:0}
-.mx-list li{display:grid;grid-template-columns:12px 1fr;gap:1px 11px;padding:9px 0;border-top:1px solid var(--hair)}
-.mx-list li:first-child{border-top:0;padding-top:2px}
+.mx-list li{display:grid;grid-template-columns:12px 1fr;gap:1px 12px;padding:11px 0 9px;border-top:1px solid var(--hair)}
+.mx-list li:first-child{border-top:0}
 .mx-list .dot{grid-row:span 2;margin-top:8px}
 .mx-list b{font-weight:600}
-.mx-list span{font-size:15px;line-height:1.45;color:var(--soft)}
 .cal-list{list-style:none;margin:0;padding:0;font-size:15.5px}
 .cal-list li{position:relative;padding:5px 0 5px 20px;font-weight:600;line-height:1.4}
 .cal-list li::before{content:"";position:absolute;left:0;top:11px;width:10px;height:10px;border-radius:3px;box-sizing:border-box;background:var(--c,var(--soft))}
@@ -320,11 +317,12 @@ dialog.lb .nav{position:fixed;background:rgba(255,255,255,.16)}
 .mx-later b{color:var(--ink);font-weight:600;margin-right:2px}
 .mx .pill{display:inline-flex;align-items:center;gap:7px;padding:4px 11px;border:1px solid var(--hair);border-radius:999px;background:var(--paper);color:var(--ink);white-space:nowrap}
 .mx .pill .dot{width:8px;height:8px}
+.mx-gauges{display:grid;gap:12px;margin-top:12px}
 .mx-gauges .lp,.mx-gauges .wf{margin-top:0;max-width:none}
+.mx-gauges .wf.due .wf-bar{background:color-mix(in srgb,var(--r) 28%,var(--track))}
 .mx-done{display:flex;flex-wrap:wrap;align-items:center;gap:6px 16px;margin:12px 0 0;padding:10px 14px;border-radius:12px;background:var(--goodbg);font-size:14.5px}
 .mx-done b{color:var(--good);font:700 12px var(--body);letter-spacing:.08em;text-transform:uppercase}
 .mx-done span::before{content:"\2713  ";color:var(--good);font-weight:700}
-/* Calendar bars (built by script, wider screens only; the list stays for screen readers and phones) */
 @media (min-width:700px){
   .mx-cal.has-grid .cal-list{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
   .mx-cal.has-grid .cal-grid{display:block;position:relative}
@@ -334,13 +332,13 @@ dialog.lb .nav{position:fixed;background:rgba(255,255,255,.16)}
   .cal-bar{position:absolute;top:0;height:28px;border-radius:7px;display:flex;align-items:center;padding:0 10px;font-size:13.5px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;background:var(--c);color:#141a1f}
   .cal-bar.trip{background:none;border:1.5px dashed var(--soft);color:var(--ink)}
   .cal-now{position:absolute;top:0;bottom:-4px;width:2px;background:var(--rock);border-radius:2px}
+  .mx-gauges{grid-template-columns:repeat(3,minmax(0,1fr))}
 }
 @media (min-width:1080px){
+  .mx-top{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:14px}
   .mx-row{grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:14px}
-  .mx-gauges{grid-template-columns:1fr 1fr}
-  .cases{grid-template-columns:1fr 1fr}
 }
-@media (prefers-reduced-motion:reduce){.prog li.at::after{animation:none}}
+@media (prefers-reduced-motion:reduce){.tach .needle{transition:none}}
 .overall{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:8px}
 .overall b{font:700 30px/1 var(--display);font-variant-numeric:tabular-nums}
 .bar{height:14px;border-radius:7px;background:var(--track);overflow:hidden}
@@ -936,35 +934,34 @@ a.on-pill{text-decoration:none}a.on-pill:hover{filter:brightness(1.15)}
     </section>
 
     <section class="todo-sec mx" aria-labelledby="mx-h">
-      <h2 id="mx-h">Rig maintenance status</h2>
-      <p class="sub-h">What we're fixing, what's coming up, and the live gauges.</p>
-
-      <div class="mx-inv">
-        <p class="mx-ch"><span class="mx-flag" aria-hidden="true">!</span>Under investigation<span class="n">2 open</span></p>
-        <ul class="cases">
-          <li class="case cr" id="todo-furnace">
-            <p class="case-h"><b>Furnace won't light</b><span class="case-st">Off for safety</span></p>
-            <p class="case-t">It sparks but won't catch, with a pop at start-up. It's switched off, and we're staying warm with electric heat until it's fixed.</p>
-            <ol class="prog" aria-label="Furnace repair progress"><li class="ok">Reported Nov 16</li><li class="ok">Checked it ourselves</li><li class="at" aria-current="step">Calling a tech</li><li>Fixed</li></ol>
-          </li>
-          <li class="case cy">
-            <p class="case-h"><b>Generator stalls</b><span class="case-st">Tracking it down</span></p>
-            <p class="case-t">Our backup generator sometimes shuts itself off after a while. It's most likely fuel not reaching it, so a fuel filter and new spark plugs are next.</p>
-            <ol class="prog" aria-label="Generator repair progress"><li class="ok">Stall logged</li><li class="ok">Likely fuel supply</li><li class="at" aria-current="step">Filter and plugs next</li><li>Fixed</li></ol>
-          </li>
-        </ul>
+      <div class="mx-top">
+        <div><h2 id="mx-h">Rig maintenance status</h2><p class="sub-h">What needs fixing, what's coming up, and the live gauges.</p></div>
+        <div class="tach" id="tach" data-value="93" role="img" aria-label="Overall rig health: about 93 percent. Our own gut call, not a formula.">
+          <svg viewBox="0 0 200 112" aria-hidden="true">
+            <path class="tz r" d="M20 100 A80 80 0 0 1 124.72 23.92"/>
+            <path class="tz y" d="M124.72 23.92 A80 80 0 0 1 171.28 63.68"/>
+            <path class="tz g" d="M171.28 63.68 A80 80 0 0 1 180 100"/>
+            <g class="tk"></g>
+            <g class="needle" style="transform:rotate(77.4deg)"><line x1="100" y1="100" x2="100" y2="34"/><circle cx="100" cy="100" r="7"/></g>
+          </svg>
+          <p class="tach-r"><b class="tach-v">~93%</b><span class="tach-l">Overall rig health</span><span class="tach-n">Our gut call, not a formula</span></p>
+        </div>
       </div>
 
       <div class="mx-row">
         <div class="mx-card mx-now">
-          <p class="mx-k"><i class="dot y" aria-hidden="true"></i>Needs attention now</p>
+          <p class="mx-k"><i class="dot r" aria-hidden="true"></i>Needs attention now</p>
+          <div class="mx-inv" id="todo-furnace">
+            <p class="mx-ch"><span class="mx-flag" aria-hidden="true">!</span>Under investigation</p>
+            <p class="mx-it"><b>Furnace off for safety</b><span>Sparks but won't light · tech being called · since Nov 16</span></p>
+          </div>
           <ul class="mx-list">
-            <li><i class="dot y" aria-hidden="true"></i><b>Generator tune-up</b><span>Oil, oil filter and air filter are past due, and the spark plugs are past three years.</span></li>
-            <li><i class="dot b" aria-hidden="true"></i><b>Winter prep</b><span>Seal the wet-bay floor and patch the underbelly before hard freezes. We live in it year-round, so we don't winterize.</span></li>
+            <li><i class="dot y" aria-hidden="true"></i><b>Generator service and stall check</b><span>Oil, filters and spark plugs due · chasing an intermittent stall</span></li>
+            <li><i class="dot b" aria-hidden="true"></i><b>Winter prep</b><span>Seal the wet-bay floor, patch the underbelly before hard freezes</span></li>
           </ul>
         </div>
         <div class="mx-card mx-cal">
-          <p class="mx-k">Coming up<span class="mx-span"></span></p>
+          <p class="mx-k">Coming up<span class="mx-span">· next 8 months</span></p>
           <ul class="cal-list">
             <li class="ev g" data-from="2026-12-01" data-to="2026-12-08">A/C filters<span>: next wash, about Dec 2</span></li>
             <li class="ev b" data-from="2026-12-01" data-to="2026-12-08">Generator run<span>: monthly exercise, about Dec 3</span></li>
@@ -972,11 +969,11 @@ a.on-pill{text-decoration:none}a.on-pill:hover{filter:brightness(1.15)}
             <li class="ev y" data-from="2027-03-01" data-to="2027-05-31">Garage A/C part, before summer<span>: its start-up part is the 2021 original</span></li>
             <li class="ev trip">Before our next trip: new tires · bearings and brakes<span>. The tires are five years old.</span></li>
           </ul>
-          <p class="mx-later"><b>Good for years</b><span class="pill"><i class="dot g" aria-hidden="true"></i>CO &amp; propane alarm · 2031</span><span class="pill"><i class="dot g" aria-hidden="true"></i>Smoke alarm · 2031</span><span class="pill"><i class="dot g" aria-hidden="true"></i>Water pump · new Jan 2026</span></p>
+          <p class="mx-later"><b>Good for years:</b><span class="pill"><i class="dot g" aria-hidden="true"></i>CO alarm · 2031</span><span class="pill"><i class="dot g" aria-hidden="true"></i>Smoke alarm · 2031</span><span class="pill"><i class="dot g" aria-hidden="true"></i>Water pump · new Jan 2026</span></p>
         </div>
       </div>
 
-      <div class="mx-row mx-gauges">
+      <div class="mx-gauges">
         <div class="mx-card">
           <div class="lp" id="lp" role="img" aria-label="Propane: both sensors online, last gauge reading November 16. Tank 1 at 100 percent, tank 2 at 34 percent, both sensor batteries full. The furnace is off for repair, so the estimate between readings is paused.">
             <div class="lp-head" aria-hidden="true"><i class="live"></i><span class="lp-h">Propane sensors online · last reading Nov 16</span></div>
@@ -991,6 +988,14 @@ a.on-pill{text-decoration:none}a.on-pill:hover{filter:brightness(1.15)}
             <div class="wf-flow" aria-hidden="true"><b>Sediment</b><span><i>›</i><b>Carbon</b></span><span><i>›</i><b>Virus guard</b></span></div>
             <div class="wf-life" aria-hidden="true"><span>Life left</span><b class="lp-bar wf-bar"><i style="width:100%"></i><u style="left:33.7%"></u></b><span class="lp-pct wf-pct">100%</span></div>
             <div class="wf-next" aria-hidden="true"><b class="wf-n">Next change Jan 14 – Feb 14</b> · counted by the calendar, no sensor</div>
+          </div>
+        </div>
+        <div class="mx-card">
+          <div class="wf due" id="go" data-changed="2025-06-10" data-months="12" role="img" aria-label="Generator oil and oil filter: last changed June 10, 2025. The yearly change was due June 10, 2026, so it is overdue. Counted by the calendar; run hours aren't logged yet.">
+            <div class="lp-head" aria-hidden="true"><i class="live"></i><span class="go-h">Generator oil monitor · change overdue</span></div>
+            <div class="wf-flow" aria-hidden="true"><b>Oil</b><span><i>+</i><b>Oil filter</b></span></div>
+            <div class="wf-life" aria-hidden="true"><span>Life left</span><b class="lp-bar wf-bar"><i style="width:0%"></i></b><span class="lp-pct go-pct">0%</span></div>
+            <div class="wf-next" aria-hidden="true"><b class="go-n">Was due Jun 10, 2026</b> · yearly, counted by the calendar</div>
           </div>
         </div>
       </div>
@@ -1927,7 +1932,6 @@ try{
   const day=s=>{const m=/^(\d{4})-(\d\d)-(\d\d)$/.exec(s||''); return m?Date.UTC(+m[1],+m[2]-1,+m[3]):NaN;};
   const wf=document.getElementById('wf'), wc=wf&&day(wf.dataset.changed);
   const mo=k=>new Date(Date.UTC(y0,m0+k,1)).toLocaleDateString('en-US',{month:'short',timeZone:'UTC'});
-  cal.querySelector('.mx-span').textContent='· '+mo(0)+' to '+mo(N-1);
   const grid=document.createElement('div'); grid.className='cal-grid'; grid.setAttribute('aria-hidden','true');
   const head=document.createElement('div'); head.className='cal-mo'; head.style.setProperty('--n',N);
   for(let k=0;k<N;k++){const s=document.createElement('span'); s.textContent=mo(k); head.appendChild(s);} grid.appendChild(head);
@@ -1948,6 +1952,39 @@ try{
   });
   const nl=document.createElement('div'); nl.className='cal-now'; nl.style.left='calc('+pos(Date.UTC(y0,m0,now.getDate()))+'% - 1px)'; nl.style.top=head.offsetHeight+'px'; grid.appendChild(nl);
   nl.style.top=(head.offsetHeight||22)+'px';
+})();
+</script>
+<script>
+/* Overall rig health tach: a gut call (data-value), not a formula. The needle settles in, then drifts a point or two either side. */
+(()=>{
+  const el=document.getElementById('tach'); if(!el) return;
+  const v=+el.dataset.value||0, n=el.querySelector('.needle'), tk=el.querySelector('.tk'), NS='http://www.w3.org/2000/svg';
+  for(let p=0;p<=100;p+=10){const a=Math.PI*(1-p/100), c=Math.cos(a), s=Math.sin(a), l=document.createElementNS(NS,'line');
+    l.setAttribute('x1',(100+64*c).toFixed(1)); l.setAttribute('y1',(100-64*s).toFixed(1)); l.setAttribute('x2',(100+(p%50?69:72)*c).toFixed(1)); l.setAttribute('y2',(100-(p%50?69:72)*s).toFixed(1)); tk.appendChild(l);}
+  el.querySelector('.tach-v').textContent='~'+v+'%';
+  const rot=p=>n.style.transform='rotate('+((p-50)*1.8).toFixed(1)+'deg)';
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches||!('IntersectionObserver' in window)){rot(v); return;}
+  rot(0); let on=false;
+  new IntersectionObserver((es,o)=>{if(!es[0].isIntersecting||on) return; on=true; o.disconnect();
+    requestAnimationFrame(()=>rot(v));
+    setTimeout(()=>{n.style.transition='transform 2.4s ease-in-out'; setInterval(()=>rot(v+(Math.random()*3-1.5)),2600);},1800);
+  },{threshold:.4}).observe(el);
+})();
+/* Generator oil and oil filter: counted from the last change (data-changed), yearly per the Onan manual. Run hours aren't logged yet. */
+(()=>{
+  const el=document.getElementById('go'); if(!el) return;
+  const m=/^(\d{4})-(\d\d)-(\d\d)$/.exec(el.dataset.changed||''); if(!m) return;
+  const DAY=864e5, t0=Date.UTC(+m[1],+m[2]-1,+m[3]), tDue=Date.UTC(+m[1],+m[2]-1+(+el.dataset.months||12),+m[3]);
+  const now=new Date(), today=Date.UTC(now.getFullYear(),now.getMonth(),now.getDate());
+  const span=Math.round((tDue-t0)/DAY), days=Math.round((today-t0)/DAY), over=Math.round((today-tDue)/DAY);
+  const pct=Math.max(0,Math.round(100*(1-days/span))), st=over>0?'due':pct<=15?'win':'';
+  const fmt=(t,long)=>new Date(t).toLocaleDateString('en-US',{month:long?'long':'short',day:'numeric',year:'numeric',timeZone:'UTC'});
+  el.classList.remove('due','win'); if(st) el.classList.add(st);
+  el.querySelector('.go-h').textContent='Generator oil monitor · '+(over>0?'overdue '+over+' day'+(over===1?'':'s'):'day '+days+' of '+span);
+  el.querySelector('.wf-bar i').style.width=pct+'%';
+  el.querySelector('.go-pct').textContent=pct+'%';
+  el.querySelector('.go-n').textContent=over>0?'Was due '+fmt(tDue):'Next change by '+fmt(tDue);
+  el.setAttribute('aria-label','Generator oil and oil filter: last changed '+fmt(t0,1)+'. '+(over>0?'The yearly change was due '+fmt(tDue,1)+', '+over+' days ago.':'About '+pct+' percent of the year left; next change by '+fmt(tDue,1)+'.')+' Counted by the calendar; run hours are not logged yet.');
 })();
 </script>
 <script data-goatcounter="https://eko.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
