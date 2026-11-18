@@ -1202,27 +1202,34 @@ try{
     const im=lb.querySelector('img'), cap=lb.querySelector('p');
     lb.show1=k=>{at=(k+set.length)%set.length; const s=set[at]; im.src=s.src; im.alt=s.alt;
       cap.textContent=s.cap; const n=document.createElement('span'); n.textContent=setWhen+' · '+(at+1)+' of '+set.length; cap.appendChild(n);
-      lb.querySelectorAll('.nav').forEach(b=>b.hidden=set.length<2);};
-    lb.querySelector('.prev').addEventListener('click',e=>{e.stopPropagation();lb.show1(at-1);});
-    lb.querySelector('.next').addEventListener('click',e=>{e.stopPropagation();lb.show1(at+1);});
-    im.addEventListener('click',e=>{e.stopPropagation();lb.show1(at+1);});
+      const [hp,hn]=ends(); lb.querySelector('.prev').hidden=hp; lb.querySelector('.next').hidden=hn;};
+    const lbStep=d=>{step(d); set=gSet; setWhen=stops[cur].when; lb.show1(gAt);};
+    lb.querySelector('.prev').addEventListener('click',e=>{e.stopPropagation();lbStep(-1);});
+    lb.querySelector('.next').addEventListener('click',e=>{e.stopPropagation();lbStep(1);});
+    im.addEventListener('click',e=>{e.stopPropagation();lbStep(1);});
     lb.addEventListener('click',()=>lb.close());
-    lb.addEventListener('keydown',e=>{if(e.key==='ArrowLeft')lb.show1(at-1); if(e.key==='ArrowRight')lb.show1(at+1);});
+    lb.addEventListener('keydown',e=>{if(e.key==='ArrowLeft')lbStep(-1); if(e.key==='ArrowRight')lbStep(1);});
     let x0=null; lb.addEventListener('touchstart',e=>{x0=e.touches[0].clientX;},{passive:true});
-    lb.addEventListener('touchend',e=>{if(x0===null)return; const dx=e.changedTouches[0].clientX-x0; x0=null; if(Math.abs(dx)>40) lb.show1(at+(dx<0?1:-1));});
+    lb.addEventListener('touchend',e=>{if(x0===null)return; const dx=e.changedTouches[0].clientX-x0; x0=null; if(Math.abs(dx)>40) lbStep(dx<0?1:-1);});
   }
 
   let cur=-1, mode='map', gSet=[], gAt=0, timer=null;
+  const nbr=d=>{let k=cur+d; while(k>=0&&k<stops.length&&!stops[k].shots.length) k+=d; return k>=0&&k<stops.length?k:-1;};
+  const ends=()=>[gAt<=0&&nbr(-1)<0, gAt>=gSet.length-1&&nbr(1)<0];
+  const step=d=>{const j=gAt+d; if(j>=0&&j<gSet.length){pick(j); return;} const k=nbr(d); if(k>=0) go(k,{at:d<0?-1:0});};
   const hl=s=>{stops.forEach(t=>t.li._leg&&t.li._leg.classList.toggle('on',t===s)); map.classList.toggle('hl',!!s);};
   const centerRail=k=>{const li=btns[k].parentElement; rail.scrollTo({left:li.offsetLeft-(rail.clientWidth-li.offsetWidth)/2,behavior:calm.matches?'auto':'smooth'});};
   const pick=k=>{gAt=(k+gSet.length)%gSet.length; const s=gSet[gAt]; gImg.src=s.src; gImg.alt=s.alt; if(s.pos) gImg.style.objectPosition=s.pos; else gImg.style.removeProperty('object-position');
     gCap.textContent=s.cap; gN.textContent=(gAt+1)+' of '+gSet.length;
     [...gTh.children].forEach((b,i)=>b.setAttribute('aria-current',i===gAt?'true':'false'));
+    const [hp,hn]=ends(), gp=gal.querySelector('.gal-main .prev'), gx=gal.querySelector('.gal-main .next');
+    gp.hidden=hp; gx.hidden=hn;
+    const lbl=(b,d,base)=>{const k=gAt+d<0||gAt+d>=gSet.length?nbr(d):-1; const t=k>=0?(d<0?'Previous stop: ':'Next stop: ')+stops[k].short:base; b.setAttribute('aria-label',t); b.title=k>=0?t:'';};
+    lbl(gp,-1,'Previous photo'); lbl(gx,1,'Next photo');
     const t=gTh.children[gAt]; if(t) gTh.scrollTo({left:t.offsetLeft-(gTh.clientWidth-t.offsetWidth)/2,behavior:calm.matches?'auto':'smooth'});};
   const showGal=(s,k)=>{gSet=s.shots; gal.querySelector('.gal-when').textContent=s.when;
     gTh.innerHTML=''; gSet.forEach((p,i)=>{const b=document.createElement('button'); b.type='button'; b.setAttribute('aria-label','Photo '+(i+1)+': '+p.cap);
       const t=document.createElement('img'); t.src=p.src; t.alt=''; t.loading='lazy'; if(p.pos) t.style.objectPosition=p.pos; b.appendChild(t); b.addEventListener('click',()=>pick(i)); gTh.appendChild(b);});
-    gal.querySelectorAll('.gal-main .nav').forEach(b=>b.hidden=gSet.length<2);
     mode='photos'; hl(null); map.classList.add('photos'); sec.classList.add('tx-ph'); pick(k);};
 
   const stopPlay=()=>{if(!timer) return; clearInterval(timer); timer=null; playB.setAttribute('aria-pressed','false'); playB.querySelector('.t').textContent='Follow along';};
@@ -1261,7 +1268,7 @@ try{
     btns.forEach((b,i)=>{b.setAttribute('aria-pressed',i===k?'true':'false'); const li=b.parentElement; li.classList.toggle('on',i===k); li.classList.toggle('past',k>=0&&i<k);});
     const s=stops[k];
     if(k>=0) centerRail(k);
-    if(mode==='photos'&&s&&s.shots.length&&!o.map) showGal(s,0);
+    if(mode==='photos'&&s&&s.shots.length&&!o.map) showGal(s,o.at||0);
     else {mode='map'; map.classList.remove('photos'); sec.classList.remove('tx-ph'); hl(s||null);}
     renderCard();};
   const photos=k=>{const s=stops[cur]; if(!s||!s.shots.length) return; showGal(s,k); renderCard();
@@ -1288,12 +1295,12 @@ try{
 
   // Photo stage controls
   gal.querySelector('.gal-back').addEventListener('click',toMap);
-  gal.querySelector('.gal-main .prev').addEventListener('click',()=>pick(gAt-1));
-  gal.querySelector('.gal-main .next').addEventListener('click',()=>pick(gAt+1));
+  gal.querySelector('.gal-main .prev').addEventListener('click',()=>step(-1));
+  gal.querySelector('.gal-main .next').addEventListener('click',()=>step(1));
   gImg.addEventListener('click',()=>{if(!lb) return; set=gSet; setWhen=stops[cur].when; lb.show1(gAt); lb.showModal();});
-  map.addEventListener('keydown',e=>{if(mode!=='photos') return; if(e.key==='ArrowLeft'){pick(gAt-1);e.preventDefault();} if(e.key==='ArrowRight'){pick(gAt+1);e.preventDefault();} if(e.key==='Escape') toMap();});
+  map.addEventListener('keydown',e=>{if(mode!=='photos') return; if(e.key==='ArrowLeft'){step(-1);e.preventDefault();} if(e.key==='ArrowRight'){step(1);e.preventDefault();} if(e.key==='Escape') toMap();});
   let sx=null; gal.querySelector('.gal-main').addEventListener('touchstart',e=>{sx=e.touches[0].clientX;},{passive:true});
-  gal.querySelector('.gal-main').addEventListener('touchend',e=>{if(sx===null)return; const dx=e.changedTouches[0].clientX-sx; sx=null; if(Math.abs(dx)>40) pick(gAt+(dx<0?1:-1));});
+  gal.querySelector('.gal-main').addEventListener('touchend',e=>{if(sx===null)return; const dx=e.changedTouches[0].clientX-sx; sx=null; if(Math.abs(dx)>40) step(dx<0?1:-1);});
   wide.addEventListener('change',renderCard);
   go(-1);
 })();
